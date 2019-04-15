@@ -6,20 +6,32 @@ class Login extends Component {
     return (
       <form>
         <div>
-          <label htmlFor="" />
-          <Field />
+          <label htmlFor="">Email</label>
+          <Field
+            name="email"
+            component="input"
+            type="email"
+            placeholder="email"
+          />
         </div>
         <div>
-          <label htmlFor="" />
-          <Field />
+          <label htmlFor="">Password</label>
+          <Field
+            name="password"
+            component="input"
+            type="password"
+            placeholder="password"
+          />
         </div>
+        <button type="submit">Sign Up</button>
       </form>
     );
   }
 }
 
 Login = reduxForm({
-  form: "login"
+  form: "login",
+  destroyOnUnmount: false
 })(Login);
 
 export default Login;
