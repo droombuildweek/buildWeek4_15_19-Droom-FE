@@ -18,6 +18,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers";
+import PreviousExperienceForm from "./components/jobSeeker/profileForm/PreviousExperienceForm";
 const store = createStore(
   rootReducer,
   compose(
@@ -40,6 +41,11 @@ class App extends Component {
               exact
               path="/jobSeeker/createProfile/personalInfo"
               component={PersonalInfoForm}
+            />
+            <Route
+              exact
+              path="/jobSeeker/createProfile/experience"
+              component={PreviousExperienceForm}
             />
           </Router>
         </Provider>
