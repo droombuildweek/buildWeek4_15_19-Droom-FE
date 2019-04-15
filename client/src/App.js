@@ -1,8 +1,18 @@
 import React, { Component } from "react";
+
+// Components
+import Header from "./components/nav/Header";
+// import Footer from "./components/nav/Footer";
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
+
+// Styling
+import "./App.css";
+
 // React Router
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-// Redux
+// Redux Setup
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
@@ -14,15 +24,6 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
-
-// Components
-import Header from "./components/nav/Header";
-// import Footer from "./components/nav/Footer";
-import Register from "./components/auth/Register";
-import Login from "./components/auth/Login";
-
-// Styling
-import "./App.css";
 
 class App extends Component {
   render() {
