@@ -121,7 +121,7 @@ class PersonalInfoForm extends Component {
           />
         </div>
         <button type="submit" onSubmit={this.handleSubmit}>
-          Sign Up
+          Submit
         </button>
       </form>
     );
