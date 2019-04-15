@@ -5,17 +5,26 @@ import { SET_CURRENT_USER } from "./types";
 
 // register user
 export const registerUser = (userData, history) => dispatch => {
+  console.log(userData);
   axios
-    .post("/api/auth/register", userData)
+    .post(
+      "https://droom-buildweek-4-15-19.herokuapp.com/api/auth/register",
+      userData
+    )
     .then(res => history.push("/login"))
     .catch(err => console.log(err));
 };
 
 // login user
 export const loginUser = userData => dispatch => {
+  console.log(userData);
   axios
-    .post("/api/auth/login", userData)
+    .post(
+      "https://droom-buildweek-4-15-19.herokuapp.com/api/auth/login",
+      userData
+    )
     .then(res => {
+      console.log(res.data.token);
       // save token to local storage
       localStorage.setItem("jwtToken", res.data.token);
       // set to auth header

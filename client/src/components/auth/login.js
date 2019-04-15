@@ -54,7 +54,7 @@ class Login extends Component {
             />
           </div>
           <button type="submit" onClick={this.handleSubmit}>
-            Sign Up
+            Login
           </button>
         </form>
       </div>

@@ -6,6 +6,7 @@ import Header from "./components/nav/Header";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PersonalInfoForm from "./components/jobSeeker/profileForm/PersonalInfoForm";
+import EducationForm from "./components/jobSeeker/profileForm/EducationForm";
 
 // Styling
 import "./App.css";
@@ -46,6 +47,11 @@ class App extends Component {
               exact
               path="/jobSeeker/createProfile/experience"
               component={PreviousExperienceForm}
+            />
+            <Route
+              exact
+              path="/jobSeeker/createProfile/education"
+              component={EducationForm}
             />
           </Router>
         </Provider>
