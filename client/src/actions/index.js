@@ -1,6 +1,7 @@
 import axios from "axios";
-import { CREATE_USER } from "./types";
+import { SET_CURRENT_USER } from "./types";
 
+// register user
 export const registerUser = (userData, history) => dispatch => {
   axios
     .post("/api/auth/register", userData)
@@ -8,6 +9,7 @@ export const registerUser = (userData, history) => dispatch => {
     .catch(err => console.log(err));
 };
 
+// login user
 export const loginUser = userData => dispatch => {
   axios
     .post("/api/auth/login", userData)
@@ -18,4 +20,19 @@ export const loginUser = userData => dispatch => {
       // set current user
     })
     .catch(err => console.log(err));
+};
+
+// set user
+export const setCurrentUser = decoded => {
+  return {
+    type: SET_CURRENT_USER,
+    payload: decoded
+  };
+};
+
+// logout user
+export const logoutUser = () => dispatch => {
+  // remove token from local storage
+  // remove auth header
+  // set current user to empty object
 };
