@@ -29,7 +29,6 @@ class Register extends Component {
     };
 
     this.props.registerUser(userData, this.props.history);
-    console.log(userData);
   };
 
   render() {
@@ -39,7 +38,6 @@ class Register extends Component {
           <label htmlFor="">Email</label>
           <input
             name="email"
-            component="input"
             type="email"
             placeholder="email"
             value={this.state.email}
@@ -50,7 +48,6 @@ class Register extends Component {
           <label htmlFor="">Password</label>
           <input
             name="password"
-            component="input"
             type="password"
             placeholder="password"
             value={this.state.password}
@@ -61,7 +58,6 @@ class Register extends Component {
           <label htmlFor="">Confirm Password</label>
           <input
             name="password2"
-            component="input"
             type="password"
             placeholder="confirm password"
             value={this.state.password2}

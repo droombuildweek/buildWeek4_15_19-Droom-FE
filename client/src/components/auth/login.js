@@ -1,37 +1,70 @@
 import React, { Component } from "react";
-import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { loginUser } from "../../actions";
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: ""
+    };
+  }
+
+  inputChange = e => {
+    e.preventDefault();
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const userData = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    this.props.loginUser(userData);
+  };
+
   render() {
     return (
       <form>
         <div>
           <label htmlFor="">Email</label>
-          <Field
+          <input
             name="email"
-            component="input"
             type="email"
             placeholder="email"
+            value={this.state.email}
+            onChange={this.inputChange}
           />
         </div>
         <div>
           <label htmlFor="">Password</label>
-          <Field
+          <input
             name="password"
-            component="input"
             type="password"
             placeholder="password"
+            value={this.state.password}
+            onChange={this.inputChange}
           />
         </div>
-        <button type="submit">Sign Up</button>
+        <button type="submit" onClick={this.handleSubmit}>
+          Sign Up
+        </button>
       </form>
     );
   }
 }
 
-Login = reduxForm({
-  form: "login",
-  destroyOnUnmount: false
-})(Login);
+const mapStateToProps = state => ({
+  auth: state.auth
+});
 
-export default Login;
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Login);
