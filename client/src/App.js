@@ -33,7 +33,6 @@ class App extends Component {
           <Router>
             <Header />
             {/* <Footer /> */}
-
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
           </Router>

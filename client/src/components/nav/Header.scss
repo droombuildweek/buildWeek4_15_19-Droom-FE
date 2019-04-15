@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 1rem;
+  margin: 20px 0;
+
+  h1 {
+    margin: 0;
+    margin-right: 20px;
+  }
+}
+
+.link {
+  color: black;
+  margin: 0;
+  margin-right: 20px;
+}

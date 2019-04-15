@@ -31,31 +31,33 @@ class Login extends Component {
 
   render() {
     return (
-      <form>
-        <div>
-          <label htmlFor="">Email</label>
-          <input
-            name="email"
-            type="email"
-            placeholder="email"
-            value={this.state.email}
-            onChange={this.inputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="">Password</label>
-          <input
-            name="password"
-            type="password"
-            placeholder="password"
-            value={this.state.password}
-            onChange={this.inputChange}
-          />
-        </div>
-        <button type="submit" onClick={this.handleSubmit}>
-          Sign Up
-        </button>
-      </form>
+      <div className="form-container">
+        <form>
+          <div className="form-group">
+            <label htmlFor="">Email</label>
+            <input
+              name="email"
+              type="email"
+              placeholder="email"
+              value={this.state.email}
+              onChange={this.inputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="">Password</label>
+            <input
+              name="password"
+              type="password"
+              placeholder="password"
+              value={this.state.password}
+              onChange={this.inputChange}
+            />
+          </div>
+          <button type="submit" onClick={this.handleSubmit}>
+            Sign Up
+          </button>
+        </form>
+      </div>
     );
   }
 }
