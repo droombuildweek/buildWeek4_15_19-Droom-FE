@@ -5,16 +5,12 @@ import { SET_CURRENT_USER } from "./types";
 
 // register user
 export const registerUser = (userData, history) => dispatch => {
+  console.log(userData);
   axios
-    .post("/api/auth/register", userData)
-    .then(res => history.push("/login"))
-    .catch(err => console.log(err));
-};
-
-// login user
-export const loginUser = userData => dispatch => {
-  axios
-    .post("/api/auth/login", userData)
+    .post(
+      "https://droom-buildweek-4-15-19.herokuapp.com/api/auth/register",
+      userData
+    )
     .then(res => {
       // save token to local storage
       localStorage.setItem("jwtToken", res.data.token);
@@ -25,7 +21,29 @@ export const loginUser = userData => dispatch => {
       // set current user
       dispatch(setCurrentUser(decoded));
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.response));
+};
+
+// login user
+export const loginUser = userData => dispatch => {
+  console.log(userData);
+  axios
+    .post(
+      "https://droom-buildweek-4-15-19.herokuapp.com/api/auth/login",
+      userData
+    )
+    .then(res => {
+      console.log(res.data.token);
+      // save token to local storage
+      localStorage.setItem("jwtToken", res.data.token);
+      // set to auth header
+      setAuthToken(res.data.token);
+      // decode token
+      const decoded = jwt_decode(res.data.token);
+      // set current user
+      dispatch(setCurrentUser(decoded));
+    })
+    .catch(err => console.log(err.response));
 };
 
 // set user
