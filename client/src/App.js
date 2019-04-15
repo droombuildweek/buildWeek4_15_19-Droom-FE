@@ -5,6 +5,7 @@ import Header from "./components/nav/Header";
 // import Footer from "./components/nav/Footer";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import PersonalInfoForm from "./components/jobSeeker/profileForm/PersonalInfoForm";
 
 // Styling
 import "./App.css";
@@ -35,6 +36,11 @@ class App extends Component {
             {/* <Footer /> */}
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route
+              exact
+              path="/jobSeeker/createProfile/personalInfo"
+              component={PersonalInfoForm}
+            />
           </Router>
         </Provider>
       </>
