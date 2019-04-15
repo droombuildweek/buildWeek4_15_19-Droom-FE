@@ -11,7 +11,16 @@ export const registerUser = (userData, history) => dispatch => {
       "https://droom-buildweek-4-15-19.herokuapp.com/api/auth/register",
       userData
     )
-    .then(res => history.push("/login"))
+    .then(res => {
+      // save token to local storage
+      localStorage.setItem("jwtToken", res.data.token);
+      // set to auth header
+      setAuthToken(res.data.token);
+      // decode token
+      const decoded = jwt_decode(res.data.token);
+      // set current user
+      dispatch(setCurrentUser(decoded));
+    })
     .catch(err => console.log(err.response));
 };
 

@@ -7,19 +7,21 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PersonalInfoForm from "./components/jobSeeker/profileForm/PersonalInfoForm";
 import EducationForm from "./components/jobSeeker/profileForm/EducationForm";
+import PreviousExperienceForm from "./components/jobSeeker/profileForm/PreviousExperienceForm";
+import SkillsAndInterestsForm from "./components/jobSeeker/profileForm/SkillsAndInterestsForm";
 
 // Styling
 import "./App.css";
 
 // React Router
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // Redux Setup
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers";
-import PreviousExperienceForm from "./components/jobSeeker/profileForm/PreviousExperienceForm";
+
 const store = createStore(
   rootReducer,
   compose(
@@ -52,6 +54,11 @@ class App extends Component {
               exact
               path="/jobSeeker/createProfile/education"
               component={EducationForm}
+            />
+            <Route
+              exact
+              path="/jobSeeker/createProfile/skills"
+              component={SkillsAndInterestsForm}
             />
           </Router>
         </Provider>
