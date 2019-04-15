@@ -12,7 +12,7 @@ export const registerUser = (userData, history) => dispatch => {
       userData
     )
     .then(res => history.push("/login"))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.response));
 };
 
 // login user
@@ -34,7 +34,7 @@ export const loginUser = userData => dispatch => {
       // set current user
       dispatch(setCurrentUser(decoded));
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.response));
 };
 
 // set user
