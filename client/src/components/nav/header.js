@@ -1,14 +1,22 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import "./Header.scss";
 
 class Header extends Component {
   render() {
     return (
-      <div>
-        <NavLink to="/">Home</NavLink>
-
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/register">Sign Up</NavLink>
+      <div className="navbar">
+        <h1>Droom</h1>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <p className="link">Home</p>
+        </Link>
+        <Link to="/login" style={{ textDecoration: "none" }}>
+          <p className="link">Login</p>
+        </Link>
+        <Link to="/register" style={{ textDecoration: "none" }}>
+          <p className="link">Sign Up</p>
+        </Link>
       </div>
     );
   }

@@ -1,46 +1,86 @@
 import React, { Component } from "react";
-import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { registerUser } from "../../actions";
+import { withRouter } from "react-router-dom";
+
+import "./Register.scss";
 
 class Register extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      password2: ""
+    };
+  }
+
+  inputChange = e => {
+    e.preventDefault();
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const userData = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    this.props.registerUser(userData, this.props.history);
+  };
+
   render() {
     return (
-      <form>
-        <div>
-          <label htmlFor="">Email</label>
-          <Field
-            name="email"
-            component="input"
-            type="email"
-            placeholder="email"
-          />
-        </div>
-        <div>
-          <label htmlFor="">Password</label>
-          <Field
-            name="password"
-            component="input"
-            type="password"
-            placeholder="password"
-          />
-        </div>
-        <div>
-          <label htmlFor="">Confirm Password</label>
-          <Field
-            name="password2"
-            component="input"
-            type="password"
-            placeholder="confirm password"
-          />
-        </div>
-        <button type="submit">Sign Up</button>
-      </form>
+      <div className="form-container">
+        <form>
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              name="email"
+              type="email"
+              placeholder="email"
+              value={this.state.email}
+              onChange={this.inputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="">Password</label>
+            <input
+              name="password"
+              type="password"
+              placeholder="password"
+              value={this.state.password}
+              onChange={this.inputChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="">Confirm Password</label>
+            <input
+              name="password2"
+              type="password"
+              placeholder="confirm password"
+              value={this.state.password2}
+              onChange={this.inputChange}
+            />
+          </div>
+          <button type="submit" onClick={this.handleSubmit}>
+            Sign Up
+          </button>
+        </form>
+      </div>
     );
   }
 }
 
-Register = reduxForm({
-  form: "register",
-  destroyOnUnmount: false
-})(Register);
+const mapStateToProps = state => ({
+  auth: state.auth
+});
 
-export default Register;
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(withRouter(Register));
