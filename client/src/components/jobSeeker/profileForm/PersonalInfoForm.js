@@ -5,7 +5,7 @@ class PersonalInfoForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: "",
+      userId: this.props.auth.user.subject,
       firstName: "",
       lastName: "",
       profilePicture: "",
@@ -146,7 +146,8 @@ class PersonalInfoForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  seeker: state.seeker
+  seeker: state.seeker,
+  auth: state.auth
 });
 
 export default connect(

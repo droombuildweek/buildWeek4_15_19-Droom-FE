@@ -5,7 +5,7 @@ class PreviousExperienceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: "",
+      userId: this.props.auth.user.subject,
       jobTitle: "",
       jobCompany: "",
       jobDescription: "",
@@ -116,7 +116,8 @@ class PreviousExperienceForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  seeker: state.seeker
+  seeker: state.seeker,
+  auth: state.auth
 });
 
 export default connect(
