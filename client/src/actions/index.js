@@ -63,3 +63,35 @@ export const logoutUser = () => dispatch => {
   // set current user to empty object
   dispatch(setCurrentUser({}));
 };
+
+// submit seeker profile form
+export const submitSeekerPersonal = personalData => dispatch => {
+  axios
+    .post("/", personalData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// submit seeker experience profile form
+export const submitSeekerExperience = experienceData => dispatch => {
+  axios
+    .post("/", experienceData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// submit seeker education profile form
+export const submitSeekerEducation = educationData => dispatch => {
+  axios
+    .post("/", educationData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// submit seeker education profile form
+export const submitSeekerSkills = skillsData => dispatch => {
+  axios
+    .post("/", skillsData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};

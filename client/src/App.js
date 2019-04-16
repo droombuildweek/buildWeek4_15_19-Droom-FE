@@ -64,26 +64,34 @@ class App extends Component {
             <Header />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route
-              exact
-              path="/jobSeeker/createProfile/personalInfo"
-              component={PersonalInfoForm}
-            />
-            <Route
-              exact
-              path="/jobSeeker/createProfile/experience"
-              component={PreviousExperienceForm}
-            />
-            <Route
-              exact
-              path="/jobSeeker/createProfile/education"
-              component={EducationForm}
-            />
-            <Route
-              exact
-              path="/jobSeeker/createProfile/skills"
-              component={SkillsAndInterestsForm}
-            />
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/jobSeeker/createProfile/personalInfo"
+                component={PersonalInfoForm}
+              />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/jobSeeker/createProfile/experience"
+                component={PreviousExperienceForm}
+              />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/jobSeeker/createProfile/education"
+                component={EducationForm}
+              />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/jobSeeker/createProfile/skills"
+                component={SkillsAndInterestsForm}
+              />
+            </Switch>
             <Switch>
               <PrivateRoute
                 exact
