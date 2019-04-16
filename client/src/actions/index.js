@@ -66,6 +66,8 @@ export const logoutUser = () => dispatch => {
   dispatch(setCurrentUser({}));
 };
 
+// delete account
+
 // Job Seeker --------------------------
 
 export const getSeekerProfile = () => dispatch => {
@@ -107,6 +109,22 @@ export const submitSeekerSkills = skillsData => dispatch => {
     .catch(err => console.log(err));
 };
 
+// edit job seeker profile
+export const editSeekerProfile = (seekerProfile, id) => dispatch => {
+  axios
+    .put("/", seekerProfile)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// delete job seeker profile
+export const deleteSeekerProfile = id => dispatch => {
+  axios
+    .delete("/")
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
 // Employer --------------------------
 
 // get company profile
@@ -129,6 +147,22 @@ export const submitCompanyInfo = companyData => dispatch => {
 export const submitJobInfo = jobData => dispatch => {
   axios
     .post("/", jobData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// edit company profile
+export const editEmployerProfile = (employerProfile, id) => dispatch => {
+  axios
+    .put("/", employerProfile)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// delete company profile
+export const deleteEmployerProfile = id => dispatch => {
+  axios
+    .delete("/")
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
