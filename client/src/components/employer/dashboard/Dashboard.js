@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { deleteEmployerProfile } from "../../../actions";
 
 import "./Dashboard.scss";
 
 class EmployerDashboard extends Component {
+  deleteClick = e => {
+    e.preventDefault();
+    deleteEmployerProfile(this.props.auth.user.subject);
+  };
+
   render() {
     return (
       <div>
@@ -20,9 +27,17 @@ class EmployerDashboard extends Component {
         >
           <p className="dashboard-link">Experience Form</p>
         </Link>
+        <button onClick={this.deleteClick}>Delete Profile</button>
       </div>
     );
   }
 }
 
-export default EmployerDashboard;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { deleteEmployerProfile }
+)(EmployerDashboard);
