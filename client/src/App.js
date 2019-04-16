@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 // Components
 import Header from "./components/nav/header";
-import Register from "./components/auth/Register";
-import Login from "./components/auth/Login";
+import Register from "./components/auth/register";
+import Login from "./components/auth/login";
 import PersonalInfoForm from "./components/jobSeeker/profileForm/PersonalInfoForm";
 import EducationForm from "./components/jobSeeker/profileForm/EducationForm";
 import PreviousExperienceForm from "./components/jobSeeker/profileForm/PreviousExperienceForm";
