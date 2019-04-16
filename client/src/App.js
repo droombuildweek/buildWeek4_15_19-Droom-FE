@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 // Components
 import Header from "./components/nav/Header";
-// import Footer from "./components/nav/Footer";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PersonalInfoForm from "./components/jobSeeker/profileForm/PersonalInfoForm";
@@ -63,7 +62,6 @@ class App extends Component {
         <Provider store={store}>
           <Router>
             <Header />
-            {/* <Footer /> */}
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route
