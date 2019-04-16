@@ -6,6 +6,7 @@ class CompanyInfoForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      userId: this.props.auth.user.subject,
       companyName: "",
       companyPicture: "",
       companyDescription: "",
@@ -25,8 +26,19 @@ class CompanyInfoForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const companyData = {};
-    submitCompanyInfo(this.state);
+    const companyData = {
+      userId: this.state.userId,
+      company: {
+        companyName: this.state.companyName,
+        companyPicture: this.state.companyPicture,
+        companyDescription: this.state.companyDescription,
+        country: this.state.country,
+        state: this.state.state,
+        city: this.state.city,
+        zipcode: this.state.zipcode
+      }
+    };
+    submitCompanyInfo(companyData);
   };
 
   render() {

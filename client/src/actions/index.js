@@ -103,3 +103,11 @@ export const submitCompanyInfo = companyData => dispatch => {
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
+
+// submit job info form
+export const submitJobInfo = jobData => dispatch => {
+  axios
+    .post("/", jobData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
