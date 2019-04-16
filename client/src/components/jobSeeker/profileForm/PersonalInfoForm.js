@@ -29,27 +29,21 @@ class PersonalInfoForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const personalData = {
-      information: {
-        userId: this.state.userId,
+      userId: this.state.userId,
+      seeker: {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         profilePicture: this.state.profilePicture,
-        dob: {
-          month: this.state.month,
-          date: this.state.data,
-          year: this.state.year
-        },
-        location: {
-          country: this.state.country,
-          state: this.state.state,
-          city: this.state.city,
-          zipcode: this.state.zipcode
-        }
+        month: this.state.month,
+        date: this.state.date,
+        year: this.state.year,
+        country: this.state.country,
+        state: this.state.state,
+        city: this.state.city,
+        zipcode: this.state.zipcode
       }
     };
-    // submitSeekerPersonal(personalData);
-    console.log(this.state);
-    console.log(personalData);
+    submitSeekerPersonal(personalData);
   };
 
   render() {
@@ -152,7 +146,7 @@ class PersonalInfoForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  profile: state.seeker
+  seeker: state.seeker
 });
 
 export default connect(

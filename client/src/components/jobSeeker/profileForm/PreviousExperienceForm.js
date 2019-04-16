@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { submitSeekerExperience } from "../../../actions";
 class PreviousExperienceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      seekerId: "",
+      userId: "",
       jobTitle: "",
       jobCompany: "",
       jobDescription: "",
       jobStart: "",
-      jobEnd: ""
+      jobEnd: "",
+      experiences: []
     };
   }
 
@@ -20,8 +22,34 @@ class PreviousExperienceForm extends Component {
     });
   };
 
+  addToArray = e => {
+    e.preventDefault();
+    const experience = {
+      jobTitle: this.state.jobTitle,
+      jobCompany: this.state.jobCompany,
+      jobDescription: this.state.jobDescription,
+      jobStart: this.state.jobStart,
+      jobEnd: this.state.jobEnd
+    };
+    this.setState({
+      jobTitle: "",
+      jobCompany: "",
+      jobDescription: "",
+      jobStart: "",
+      jobEnd: ""
+    });
+    this.state.experiences.push(experience);
+    console.log(this.state.experiences);
+    console.log(this.state);
+  };
+
   handleSubmit = e => {
     e.preventDefault();
+    const experienceData = {
+      userId: this.state.userId,
+      seekerExperience: this.state.experiences
+    };
+    submitSeekerExperience(experienceData);
   };
 
   render() {
@@ -42,7 +70,7 @@ class PreviousExperienceForm extends Component {
           <div>
             <label>Company</label>
             <input
-              name="jobCompnay"
+              name="jobCompany"
               type="text"
               placeholder="company"
               value={this.state.jobCompany}
@@ -79,6 +107,7 @@ class PreviousExperienceForm extends Component {
               onChange={this.inputChange}
             />
           </div>
+          <button onClick={this.addToArray}>Add Experience</button>
           <button type="submit" onSubmit={this.handleSubmit}>
             Submit
           </button>
@@ -89,10 +118,10 @@ class PreviousExperienceForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  profile: state.jobSeekerProfile
+  seeker: state.seeker
 });
 
 export default connect(
   mapStateToProps,
-  null
+  { submitSeekerExperience }
 )(PreviousExperienceForm);

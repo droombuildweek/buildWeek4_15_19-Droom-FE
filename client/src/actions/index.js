@@ -71,3 +71,11 @@ export const submitSeekerPersonal = personalData => dispatch => {
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
+
+// submit experience profile form
+export const submitSeekerExperience = experienceData => dispatch => {
+  axios
+    .post("/", experienceData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
