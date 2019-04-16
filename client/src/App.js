@@ -10,6 +10,8 @@ import PreviousExperienceForm from "./components/jobSeeker/profileForm/PreviousE
 import SkillsAndInterestsForm from "./components/jobSeeker/profileForm/SkillsAndInterestsForm";
 import Dashboard from "./components/jobSeeker/dashboard/Dashboard";
 import PrivateRoute from "./components/nav/PrivateRoute";
+import CompanyInfoForm from "./components/employer/profileForms/CompanyInfoForm";
+import JobInfoForm from "./components/employer/profileForms/JobInfoForm";
 
 // Styling
 import "./App.css";
@@ -62,8 +64,18 @@ class App extends Component {
         <Provider store={store}>
           <Router>
             <Header />
+            {/* Login/Register Route */}
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            {/* Job Seeker Dashboard Route */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/jobSeeker/dashboard"
+                component={Dashboard}
+              />
+            </Switch>
+            {/* Seeker Form Routes */}
             <Switch>
               <PrivateRoute
                 exact
@@ -92,11 +104,19 @@ class App extends Component {
                 component={SkillsAndInterestsForm}
               />
             </Switch>
+            {/* Employer Form Routes */}
             <Switch>
               <PrivateRoute
                 exact
-                path="/jobSeeker/dashboard"
-                component={Dashboard}
+                path="/employer/createProfile/companyInfo"
+                component={CompanyInfoForm}
+              />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/employer/createProfile/jobInfo"
+                component={JobInfoForm}
               />
             </Switch>
           </Router>

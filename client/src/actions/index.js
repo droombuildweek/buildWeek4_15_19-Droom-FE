@@ -95,3 +95,11 @@ export const submitSeekerSkills = skillsData => dispatch => {
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
+
+// submit company info form
+export const submitCompanyInfo = companyData => dispatch => {
+  axios
+    .post("/", companyData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
