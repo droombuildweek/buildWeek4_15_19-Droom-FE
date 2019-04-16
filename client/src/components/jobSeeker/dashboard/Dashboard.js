@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 import "./Dashboard.scss";
 
-class Dashboard extends Component {
+class SeekerDashboard extends Component {
   render() {
     return (
       <div>
-        <h1>Dashboard</h1>
+        <h1>Job Seeker Dashboard</h1>
         <Link
           to="/jobSeeker/createProfile/personalInfo"
           style={{ textDecoration: "none" }}
@@ -37,4 +37,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default SeekerDashboard;
