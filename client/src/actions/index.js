@@ -3,6 +3,8 @@ import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { SET_CURRENT_USER } from "./types";
 
+// Auth --------------------------
+
 // register user
 export const registerUser = (userData, history) => dispatch => {
   console.log(userData);
@@ -64,6 +66,15 @@ export const logoutUser = () => dispatch => {
   dispatch(setCurrentUser({}));
 };
 
+// Job Seeker --------------------------
+
+export const getSeekerProfile = () => dispatch => {
+  axios
+    .get("/")
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
 // submit seeker profile form
 export const submitSeekerPersonal = personalData => dispatch => {
   axios
@@ -92,6 +103,16 @@ export const submitSeekerEducation = educationData => dispatch => {
 export const submitSeekerSkills = skillsData => dispatch => {
   axios
     .post("/", skillsData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// Employer --------------------------
+
+// get company profile
+export const getCompanyProfile = () => dispatch => {
+  axios
+    .post("/")
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
