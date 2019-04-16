@@ -63,3 +63,11 @@ export const logoutUser = () => dispatch => {
   // set current user to empty object
   dispatch(setCurrentUser({}));
 };
+
+// submit job seeker profile form
+export const submitSeekerPersonal = personalData => dispatch => {
+  axios
+    .post("/", personalData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};

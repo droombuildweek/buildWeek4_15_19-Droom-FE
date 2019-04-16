@@ -22,21 +22,24 @@ class EducationForm extends Component {
 
   render() {
     return (
-      <form>
-        <div>
-          <label>Skill</label>
-          <input
-            name="seekerSkill"
-            type="text"
-            placeholder="skill"
-            value={this.state.seekerSkill}
-            onChange={this.inputChange}
-          />
-        </div>
-        <button type="submit" onSubmit={this.handleSubmit}>
-          Submit
-        </button>
-      </form>
+      <div>
+        <form>
+          <h2>Skills</h2>
+          <div>
+            <label>Skill</label>
+            <input
+              name="seekerSkill"
+              type="text"
+              placeholder="skill"
+              value={this.state.seekerSkill}
+              onChange={this.inputChange}
+            />
+          </div>
+          <button type="submit" onSubmit={this.handleSubmit}>
+            Submit
+          </button>
+        </form>
+      </div>
     );
   }
 }
