@@ -4,12 +4,15 @@ import React, { Component } from "react";
 import Header from "./components/nav/header";
 import Register from "./components/auth/register";
 import Login from "./components/auth/login";
-import PersonalInfoForm from "./components/jobSeeker/profileForm/PersonalInfoForm";
-import EducationForm from "./components/jobSeeker/profileForm/EducationForm";
-import PreviousExperienceForm from "./components/jobSeeker/profileForm/PreviousExperienceForm";
-import SkillsAndInterestsForm from "./components/jobSeeker/profileForm/SkillsAndInterestsForm";
-import Dashboard from "./components/jobSeeker/dashboard/Dashboard";
+import PersonalInfoForm from "./components/jobSeeker/createProfileForms/PersonalInfoForm";
+import EducationForm from "./components/jobSeeker/createProfileForms/EducationForm";
+import PreviousExperienceForm from "./components/jobSeeker/createProfileForms/PreviousExperienceForm";
+import SkillsAndInterestsForm from "./components/jobSeeker/createProfileForms/SkillsAndInterestsForm";
+import SeekerDashboard from "./components/jobSeeker/dashboard/Dashboard";
 import PrivateRoute from "./components/nav/PrivateRoute";
+import CompanyInfoForm from "./components/employer/createProfileForms/CompanyInfoForm";
+import JobInfoForm from "./components/employer/createProfileForms/JobInfoForm";
+import EmployerDashboard from "./components/employer/dashboard/Dashboard";
 
 // Styling
 import "./App.css";
@@ -62,8 +65,18 @@ class App extends Component {
         <Provider store={store}>
           <Router>
             <Header />
+            {/* Login/Register Route */}
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            {/* Job Seeker Dashboard Route */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/jobSeeker/dashboard"
+                component={SeekerDashboard}
+              />
+            </Switch>
+            {/* Job Seeker Form Routes */}
             <Switch>
               <PrivateRoute
                 exact
@@ -92,11 +105,27 @@ class App extends Component {
                 component={SkillsAndInterestsForm}
               />
             </Switch>
+            {/* Employer Dashboard Route */}
             <Switch>
               <PrivateRoute
                 exact
-                path="/jobSeeker/dashboard"
-                component={Dashboard}
+                path="/employer/dashboard"
+                component={EmployerDashboard}
+              />
+            </Switch>
+            {/* Employer Form Routes */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/employer/createProfile/companyInfo"
+                component={CompanyInfoForm}
+              />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/employer/createProfile/jobInfo"
+                component={JobInfoForm}
               />
             </Switch>
           </Router>

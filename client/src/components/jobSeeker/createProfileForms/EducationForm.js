@@ -5,7 +5,7 @@ class EducationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: "",
+      userId: this.props.auth.user.subject,
       eduSchool: "",
       eduCredential: "",
       eduDescription: "",
@@ -116,7 +116,8 @@ class EducationForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  seeker: state.seeker
+  seeker: state.seeker,
+  auth: state.auth
 });
 
 export default connect(
