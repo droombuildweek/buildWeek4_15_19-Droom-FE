@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // Components
-import Header from "./components/nav/Header";
+import Header from "./components/nav/header";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PersonalInfoForm from "./components/jobSeeker/profileForm/PersonalInfoForm";
