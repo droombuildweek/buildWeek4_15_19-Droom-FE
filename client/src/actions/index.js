@@ -87,3 +87,11 @@ export const submitSeekerEducation = educationData => dispatch => {
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
+
+// submit seeker education profile form
+export const submitSeekerSkills = skillsData => dispatch => {
+  axios
+    .post("/", skillsData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
