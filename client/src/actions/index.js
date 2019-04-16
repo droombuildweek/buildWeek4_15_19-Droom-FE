@@ -64,7 +64,7 @@ export const logoutUser = () => dispatch => {
   dispatch(setCurrentUser({}));
 };
 
-// submit job seeker profile form
+// submit seeker profile form
 export const submitSeekerPersonal = personalData => dispatch => {
   axios
     .post("/", personalData)
@@ -72,10 +72,18 @@ export const submitSeekerPersonal = personalData => dispatch => {
     .catch(err => console.log(err));
 };
 
-// submit experience profile form
+// submit seeker experience profile form
 export const submitSeekerExperience = experienceData => dispatch => {
   axios
     .post("/", experienceData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// submit seeker education profile form
+export const submitSeekerEducation = educationData => dispatch => {
+  axios
+    .post("/", educationData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };

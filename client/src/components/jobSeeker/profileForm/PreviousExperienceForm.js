@@ -39,8 +39,6 @@ class PreviousExperienceForm extends Component {
       jobEnd: ""
     });
     this.state.experiences.push(experience);
-    console.log(this.state.experiences);
-    console.log(this.state);
   };
 
   handleSubmit = e => {

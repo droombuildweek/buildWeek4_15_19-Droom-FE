@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { submitSeekerEducation } from "../../../actions";
 class EducationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      seekerId: "",
+      userId: "",
       eduSchool: "",
       eduCredential: "",
       eduDescription: "",
       eduStart: "",
-      eduEnd: ""
+      eduEnd: "",
+      educations: []
     };
   }
 
@@ -20,8 +22,32 @@ class EducationForm extends Component {
     });
   };
 
+  addToArray = e => {
+    e.preventDefault();
+    const education = {
+      eduSchool: this.state.eduSchool,
+      eduCredential: this.state.eduCredential,
+      eduDescription: this.state.eduDescription,
+      eduStart: this.state.eduStart,
+      eduEnd: this.state.eduEnd
+    };
+    this.setState({
+      eduSchool: "",
+      eduCredential: "",
+      eduDescription: "",
+      eduStart: "",
+      eduEnd: ""
+    });
+    this.state.educations.push(education);
+  };
+
   handleSubmit = e => {
     e.preventDefault();
+    const educationData = {
+      userId: this.state.userId,
+      seekerEducation: this.state.educations
+    };
+    submitSeekerEducation(educationData);
   };
 
   render() {
@@ -34,8 +60,8 @@ class EducationForm extends Component {
             <input
               name="eduSchool"
               type="text"
-              placeholder="credential"
-              value={this.state.eduCredential}
+              placeholder="school"
+              value={this.state.eduSchool}
               onChange={this.inputChange}
             />
           </div>
@@ -79,6 +105,7 @@ class EducationForm extends Component {
               onChange={this.inputChange}
             />
           </div>
+          <button onClick={this.addToArray}>Add Education</button>
           <button type="submit" onSubmit={this.handleSubmit}>
             Submit
           </button>
@@ -89,10 +116,10 @@ class EducationForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  profile: state.jobSeekerProfile
+  seeker: state.seeker
 });
 
 export default connect(
   mapStateToProps,
-  null
+  { submitSeekerEducation }
 )(EducationForm);
