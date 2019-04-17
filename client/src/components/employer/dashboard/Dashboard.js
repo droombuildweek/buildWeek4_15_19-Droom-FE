@@ -6,20 +6,16 @@ import { deleteEmployerCompany, deleteEmployerJob } from "../../../actions";
 import "./Dashboard.scss";
 
 class EmployerDashboard extends Component {
-  deleteCompany = e => {
-    e.preventDefault();
-    this.props.deleteEmployerCompany(this.props.auth.user.subject);
-  };
-
-  deleteJob = e => {
-    e.preventDefault();
-    this.props.deleteEmployerJob(this.props.auth.user.subject);
-  };
-
   render() {
     return (
       <div>
         <h1>Employer Dashboard</h1>
+        <Link to="/employer/company" style={{ textDecoration: "none" }}>
+          <p className="dashboard-link">View Company</p>
+        </Link>
+        <Link to="/employer/jobs" style={{ textDecoration: "none" }}>
+          <p className="dashboard-link">View Jobs</p>
+        </Link>
         <Link
           to="/employer/createProfile/companyInfo"
           style={{ textDecoration: "none" }}
@@ -44,8 +40,6 @@ class EmployerDashboard extends Component {
         >
           <p className="dashboard-link">Edit Job Info</p>
         </Link>
-        <button onClick={this.deleteCompany}>Delete Company</button>
-        <button onClick={this.deleteJob}>Delete Job</button>
       </div>
     );
   }
