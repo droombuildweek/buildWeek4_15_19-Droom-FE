@@ -28,14 +28,17 @@ class CompanyInfoForm extends Component {
     e.preventDefault();
     const companyData = {
       userId: this.state.userId,
-      companyName: this.state.companyName,
-      companyPicture: this.state.companyPicture,
-      companyDescription: this.state.companyDescription,
-      country: this.state.country,
-      state: this.state.state,
-      city: this.state.city,
-      zipcode: this.state.zipcode
+      company: {
+        companyName: this.state.companyName,
+        companyPicture: this.state.companyPicture,
+        companyDescription: this.state.companyDescription,
+        country: this.state.country,
+        state: this.state.state,
+        city: this.state.city,
+        zipcode: this.state.zipcode
+      }
     };
+    console.log(companyData);
     this.props.submitCompanyInfo(companyData);
   };
 
@@ -105,7 +108,7 @@ class CompanyInfoForm extends Component {
               onChange={this.inputChange}
             />
           </div>
-          <button type="submit" onSubmit={this.handleSubmit}>
+          <button type="submit" onClick={this.handleSubmit}>
             Submit
           </button>
         </form>

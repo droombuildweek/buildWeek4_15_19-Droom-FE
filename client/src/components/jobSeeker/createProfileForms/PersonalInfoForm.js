@@ -43,7 +43,7 @@ class PersonalInfoForm extends Component {
         zipcode: this.state.zipcode
       }
     };
-    submitSeekerPersonal(personalData);
+    this.props.submitSeekerPersonal(personalData);
   };
 
   render() {

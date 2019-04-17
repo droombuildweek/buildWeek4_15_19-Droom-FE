@@ -4,7 +4,6 @@ import jwt_decode from "jwt-decode";
 import {
   SET_CURRENT_USER,
   SET_SEEKER_PROFILE,
-  SET_SEEKER_PROFILES,
   SET_EMPLOYER_PROFILE,
   SET_EMPLOYER_PROFILES
 } from "./types";
@@ -90,28 +89,10 @@ export const getSeekerProfile = () => dispatch => {
     });
 };
 
-// get seeker profiles
-export const getSeekerProfiles = () => dispatch => {
-  axios
-    .get("/")
-    .then(res => {
-      dispatch({
-        type: SET_SEEKER_PROFILES,
-        payload: res.data
-      });
-    })
-    .catch(err => {
-      dispatch({
-        type: SET_SEEKER_PROFILES,
-        payload: {}
-      });
-    });
-};
-
 // submit seeker profile form
 export const submitSeekerPersonal = personalData => dispatch => {
   axios
-    .post(`${URL}`, personalData)
+    .post(`${URL}/api/seekers`, personalData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };

@@ -128,7 +128,7 @@ class CompanyInfoForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  seeker: state.seeker,
+  employer: state.employer,
   auth: state.auth
 });
 
