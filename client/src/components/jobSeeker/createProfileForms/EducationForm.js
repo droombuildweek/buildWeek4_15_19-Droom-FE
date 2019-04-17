@@ -39,6 +39,7 @@ class EducationForm extends Component {
       eduEnd: ""
     });
     this.state.educations.push(education);
+    console.log(this.state.educations);
   };
 
   handleSubmit = e => {
@@ -47,7 +48,7 @@ class EducationForm extends Component {
       userId: this.state.userId,
       seekerEducation: this.state.educations
     };
-    submitSeekerEducation(educationData);
+    this.props.submitSeekerEducation(educationData);
   };
 
   render() {
@@ -106,7 +107,7 @@ class EducationForm extends Component {
             />
           </div>
           <button onClick={this.addToArray}>Add Education</button>
-          <button type="submit" onSubmit={this.handleSubmit}>
+          <button type="submit" onClick={this.handleSubmit}>
             Submit
           </button>
         </form>

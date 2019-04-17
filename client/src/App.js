@@ -5,7 +5,6 @@ import Header from "./components/nav/header";
 import Home from "./components/Home";
 import Register from "./components/auth/register";
 import Login from "./components/auth/login";
-import JobSeekers from "./components/jobSeeker/JobSeekers";
 import Employers from "./components/employer/Employers";
 import Jobs from "./components/employer/Jobs";
 import PersonalInfoForm from "./components/jobSeeker/createProfileForms/PersonalInfoForm";
@@ -80,8 +79,6 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             {/* Home Route */}
             <Route exact path="/home" component={Home} />
-            {/* Render Job Seekers Route */}
-            <Route exact path="/jobSeekers" component={JobSeekers} />
             {/* Render Employers Route */}
             <Route exact path="/employers" component={Employers} />
             {/* Render Jobs Route */}

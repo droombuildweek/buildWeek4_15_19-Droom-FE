@@ -12,7 +12,7 @@ class Employers extends Component {
     return (
       <div>
         <h2>Employers</h2>
-        {/* {this.props.employer.employerProfiles.map(profile => {
+        {/* {this.props.employer.employerProfiles.companies.map(company => {
           return (
             <div>
               <h3>Company</h3>

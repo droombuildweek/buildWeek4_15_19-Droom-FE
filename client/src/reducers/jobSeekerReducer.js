@@ -2,7 +2,7 @@ import { SET_SEEKER_PROFILE, SET_SEEKER_PROFILES } from "../actions/types";
 
 const initialState = {
   seekerProfile: {},
-  seekerProfiles: []
+  seekerProfiles: {}
 };
 
 export default function(state = initialState, action) {

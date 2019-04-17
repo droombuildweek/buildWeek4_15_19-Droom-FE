@@ -11,9 +11,6 @@ class Header extends Component {
         <Link to="/home" style={{ textDecoration: "none" }}>
           <p className="link">Home</p>
         </Link>
-        <Link to="/jobSeekers" style={{ textDecoration: "none" }}>
-          <p className="link">Job Seekers</p>
-        </Link>
         <Link to="/employers" style={{ textDecoration: "none" }}>
           <p className="link">Employers</p>
         </Link>
