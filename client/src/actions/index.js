@@ -71,22 +71,56 @@ export const logoutUser = () => dispatch => {
 
 // Job Seeker --------------------------
 
-// get seeker profile
-export const getSeekerProfile = () => dispatch => {
+// get seeker personal
+export const getSeekerPersonal = id => dispatch => {
   axios
-    .get("/")
+    .get(`${URL}/api/seekers/${id}`)
     .then(res => {
       dispatch({
         type: SET_SEEKER_PROFILE,
         payload: res.data
       });
     })
-    .catch(err => {
+    .catch(err => console.log(err));
+};
+
+// get seeker experience
+export const getSeekerExperience = id => dispatch => {
+  axios
+    .get(`${URL}/api/experience/${id}`)
+    .then(res => {
       dispatch({
         type: SET_SEEKER_PROFILE,
-        payload: {}
+        payload: res.data
       });
-    });
+    })
+    .catch(err => console.log(err));
+};
+
+// get seeker education
+export const getSeekerEducation = id => dispatch => {
+  axios
+    .get(`${URL}/api/education/${id}`)
+    .then(res => {
+      dispatch({
+        type: SET_SEEKER_PROFILE,
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
+};
+
+// get seeker skills
+export const getSeekerSkills = id => dispatch => {
+  axios
+    .get(`${URL}/api/skills/${id}`)
+    .then(res => {
+      dispatch({
+        type: SET_SEEKER_PROFILE,
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
 };
 
 // submit seeker profile form
@@ -153,10 +187,34 @@ export const editSeekerSkills = (skillsData, id) => dispatch => {
     .catch(err => console.log(err));
 };
 
-// delete job seeker profile
-export const deleteSeekerProfile = id => dispatch => {
+// delete job seeker personal info
+export const deleteSeekerPersonal = id => dispatch => {
   axios
-    .delete(`${URL}`)
+    .delete(`${URL}/api/seekers/${id}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// delete job seeker experience
+export const deleteSeekerExperience = id => dispatch => {
+  axios
+    .delete(`${URL}/api/experience/${id}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// delete job seeker education
+export const deleteSeekerEducation = id => dispatch => {
+  axios
+    .delete(`${URL}/api/education/${id}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// delete job seeker skills
+export const deleteSeekerSkills = id => dispatch => {
+  axios
+    .delete(`${URL}/api/skills/${id}`)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };

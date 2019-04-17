@@ -24,6 +24,7 @@ import EditCompanyInfo from "./components/employer/editProfileForms/EditCompanyI
 import EditJobForm from "./components/employer/editProfileForms/EditJobForm";
 import ViewCompany from "./components/employer/viewProfile/ViewCompany";
 import ViewJobs from "./components/employer/viewProfile/ViewJobs";
+import ViewPersonal from "./components/jobSeeker/viewProfile/ViewPersonal";
 
 // Styling
 import "./App.css";
@@ -91,6 +92,38 @@ class App extends Component {
                 exact
                 path="/jobSeeker/dashboard"
                 component={SeekerDashboard}
+              />
+            </Switch>
+            {/* View Personal Info */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/jobSeeker/personalInfo"
+                component={ViewPersonal}
+              />
+            </Switch>
+            {/* View Experience */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/jobSeeker/experience"
+                component={ViewPersonal}
+              />
+            </Switch>
+            {/* View Education */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/jobSeeker/education"
+                component={ViewPersonal}
+              />
+            </Switch>
+            {/* View Skills */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/jobSeeker/skills"
+                component={ViewPersonal}
               />
             </Switch>
             {/* Job Seeker Create Form Routes */}

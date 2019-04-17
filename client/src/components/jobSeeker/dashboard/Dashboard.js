@@ -1,21 +1,27 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { deleteSeekerProfile } from "../../../actions";
 
 import "./Dashboard.scss";
 
 class SeekerDashboard extends Component {
-  deleteClick = e => {
-    e.preventDefault();
-    deleteSeekerProfile(this.props.auth.user.subject);
-  };
-
   render() {
     return (
       <div>
         <h2>Job Seeker Dashboard</h2>
         <h3>View Profile</h3>
+        <Link to="/jobSeeker/personalInfo" style={{ textDecoration: "none" }}>
+          <p className="dashboard-link">View Personal Info</p>
+        </Link>
+        <Link to="/jobSeeker/experience" style={{ textDecoration: "none" }}>
+          <p className="dashboard-link">View Experience</p>
+        </Link>
+        <Link to="/jobSeeker/education" style={{ textDecoration: "none" }}>
+          <p className="dashboard-link">View Education</p>
+        </Link>
+        <Link to="/jobSeeker/skills" style={{ textDecoration: "none" }}>
+          <p className="dashboard-link">View Skills</p>
+        </Link>
         <h3>Create Profile</h3>
         <Link
           to="/jobSeeker/createProfile/personalInfo"
@@ -66,7 +72,6 @@ class SeekerDashboard extends Component {
         >
           <p className="dashboard-link">Edit Skills</p>
         </Link>
-        <button onClick={this.deleteClick}>Delete Profile</button>
       </div>
     );
   }
@@ -78,5 +83,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { deleteSeekerProfile }
+  null
 )(SeekerDashboard);
