@@ -1,6 +1,12 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { deleteEmployerJob, getEmployerJob } from "../../../actions";
 
 class ViewJobs extends Component {
+  componentDidMount() {
+    this.props.getEmployerJob(this.props.auth.user.subject);
+  }
+
   deleteJob = e => {
     e.preventDefault();
     alert("Are you sure you want to delete the job?");
@@ -17,4 +23,12 @@ class ViewJobs extends Component {
   }
 }
 
-export default ViewJobs;
+const mapStateToProps = state => ({
+  employer: state.employer,
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { deleteEmployerJob, getEmployerJob }
+)(ViewJobs);

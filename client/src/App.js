@@ -24,6 +24,10 @@ import EditCompanyInfo from "./components/employer/editProfileForms/EditCompanyI
 import EditJobForm from "./components/employer/editProfileForms/EditJobForm";
 import ViewCompany from "./components/employer/viewProfile/ViewCompany";
 import ViewJobs from "./components/employer/viewProfile/ViewJobs";
+import ViewPersonal from "./components/jobSeeker/viewProfile/ViewPersonal";
+import ViewExperience from "./components/jobSeeker/viewProfile/ViewExperience";
+import ViewEducation from "./components/jobSeeker/viewProfile/ViewEducation";
+import ViewSkills from "./components/jobSeeker/viewProfile/ViewSkills";
 
 // Styling
 import "./App.css";
@@ -32,10 +36,11 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Redux Setup
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers";
+import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 
 // Auth
 import jwt_decode from "jwt-decode";
@@ -44,10 +49,7 @@ import { setCurrentUser, logoutUser } from "./actions";
 
 const store = createStore(
   rootReducer,
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+  composeWithDevTools(applyMiddleware(thunk))
 );
 
 // Check for token
@@ -80,7 +82,9 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             {/* Home Route */}
-            <Route exact path="/home" component={Home} />
+            <Switch>
+              <PrivateRoute exact path="/dashboard" component={Home} />
+            </Switch>
             {/* Render Employers Route */}
             <Route exact path="/employers" component={Employers} />
             {/* Render Jobs Route */}
@@ -91,6 +95,38 @@ class App extends Component {
                 exact
                 path="/jobSeeker/dashboard"
                 component={SeekerDashboard}
+              />
+            </Switch>
+            {/* View Personal Info */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/jobSeeker/personalInfo"
+                component={ViewPersonal}
+              />
+            </Switch>
+            {/* View Experience */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/jobSeeker/experience"
+                component={ViewExperience}
+              />
+            </Switch>
+            {/* View Education */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/jobSeeker/education"
+                component={ViewEducation}
+              />
+            </Switch>
+            {/* View Skills */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/jobSeeker/skills"
+                component={ViewSkills}
               />
             </Switch>
             {/* Job Seeker Create Form Routes */}

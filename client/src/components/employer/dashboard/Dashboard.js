@@ -9,13 +9,15 @@ class EmployerDashboard extends Component {
   render() {
     return (
       <div>
-        <h1>Employer Dashboard</h1>
+        <h2>Employer Dashboard</h2>
+        <h3>View Profile</h3>
         <Link to="/employer/company" style={{ textDecoration: "none" }}>
           <p className="dashboard-link">View Company</p>
         </Link>
         <Link to="/employer/jobs" style={{ textDecoration: "none" }}>
           <p className="dashboard-link">View Jobs</p>
         </Link>
+        <h3>Create Profile</h3>
         <Link
           to="/employer/createProfile/companyInfo"
           style={{ textDecoration: "none" }}
@@ -28,6 +30,7 @@ class EmployerDashboard extends Component {
         >
           <p className="dashboard-link">Job Form</p>
         </Link>
+        <h3>Edit Profile</h3>
         <Link
           to="/employer/editProfile/companyInfo"
           style={{ textDecoration: "none" }}

@@ -1,15 +1,34 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions";
 
 import "./Header.scss";
 
 class Header extends Component {
   render() {
+    let logout;
+    let login;
+    let signUp;
+    if (this.props.auth.isAuthenticated) {
+      logout = <button onClick={this.props.logoutUser}>Logout</button>;
+    } else {
+      login = (
+        <Link to="/login" style={{ textDecoration: "none" }}>
+          <p className="link">Login</p>
+        </Link>
+      );
+      signUp = (
+        <Link to="/register" style={{ textDecoration: "none" }}>
+          <p className="link">Sign Up</p>
+        </Link>
+      );
+    }
     return (
       <div className="navbar">
         <h1>Droom</h1>
-        <Link to="/home" style={{ textDecoration: "none" }}>
-          <p className="link">Home</p>
+        <Link to="/dashboard" style={{ textDecoration: "none" }}>
+          <p className="link">Dashboard</p>
         </Link>
         <Link to="/employers" style={{ textDecoration: "none" }}>
           <p className="link">Employers</p>
@@ -17,15 +36,19 @@ class Header extends Component {
         <Link to="/jobs" style={{ textDecoration: "none" }}>
           <p className="link">Jobs</p>
         </Link>
-        <Link to="/login" style={{ textDecoration: "none" }}>
-          <p className="link">Login</p>
-        </Link>
-        <Link to="/register" style={{ textDecoration: "none" }}>
-          <p className="link">Sign Up</p>
-        </Link>
+        {logout}
+        {login}
+        {signUp}
       </div>
     );
   }
 }
 
-export default Header;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(Header);
