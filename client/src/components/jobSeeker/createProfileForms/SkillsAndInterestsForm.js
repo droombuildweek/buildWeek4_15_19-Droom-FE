@@ -25,16 +25,17 @@ class EducationForm extends Component {
     this.setState({
       seekerSkill: ""
     });
-    console.log(this.state);
   };
 
   handleSubmit = e => {
     e.preventDefault();
     const skillsData = {
-      userId: this.state.userId,
-      seekerSkills: this.state.seekerSkills
+      skills: {
+        userId: this.state.userId,
+        seekerSkills: this.state.seekerSkills
+      }
     };
-    submitSeekerSkills(skillsData);
+    this.props.submitSeekerSkills(skillsData);
   };
 
   render() {
@@ -53,7 +54,7 @@ class EducationForm extends Component {
             />
           </div>
           <button onClick={this.addToArray}>Add Skill</button>
-          <button type="submit" onSubmit={this.handleSubmit}>
+          <button type="submit" onClick={this.handleSubmit}>
             Submit
           </button>
         </form>
