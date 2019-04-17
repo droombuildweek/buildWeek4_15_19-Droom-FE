@@ -9,16 +9,15 @@ import {
   SET_EMPLOYER_PROFILES
 } from "./types";
 
+const URL = "https://droom-buildweek-4-15-19.herokuapp.com";
+
 // Auth --------------------------
 
 // register user
 export const registerUser = (userData, history) => dispatch => {
   console.log(userData);
   axios
-    .post(
-      "https://droom-buildweek-4-15-19.herokuapp.com/api/auth/register",
-      userData
-    )
+    .post(`${URL}/api/auth/register`, userData)
     .then(res => {
       // save token to local storage
       localStorage.setItem("jwtToken", res.data.token);
@@ -36,10 +35,7 @@ export const registerUser = (userData, history) => dispatch => {
 export const loginUser = userData => dispatch => {
   console.log(userData);
   axios
-    .post(
-      "https://droom-buildweek-4-15-19.herokuapp.com/api/auth/login",
-      userData
-    )
+    .post(`${URL}/api/auth/login`, userData)
     .then(res => {
       console.log(res.data.token);
       // save token to local storage
@@ -187,9 +183,9 @@ export const deleteSeekerProfile = id => dispatch => {
 // Employer --------------------------
 
 // get employer profile
-export const getEmployerProfile = () => dispatch => {
+export const getEmployerProfile = id => dispatch => {
   axios
-    .post("/")
+    .get(`${URL}/api/companies/:id`)
     .then(res => {
       dispatch({
         type: SET_EMPLOYER_PROFILE,
@@ -207,7 +203,7 @@ export const getEmployerProfile = () => dispatch => {
 // get employer profiles
 export const getEmployerProfiles = () => dispatch => {
   axios
-    .post("/")
+    .get(`${URL}/api/companies`)
     .then(res => {
       dispatch({
         type: SET_EMPLOYER_PROFILES,
@@ -225,7 +221,7 @@ export const getEmployerProfiles = () => dispatch => {
 // submit company info form
 export const submitCompanyInfo = companyData => dispatch => {
   axios
-    .post("/", companyData)
+    .post(`${URL}`, companyData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
