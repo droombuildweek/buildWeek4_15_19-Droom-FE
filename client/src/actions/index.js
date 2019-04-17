@@ -108,9 +108,9 @@ export const submitSeekerExperience = experienceData => dispatch => {
 // submit seeker education profile form
 export const submitSeekerEducation = educationData => dispatch => {
   axios
-    .post(`${URL}`, educationData)
+    .post(`${URL}/api/education`, educationData)
     .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.response));
 };
 
 // submit seeker education profile form
