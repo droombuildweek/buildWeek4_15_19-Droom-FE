@@ -51,6 +51,12 @@ class SeekerDashboard extends Component {
         >
           <p className="dashboard-link">Edit Previous Experience</p>
         </Link>
+        <Link
+          to="/jobSeeker/editProfile/editEducation"
+          style={{ textDecoration: "none" }}
+        >
+          <p className="dashboard-link">Edit Education</p>
+        </Link>
         <button onClick={this.deleteClick}>Delete Profile</button>
       </div>
     );
