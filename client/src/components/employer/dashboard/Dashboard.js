@@ -1,14 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { deleteEmployerProfile } from "../../../actions";
+import { deleteEmployerCompany, deleteEmployerJob } from "../../../actions";
 
 import "./Dashboard.scss";
 
 class EmployerDashboard extends Component {
-  deleteClick = e => {
+  deleteCompany = e => {
     e.preventDefault();
-    deleteEmployerProfile(this.props.auth.user.subject);
+    this.props.deleteEmployerCompany(this.props.auth.user.subject);
+  };
+
+  deleteJob = e => {
+    e.preventDefault();
+    this.props.deleteEmployerJob(this.props.auth.user.subject);
   };
 
   render() {
@@ -39,7 +44,8 @@ class EmployerDashboard extends Component {
         >
           <p className="dashboard-link">Edit Job Info</p>
         </Link>
-        <button onClick={this.deleteClick}>Delete Profile</button>
+        <button onClick={this.deleteCompany}>Delete Company</button>
+        <button onClick={this.deleteJob}>Delete Job</button>
       </div>
     );
   }
@@ -51,5 +57,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { deleteEmployerProfile }
+  { deleteEmployerCompany, deleteEmployerJob }
 )(EmployerDashboard);
