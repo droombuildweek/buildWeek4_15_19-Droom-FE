@@ -10,7 +10,7 @@ class PersonalInfoForm extends Component {
       lastName: "",
       profilePicture: "",
       month: "",
-      date: "",
+      day: "",
       year: "",
       country: "",
       state: "",
@@ -34,13 +34,13 @@ class PersonalInfoForm extends Component {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         profilePicture: this.state.profilePicture,
-        month: this.state.month,
-        date: this.state.date,
-        year: this.state.year,
+        month: parseInt(this.state.month, 10),
+        day: parseInt(this.state.day, 10),
+        year: parseInt(this.state.year, 10),
         country: this.state.country,
         state: this.state.state,
         city: this.state.city,
-        zipcode: this.state.zipcode
+        zipcode: parseInt(this.state.zipcode, 10)
       }
     };
     this.props.submitSeekerPersonal(personalData);
@@ -85,21 +85,21 @@ class PersonalInfoForm extends Component {
             <label>Date of Birth</label>
             <input
               name="month"
-              type="text"
+              type="number"
               placeholder="month"
               value={this.state.month}
               onChange={this.inputChange}
             />
             <input
-              name="date"
-              type="text"
-              placeholder="date"
-              value={this.state.date}
+              name="day"
+              type="number"
+              placeholder="day"
+              value={this.state.day}
               onChange={this.inputChange}
             />
             <input
               name="year"
-              type="text"
+              type="number"
               placeholder="year"
               value={this.state.year}
               onChange={this.inputChange}
@@ -130,13 +130,13 @@ class PersonalInfoForm extends Component {
             />
             <input
               name="zipcode"
-              type="text"
+              type="number"
               placeholder="zipcode"
               value={this.state.zipcode}
               onChange={this.inputChange}
             />
           </div>
-          <button type="submit" onSubmit={this.handleSubmit}>
+          <button type="submit" onClick={this.handleSubmit}>
             Submit
           </button>
         </form>

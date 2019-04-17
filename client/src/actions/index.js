@@ -94,7 +94,7 @@ export const submitSeekerPersonal = personalData => dispatch => {
   axios
     .post(`${URL}/api/seekers`, personalData)
     .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.response));
 };
 
 // submit seeker experience profile form
