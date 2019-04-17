@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { editCompanyInfo } from "../../../actions";
+import {
+  editCompanyInfo,
+  getEmployerProfiles,
+  getEmployerProfile
+} from "../../../actions";
 
 class EditCompanyInfo extends Component {
   constructor(props) {
@@ -15,6 +19,10 @@ class EditCompanyInfo extends Component {
       city: "",
       zipcode: ""
     };
+  }
+
+  componentDidMount() {
+    this.props.getEmployerProfiles();
   }
 
   inputChange = e => {
@@ -38,7 +46,8 @@ class EditCompanyInfo extends Component {
         zipcode: this.state.zipcode
       }
     };
-    editCompanyInfo(companyData);
+    // Needs ID
+    this.props.editCompanyInfo(companyData);
   };
 
   render() {
@@ -123,5 +132,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { editCompanyInfo }
+  { editCompanyInfo, getEmployerProfiles, getEmployerProfile }
 )(EditCompanyInfo);

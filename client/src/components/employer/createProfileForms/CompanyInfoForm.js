@@ -38,7 +38,6 @@ class CompanyInfoForm extends Component {
         zipcode: this.state.zipcode
       }
     };
-    console.log(companyData);
     this.props.submitCompanyInfo(companyData);
   };
 

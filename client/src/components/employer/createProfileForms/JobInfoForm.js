@@ -118,7 +118,7 @@ class CompanyInfoForm extends Component {
           </div>
 
           <button onClick={this.addToArray}>Add Skill</button>
-          <button type="submit" onSubmit={this.handleSubmit}>
+          <button type="submit" onClick={this.handleSubmit}>
             Submit
           </button>
         </form>
