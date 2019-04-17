@@ -1,7 +1,11 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { SET_CURRENT_USER } from "./types";
+import {
+  SET_CURRENT_USER,
+  SET_SEEKER_PROFILE,
+  SET_EMPLOYER_PROFILE
+} from "./types";
 
 // Auth --------------------------
 
@@ -73,8 +77,18 @@ export const logoutUser = () => dispatch => {
 export const getSeekerProfile = () => dispatch => {
   axios
     .get("/")
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .then(res => {
+      dispatch({
+        type: SET_SEEKER_PROFILE,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_SEEKER_PROFILE,
+        payload: {}
+      });
+    });
 };
 
 // submit seeker profile form
@@ -109,13 +123,19 @@ export const submitSeekerSkills = skillsData => dispatch => {
     .catch(err => console.log(err));
 };
 
-// edit job seeker profile
-export const editSeekerProfile = (seekerProfile, id) => dispatch => {
+// edit job seeker personal info
+export const editSeekerPersonal = (personalData, id) => dispatch => {
   axios
-    .put("/", seekerProfile)
+    .put("/", personalData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
+
+// edit job seeker experience
+
+// edit job seeker education
+
+// edit job seeker skills
 
 // delete job seeker profile
 export const deleteSeekerProfile = id => dispatch => {
@@ -131,8 +151,18 @@ export const deleteSeekerProfile = id => dispatch => {
 export const getCompanyProfile = () => dispatch => {
   axios
     .post("/")
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .then(res => {
+      dispatch({
+        type: SET_EMPLOYER_PROFILE,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_EMPLOYER_PROFILE,
+        payload: {}
+      });
+    });
 };
 
 // submit company info form

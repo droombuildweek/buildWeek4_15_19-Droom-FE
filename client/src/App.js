@@ -13,6 +13,7 @@ import PrivateRoute from "./components/nav/PrivateRoute";
 import CompanyInfoForm from "./components/employer/createProfileForms/CompanyInfoForm";
 import JobInfoForm from "./components/employer/createProfileForms/JobInfoForm";
 import EmployerDashboard from "./components/employer/dashboard/Dashboard";
+import EditPersonalForm from "./components/jobSeeker/editProfileForms/EditPersonalForm";
 
 // Styling
 import "./App.css";
@@ -76,7 +77,7 @@ class App extends Component {
                 component={SeekerDashboard}
               />
             </Switch>
-            {/* Job Seeker Form Routes */}
+            {/* Job Seeker Create Form Routes */}
             <Switch>
               <PrivateRoute
                 exact
@@ -105,6 +106,14 @@ class App extends Component {
                 component={SkillsAndInterestsForm}
               />
             </Switch>
+            {/* Job Seeker Edit Routes */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/jobSeeker/editProfile/editPersonal"
+                component={EditPersonalForm}
+              />
+            </Switch>
             {/* Employer Dashboard Route */}
             <Switch>
               <PrivateRoute
@@ -113,7 +122,7 @@ class App extends Component {
                 component={EmployerDashboard}
               />
             </Switch>
-            {/* Employer Form Routes */}
+            {/* Employer Create Form Routes */}
             <Switch>
               <PrivateRoute
                 exact

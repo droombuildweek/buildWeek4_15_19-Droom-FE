@@ -39,8 +39,11 @@ class SeekerDashboard extends Component {
         >
           <p className="dashboard-link">Skills Form</p>
         </Link>
-        <Link to="/jobSeeker/editProfile" style={{ textDecoration: "none" }}>
-          <p className="dashboard-link">Edit Profile</p>
+        <Link
+          to="/jobSeeker/editProfile/editPersonal"
+          style={{ textDecoration: "none" }}
+        >
+          <p className="dashboard-link">Edit Personal Info</p>
         </Link>
         <button onClick={this.deleteClick}>Delete Profile</button>
       </div>
