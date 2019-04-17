@@ -27,8 +27,8 @@ class Header extends Component {
     return (
       <div className="navbar">
         <h1>Droom</h1>
-        <Link to="/home" style={{ textDecoration: "none" }}>
-          <p className="link">Home</p>
+        <Link to="/dashboard" style={{ textDecoration: "none" }}>
+          <p className="link">Dashboard</p>
         </Link>
         <Link to="/employers" style={{ textDecoration: "none" }}>
           <p className="link">Employers</p>
