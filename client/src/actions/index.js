@@ -132,6 +132,12 @@ export const editSeekerPersonal = (personalData, id) => dispatch => {
 };
 
 // edit job seeker experience
+export const editSeekerExperience = (experienceData, id) => dispatch => {
+  axios
+    .put("/", experienceData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
 
 // edit job seeker education
 
