@@ -111,7 +111,7 @@ export const getSeekerProfiles = () => dispatch => {
 // submit seeker profile form
 export const submitSeekerPersonal = personalData => dispatch => {
   axios
-    .post("/", personalData)
+    .post(`${URL}`, personalData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
@@ -119,7 +119,7 @@ export const submitSeekerPersonal = personalData => dispatch => {
 // submit seeker experience profile form
 export const submitSeekerExperience = experienceData => dispatch => {
   axios
-    .post("/", experienceData)
+    .post(`${URL}`, experienceData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
@@ -127,7 +127,7 @@ export const submitSeekerExperience = experienceData => dispatch => {
 // submit seeker education profile form
 export const submitSeekerEducation = educationData => dispatch => {
   axios
-    .post("/", educationData)
+    .post(`${URL}`, educationData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
@@ -135,7 +135,7 @@ export const submitSeekerEducation = educationData => dispatch => {
 // submit seeker education profile form
 export const submitSeekerSkills = skillsData => dispatch => {
   axios
-    .post("/", skillsData)
+    .post(`${URL}`, skillsData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
@@ -143,7 +143,7 @@ export const submitSeekerSkills = skillsData => dispatch => {
 // edit job seeker personal info
 export const editSeekerPersonal = (personalData, id) => dispatch => {
   axios
-    .put("/", personalData)
+    .put(`${URL}`, personalData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
@@ -151,7 +151,7 @@ export const editSeekerPersonal = (personalData, id) => dispatch => {
 // edit job seeker experience
 export const editSeekerExperience = (experienceData, id) => dispatch => {
   axios
-    .put("/", experienceData)
+    .put(`${URL}`, experienceData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
@@ -159,7 +159,7 @@ export const editSeekerExperience = (experienceData, id) => dispatch => {
 // edit job seeker education
 export const editSeekerEducation = (educationData, id) => dispatch => {
   axios
-    .put("/", educationData)
+    .put(`${URL}`, educationData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
@@ -167,7 +167,7 @@ export const editSeekerEducation = (educationData, id) => dispatch => {
 // edit job seeker skills
 export const editSeekerSkills = (skillsData, id) => dispatch => {
   axios
-    .put("/", skillsData)
+    .put(`${URL}`, skillsData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
@@ -175,17 +175,17 @@ export const editSeekerSkills = (skillsData, id) => dispatch => {
 // delete job seeker profile
 export const deleteSeekerProfile = id => dispatch => {
   axios
-    .delete("/")
+    .delete(`${URL}`)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
 
 // Employer --------------------------
 
-// get employer profile
+// get employer compnay profile
 export const getEmployerProfile = id => dispatch => {
   axios
-    .get(`${URL}/api/companies/:id`)
+    .get(`${URL}/api/companies/${id}`)
     .then(res => {
       dispatch({
         type: SET_EMPLOYER_PROFILE,
@@ -200,7 +200,7 @@ export const getEmployerProfile = id => dispatch => {
     });
 };
 
-// get employer profiles
+// get employer company profiles
 export const getEmployerProfiles = () => dispatch => {
   axios
     .get(`${URL}/api/companies`)
@@ -210,18 +210,44 @@ export const getEmployerProfiles = () => dispatch => {
         payload: res.data
       });
     })
+    .catch(err => console.log(err));
+};
+
+// get employer job profile
+export const getEmployerJob = id => dispatch => {
+  axios
+    .get(`${URL}/api/jobs/${id}`)
+    .then(res => {
+      dispatch({
+        type: SET_EMPLOYER_PROFILE,
+        payload: res.data
+      });
+    })
     .catch(err => {
       dispatch({
-        type: SET_EMPLOYER_PROFILES,
+        type: SET_EMPLOYER_PROFILE,
         payload: {}
       });
     });
 };
 
+// get employer job profiles
+export const getEmployerJobs = () => dispatch => {
+  axios
+    .get(`${URL}/api/jobs`)
+    .then(res => {
+      dispatch({
+        type: SET_EMPLOYER_PROFILES,
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
+};
+
 // submit company info form
 export const submitCompanyInfo = companyData => dispatch => {
   axios
-    .post(`${URL}`, companyData)
+    .post(`${URL}/api/companies`, companyData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
@@ -229,15 +255,15 @@ export const submitCompanyInfo = companyData => dispatch => {
 // submit job info form
 export const submitJobInfo = jobData => dispatch => {
   axios
-    .post("/", jobData)
+    .post(`${URL}/api/jobs`, jobData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
 
-// edit employer info
+// edit employer company info
 export const editCompanyInfo = (companyData, id) => dispatch => {
   axios
-    .put("/", companyData)
+    .put(`${URL}/api/companies/${id}`, companyData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
@@ -245,15 +271,23 @@ export const editCompanyInfo = (companyData, id) => dispatch => {
 // edit employer job info
 export const editJobInfo = (jobData, id) => dispatch => {
   axios
-    .put("/", jobData)
+    .put(`${URL}/api/jobs/${id}`, jobData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
 
-// delete company profile
-export const deleteEmployerProfile = id => dispatch => {
+// delete employer company
+export const deleteEmployerCompany = id => dispatch => {
   axios
-    .delete("/")
+    .delete(`${URL}/api/companies/${id}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// delete employer job
+export const deleteEmployerJob = id => dispatch => {
+  axios
+    .delete(`${URL}/api/job/${id}`)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };

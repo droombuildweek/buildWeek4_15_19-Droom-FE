@@ -5,6 +5,7 @@ import { getEmployerProfiles, getEmployerProfile } from "../../actions";
 class Employers extends Component {
   componentDidMount() {
     this.props.getEmployerProfiles();
+    console.log(this.props);
   }
 
   render() {

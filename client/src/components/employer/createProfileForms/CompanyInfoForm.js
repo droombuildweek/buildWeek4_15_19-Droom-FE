@@ -28,17 +28,15 @@ class CompanyInfoForm extends Component {
     e.preventDefault();
     const companyData = {
       userId: this.state.userId,
-      company: {
-        companyName: this.state.companyName,
-        companyPicture: this.state.companyPicture,
-        companyDescription: this.state.companyDescription,
-        country: this.state.country,
-        state: this.state.state,
-        city: this.state.city,
-        zipcode: this.state.zipcode
-      }
+      companyName: this.state.companyName,
+      companyPicture: this.state.companyPicture,
+      companyDescription: this.state.companyDescription,
+      country: this.state.country,
+      state: this.state.state,
+      city: this.state.city,
+      zipcode: this.state.zipcode
     };
-    submitCompanyInfo(companyData);
+    this.props.submitCompanyInfo(companyData);
   };
 
   render() {
@@ -117,7 +115,7 @@ class CompanyInfoForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  seeker: state.seeker,
+  employer: state.employer,
   auth: state.auth
 });
 

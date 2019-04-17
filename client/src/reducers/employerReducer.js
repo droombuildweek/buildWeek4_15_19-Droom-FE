@@ -2,7 +2,7 @@ import { SET_EMPLOYER_PROFILE, SET_EMPLOYER_PROFILES } from "../actions/types";
 
 const initialState = {
   employerProfile: {},
-  employerProfiles: {}
+  employerProfiles: []
 };
 
 export default function(state = initialState, action) {
