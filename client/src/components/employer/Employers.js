@@ -8,7 +8,6 @@ class Employers extends Component {
   }
 
   render() {
-    console.log(this.props);
     if (this.props.employer.employerProfiles.length === 0) {
       return <p>Loading</p>;
     }
