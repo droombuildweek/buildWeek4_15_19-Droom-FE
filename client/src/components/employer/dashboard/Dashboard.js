@@ -27,6 +27,9 @@ class EmployerDashboard extends Component {
         >
           <p className="dashboard-link">Experience Form</p>
         </Link>
+        <Link to="/employer/editProfile" style={{ textDecoration: "none" }}>
+          <p className="dashboard-link">Edit Profile</p>
+        </Link>
         <button onClick={this.deleteClick}>Delete Profile</button>
       </div>
     );
