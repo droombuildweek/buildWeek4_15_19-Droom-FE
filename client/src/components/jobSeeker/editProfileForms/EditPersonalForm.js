@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { submitCompanyInfo } from "../../../actions";
+import { editSeekerPersonal } from "../../../actions";
 
-class CompanyInfoForm extends Component {
+class EditPersonalForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userId: this.props.auth.user.subject,
-      companyName: "",
-      companyPicture: "",
-      companyDescription: "",
+      firstName: "",
+      lastName: "",
+      profilePicture: "",
+      month: "",
+      date: "",
+      year: "",
       country: "",
       state: "",
       city: "",
@@ -26,51 +29,80 @@ class CompanyInfoForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const companyData = {
+    const personalData = {
       userId: this.state.userId,
-      companyName: this.state.companyName,
-      companyPicture: this.state.companyPicture,
-      companyDescription: this.state.companyDescription,
-      country: this.state.country,
-      state: this.state.state,
-      city: this.state.city,
-      zipcode: this.state.zipcode
+      seeker: {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        profilePicture: this.state.profilePicture,
+        month: this.state.month,
+        date: this.state.date,
+        year: this.state.year,
+        country: this.state.country,
+        state: this.state.state,
+        city: this.state.city,
+        zipcode: this.state.zipcode
+      }
     };
-    this.props.submitCompanyInfo(companyData);
+    editSeekerPersonal(personalData);
   };
 
   render() {
     return (
       <div>
         <form>
-          <h2>Company Info</h2>
+          <h2>Edit Personal Info</h2>
           <div>
-            <label>Company Name</label>
+            <label>First Name</label>
             <input
-              name="companyName"
+              name="firstName"
               type="text"
-              placeholder="company name"
-              value={this.state.companyName}
+              placeholder="first name"
+              value={this.state.firstName}
               onChange={this.inputChange}
             />
           </div>
           <div>
-            <label>Company Picture</label>
+            <label>Last Name</label>
             <input
-              name="companyPicture"
+              name="lastName"
               type="text"
-              placeholder="company picture url"
-              value={this.state.companyPicture}
+              placeholder="last name"
+              value={this.state.lastName}
               onChange={this.inputChange}
             />
           </div>
           <div>
-            <label>Company Description</label>
+            <label>Profile Picture</label>
             <input
-              name="companyDescription"
+              name="profilePicture"
               type="text"
-              placeholder="company description"
-              value={this.state.companyDescription}
+              placeholder="profile picture url"
+              value={this.state.profilePicture}
+              onChange={this.inputChange}
+            />
+          </div>
+          <div>
+            <label>Date of Birth</label>
+            <input
+              name="month"
+              type="text"
+              placeholder="month"
+              value={this.state.month}
+              onChange={this.inputChange}
+            />
+            <input
+              name="date"
+              type="text"
+              placeholder="date"
+              value={this.state.date}
+              onChange={this.inputChange}
+            />
+            <input
+              name="year"
+              type="text"
+              placeholder="year"
+              value={this.state.year}
               onChange={this.inputChange}
             />
           </div>
@@ -115,11 +147,11 @@ class CompanyInfoForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  employer: state.employer,
+  seeker: state.seeker,
   auth: state.auth
 });
 
 export default connect(
   mapStateToProps,
-  { submitCompanyInfo }
-)(CompanyInfoForm);
+  { editSeekerPersonal }
+)(EditPersonalForm);

@@ -1,7 +1,15 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { SET_CURRENT_USER } from "./types";
+import {
+  SET_CURRENT_USER,
+  SET_SEEKER_PROFILE,
+  SET_SEEKER_PROFILES,
+  SET_EMPLOYER_PROFILE,
+  SET_EMPLOYER_PROFILES
+} from "./types";
+
+const URL = "https://droom-buildweek-4-15-19.herokuapp.com";
 
 // Auth --------------------------
 
@@ -9,10 +17,7 @@ import { SET_CURRENT_USER } from "./types";
 export const registerUser = (userData, history) => dispatch => {
   console.log(userData);
   axios
-    .post(
-      "https://droom-buildweek-4-15-19.herokuapp.com/api/auth/register",
-      userData
-    )
+    .post(`${URL}/api/auth/register`, userData)
     .then(res => {
       // save token to local storage
       localStorage.setItem("jwtToken", res.data.token);
@@ -30,10 +35,7 @@ export const registerUser = (userData, history) => dispatch => {
 export const loginUser = userData => dispatch => {
   console.log(userData);
   axios
-    .post(
-      "https://droom-buildweek-4-15-19.herokuapp.com/api/auth/login",
-      userData
-    )
+    .post(`${URL}/api/auth/login`, userData)
     .then(res => {
       console.log(res.data.token);
       // save token to local storage
@@ -66,19 +68,50 @@ export const logoutUser = () => dispatch => {
   dispatch(setCurrentUser({}));
 };
 
+// delete account
+
 // Job Seeker --------------------------
 
+// get seeker profile
 export const getSeekerProfile = () => dispatch => {
   axios
     .get("/")
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .then(res => {
+      dispatch({
+        type: SET_SEEKER_PROFILE,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_SEEKER_PROFILE,
+        payload: {}
+      });
+    });
+};
+
+// get seeker profiles
+export const getSeekerProfiles = () => dispatch => {
+  axios
+    .get("/")
+    .then(res => {
+      dispatch({
+        type: SET_SEEKER_PROFILES,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_SEEKER_PROFILES,
+        payload: {}
+      });
+    });
 };
 
 // submit seeker profile form
 export const submitSeekerPersonal = personalData => dispatch => {
   axios
-    .post("/", personalData)
+    .post(`${URL}`, personalData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
@@ -86,7 +119,7 @@ export const submitSeekerPersonal = personalData => dispatch => {
 // submit seeker experience profile form
 export const submitSeekerExperience = experienceData => dispatch => {
   axios
-    .post("/", experienceData)
+    .post(`${URL}`, experienceData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
@@ -94,7 +127,7 @@ export const submitSeekerExperience = experienceData => dispatch => {
 // submit seeker education profile form
 export const submitSeekerEducation = educationData => dispatch => {
   axios
-    .post("/", educationData)
+    .post(`${URL}`, educationData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
@@ -102,25 +135,119 @@ export const submitSeekerEducation = educationData => dispatch => {
 // submit seeker education profile form
 export const submitSeekerSkills = skillsData => dispatch => {
   axios
-    .post("/", skillsData)
+    .post(`${URL}`, skillsData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// edit job seeker personal info
+export const editSeekerPersonal = (personalData, id) => dispatch => {
+  axios
+    .put(`${URL}`, personalData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// edit job seeker experience
+export const editSeekerExperience = (experienceData, id) => dispatch => {
+  axios
+    .put(`${URL}`, experienceData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// edit job seeker education
+export const editSeekerEducation = (educationData, id) => dispatch => {
+  axios
+    .put(`${URL}`, educationData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// edit job seeker skills
+export const editSeekerSkills = (skillsData, id) => dispatch => {
+  axios
+    .put(`${URL}`, skillsData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// delete job seeker profile
+export const deleteSeekerProfile = id => dispatch => {
+  axios
+    .delete(`${URL}`)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
 
 // Employer --------------------------
 
-// get company profile
-export const getCompanyProfile = () => dispatch => {
+// get employer company profile
+export const getEmployerProfile = id => dispatch => {
   axios
-    .post("/")
-    .then(res => console.log(res))
+    .get(`${URL}/api/companies/${id}`)
+    .then(res => {
+      dispatch({
+        type: SET_EMPLOYER_PROFILE,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_EMPLOYER_PROFILE,
+        payload: {}
+      });
+    });
+};
+
+// get employer company profiles
+export const getEmployerProfiles = () => dispatch => {
+  axios
+    .get(`${URL}/api/companies`)
+    .then(res => {
+      dispatch({
+        type: SET_EMPLOYER_PROFILES,
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
+};
+
+// get employer job profile
+export const getEmployerJob = id => dispatch => {
+  axios
+    .get(`${URL}/api/jobs/${id}`)
+    .then(res => {
+      dispatch({
+        type: SET_EMPLOYER_PROFILE,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_EMPLOYER_PROFILE,
+        payload: {}
+      });
+    });
+};
+
+// get employer job profiles
+export const getEmployerJobs = () => dispatch => {
+  axios
+    .get(`${URL}/api/jobs`)
+    .then(res => {
+      dispatch({
+        type: SET_EMPLOYER_PROFILES,
+        payload: res.data
+      });
+    })
     .catch(err => console.log(err));
 };
 
 // submit company info form
 export const submitCompanyInfo = companyData => dispatch => {
   axios
-    .post("/", companyData)
+    .post(`${URL}/api/companies`, companyData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
@@ -128,7 +255,39 @@ export const submitCompanyInfo = companyData => dispatch => {
 // submit job info form
 export const submitJobInfo = jobData => dispatch => {
   axios
-    .post("/", jobData)
+    .post(`${URL}/api/jobs`, jobData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// edit employer company info
+export const editCompanyInfo = (companyData, id) => dispatch => {
+  axios
+    .put(`${URL}/api/companies/${id}`, companyData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// edit employer job info
+export const editJobInfo = (jobData, id) => dispatch => {
+  axios
+    .put(`${URL}/api/jobs/${id}`, jobData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// delete employer company
+export const deleteEmployerCompany = id => dispatch => {
+  axios
+    .delete(`${URL}/api/companies/${id}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// delete employer job
+export const deleteEmployerJob = id => dispatch => {
+  axios
+    .delete(`${URL}/api/job/${id}`)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };

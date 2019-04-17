@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { submitCompanyInfo } from "../../../actions";
+import { editCompanyInfo } from "../../../actions";
 
-class CompanyInfoForm extends Component {
+class EditCompanyInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,22 +28,24 @@ class CompanyInfoForm extends Component {
     e.preventDefault();
     const companyData = {
       userId: this.state.userId,
-      companyName: this.state.companyName,
-      companyPicture: this.state.companyPicture,
-      companyDescription: this.state.companyDescription,
-      country: this.state.country,
-      state: this.state.state,
-      city: this.state.city,
-      zipcode: this.state.zipcode
+      company: {
+        companyName: this.state.companyName,
+        companyPicture: this.state.companyPicture,
+        companyDescription: this.state.companyDescription,
+        country: this.state.country,
+        state: this.state.state,
+        city: this.state.city,
+        zipcode: this.state.zipcode
+      }
     };
-    this.props.submitCompanyInfo(companyData);
+    editCompanyInfo(companyData);
   };
 
   render() {
     return (
       <div>
         <form>
-          <h2>Company Info</h2>
+          <h2>Edit Company Info</h2>
           <div>
             <label>Company Name</label>
             <input
@@ -121,5 +123,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { submitCompanyInfo }
-)(CompanyInfoForm);
+  { editCompanyInfo }
+)(EditCompanyInfo);

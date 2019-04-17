@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { submitJobInfo } from "../../../actions";
+import { editJobInfo } from "../../../actions";
 
-class CompanyInfoForm extends Component {
+class EditJobForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -48,7 +48,7 @@ class CompanyInfoForm extends Component {
       },
       jobSkills: this.state.jobSkills
     };
-    this.props.submitJobInfo(jobData);
+    editJobInfo(jobData);
   };
 
   render() {
@@ -134,5 +134,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { submitJobInfo }
-)(CompanyInfoForm);
+  { editJobInfo }
+)(EditJobForm);
