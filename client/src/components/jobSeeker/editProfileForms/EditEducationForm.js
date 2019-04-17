@@ -55,7 +55,7 @@ class EditEducationForm extends Component {
     return (
       <div>
         <form>
-          <h2>Education</h2>
+          <h2>Edit Education</h2>
           <div>
             <label>School</label>
             <input

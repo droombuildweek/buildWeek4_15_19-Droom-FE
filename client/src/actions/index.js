@@ -148,6 +148,12 @@ export const editSeekerEducation = (educationData, id) => dispatch => {
 };
 
 // edit job seeker skills
+export const editSeekerSkills = (skillsData, id) => dispatch => {
+  axios
+    .put("/", skillsData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
 
 // delete job seeker profile
 export const deleteSeekerProfile = id => dispatch => {
