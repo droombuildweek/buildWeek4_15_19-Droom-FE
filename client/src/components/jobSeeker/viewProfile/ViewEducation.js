@@ -17,7 +17,7 @@ class ViewExperience extends Component {
     return (
       <div>
         <h2>View Education</h2>
-        <button onClick={this.deleteExperience}>Delete Education</button>
+        <button onClick={this.deleteEducation}>Delete Education</button>
       </div>
     );
   }
