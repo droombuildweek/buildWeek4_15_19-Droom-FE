@@ -186,8 +186,8 @@ export const deleteSeekerProfile = id => dispatch => {
 
 // Employer --------------------------
 
-// get company profile
-export const getCompanyProfile = () => dispatch => {
+// get employer profile
+export const getEmployerProfile = () => dispatch => {
   axios
     .post("/")
     .then(res => {
@@ -204,8 +204,8 @@ export const getCompanyProfile = () => dispatch => {
     });
 };
 
-// get company profiles
-export const getCompanyProfiles = () => dispatch => {
+// get employer profiles
+export const getEmployerProfiles = () => dispatch => {
   axios
     .post("/")
     .then(res => {

@@ -8,8 +8,14 @@ class Header extends Component {
     return (
       <div className="navbar">
         <h1>Droom</h1>
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/home" style={{ textDecoration: "none" }}>
           <p className="link">Home</p>
+        </Link>
+        <Link to="/jobSeekers" style={{ textDecoration: "none" }}>
+          <p className="link">Job Seekers</p>
+        </Link>
+        <Link to="/employers" style={{ textDecoration: "none" }}>
+          <p className="link">Employers</p>
         </Link>
         <Link to="/login" style={{ textDecoration: "none" }}>
           <p className="link">Login</p>

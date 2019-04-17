@@ -2,8 +2,11 @@ import React, { Component } from "react";
 
 // Components
 import Header from "./components/nav/header";
+import Home from "./components/Home";
 import Register from "./components/auth/register";
 import Login from "./components/auth/login";
+import JobSeekers from "./components/jobSeeker/JobSeekers";
+import Employers from "./components/employer/Employers";
 import PersonalInfoForm from "./components/jobSeeker/createProfileForms/PersonalInfoForm";
 import EducationForm from "./components/jobSeeker/createProfileForms/EducationForm";
 import PreviousExperienceForm from "./components/jobSeeker/createProfileForms/PreviousExperienceForm";
@@ -74,6 +77,12 @@ class App extends Component {
             {/* Login/Register Route */}
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            {/* Home Route */}
+            <Route exact path="/home" component={Home} />
+            {/* Render Job Seekers Route */}
+            <Route exact path="/jobSeekers" component={JobSeekers} />
+            {/* Render Employers Route */}
+            <Route exact path="/employers" component={Employers} />
             {/* Job Seeker Dashboard Route */}
             <Switch>
               <PrivateRoute
