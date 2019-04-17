@@ -25,6 +25,7 @@ import EditJobForm from "./components/employer/editProfileForms/EditJobForm";
 import ViewCompany from "./components/employer/viewProfile/ViewCompany";
 import ViewJobs from "./components/employer/viewProfile/ViewJobs";
 import ViewPersonal from "./components/jobSeeker/viewProfile/ViewPersonal";
+import ViewExperience from "./components/jobSeeker/viewProfile/ViewExperience";
 
 // Styling
 import "./App.css";
@@ -107,7 +108,7 @@ class App extends Component {
               <PrivateRoute
                 exact
                 path="/jobSeeker/experience"
-                component={ViewPersonal}
+                component={ViewExperience}
               />
             </Switch>
             {/* View Education */}
