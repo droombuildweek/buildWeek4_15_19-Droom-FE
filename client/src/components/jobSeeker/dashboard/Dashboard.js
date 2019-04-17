@@ -14,7 +14,9 @@ class SeekerDashboard extends Component {
   render() {
     return (
       <div>
-        <h1>Job Seeker Dashboard</h1>
+        <h2>Job Seeker Dashboard</h2>
+        <h3>View Profile</h3>
+        <h3>Create Profile</h3>
         <Link
           to="/jobSeeker/createProfile/personalInfo"
           style={{ textDecoration: "none" }}
@@ -39,6 +41,7 @@ class SeekerDashboard extends Component {
         >
           <p className="dashboard-link">Skills Form</p>
         </Link>
+        <h3>Edit Profile</h3>
         <Link
           to="/jobSeeker/editProfile/editPersonal"
           style={{ textDecoration: "none" }}
