@@ -17,6 +17,8 @@ import EditPersonalForm from "./components/jobSeeker/editProfileForms/EditPerson
 import EditExperienceForm from "./components/jobSeeker/editProfileForms/EditExperienceForm";
 import EditEducationForm from "./components/jobSeeker/editProfileForms/EditEducationForm";
 import EditSkillsForm from "./components/jobSeeker/editProfileForms/EditSkillsForm";
+import EditCompanyInfo from "./components/employer/editProfileForms/EditCompanyInfo";
+import EditJobForm from "./components/employer/editProfileForms/EditJobForm";
 
 // Styling
 import "./App.css";
@@ -159,6 +161,21 @@ class App extends Component {
                 exact
                 path="/employer/createProfile/jobInfo"
                 component={JobInfoForm}
+              />
+            </Switch>
+            {/* Employer Edit Form Routes */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/employer/editProfile/companyInfo"
+                component={EditCompanyInfo}
+              />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/employer/editProfile/jobInfo"
+                component={EditJobForm}
               />
             </Switch>
           </Router>

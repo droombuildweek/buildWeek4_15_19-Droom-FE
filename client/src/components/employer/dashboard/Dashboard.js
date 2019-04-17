@@ -19,16 +19,25 @@ class EmployerDashboard extends Component {
           to="/employer/createProfile/companyInfo"
           style={{ textDecoration: "none" }}
         >
-          <p className="dashboard-link">Personal Info Form</p>
+          <p className="dashboard-link">Company Info Form</p>
         </Link>
         <Link
           to="/employer/createProfile/jobInfo"
           style={{ textDecoration: "none" }}
         >
-          <p className="dashboard-link">Experience Form</p>
+          <p className="dashboard-link">Job Form</p>
         </Link>
-        <Link to="/employer/editProfile" style={{ textDecoration: "none" }}>
-          <p className="dashboard-link">Edit Profile</p>
+        <Link
+          to="/employer/editProfile/companyInfo"
+          style={{ textDecoration: "none" }}
+        >
+          <p className="dashboard-link">Edit Company Info</p>
+        </Link>
+        <Link
+          to="/employer/editProfile/jobInfo"
+          style={{ textDecoration: "none" }}
+        >
+          <p className="dashboard-link">Edit Job Info</p>
         </Link>
         <button onClick={this.deleteClick}>Delete Profile</button>
       </div>

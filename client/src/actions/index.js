@@ -200,14 +200,20 @@ export const submitJobInfo = jobData => dispatch => {
 };
 
 // edit employer info
-export const editCompanyInfo = (companyInfo, id) => dispatch => {
+export const editCompanyInfo = (companyData, id) => dispatch => {
   axios
-    .put("/", companyInfo)
+    .put("/", companyData)
     .then(res => console.log(res))
     .catch(err => console.log(err));
 };
 
 // edit employer job info
+export const editJobInfo = (jobData, id) => dispatch => {
+  axios
+    .put("/", jobData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
 
 // delete company profile
 export const deleteEmployerProfile = id => dispatch => {
