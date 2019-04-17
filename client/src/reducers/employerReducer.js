@@ -1,7 +1,8 @@
-import { SET_EMPLOYER_PROFILE } from "../actions/types";
+import { SET_EMPLOYER_PROFILE, SET_EMPLOYER_PROFILES } from "../actions/types";
 
 const initialState = {
-  employerProfile: {}
+  employerProfile: {},
+  employerProfiles: {}
 };
 
 export default function(state = initialState, action) {
@@ -9,7 +10,12 @@ export default function(state = initialState, action) {
     case SET_EMPLOYER_PROFILE:
       return {
         ...state,
-        seekerProfile: action.payload
+        employerProfile: action.payload
+      };
+    case SET_EMPLOYER_PROFILES:
+      return {
+        ...state,
+        employerProfiles: action.payload
       };
     default:
       return state;

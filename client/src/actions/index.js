@@ -4,8 +4,9 @@ import jwt_decode from "jwt-decode";
 import {
   SET_CURRENT_USER,
   SET_SEEKER_PROFILE,
+  SET_SEEKER_PROFILES,
   SET_EMPLOYER_PROFILE,
-  SET_SEEKER_PROFILES
+  SET_EMPLOYER_PROFILES
 } from "./types";
 
 // Auth --------------------------
@@ -198,6 +199,24 @@ export const getCompanyProfile = () => dispatch => {
     .catch(err => {
       dispatch({
         type: SET_EMPLOYER_PROFILE,
+        payload: {}
+      });
+    });
+};
+
+// get company profiles
+export const getCompanyProfiles = () => dispatch => {
+  axios
+    .post("/")
+    .then(res => {
+      dispatch({
+        type: SET_EMPLOYER_PROFILES,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_EMPLOYER_PROFILES,
         payload: {}
       });
     });
