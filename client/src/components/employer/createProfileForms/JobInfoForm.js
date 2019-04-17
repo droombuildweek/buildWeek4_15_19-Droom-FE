@@ -48,7 +48,7 @@ class CompanyInfoForm extends Component {
       },
       jobSkills: this.state.jobSkills
     };
-    submitJobInfo(jobData);
+    this.props.submitJobInfo(jobData);
   };
 
   render() {

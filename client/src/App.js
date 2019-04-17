@@ -7,6 +7,7 @@ import Register from "./components/auth/register";
 import Login from "./components/auth/login";
 import JobSeekers from "./components/jobSeeker/JobSeekers";
 import Employers from "./components/employer/Employers";
+import Jobs from "./components/employer/Jobs";
 import PersonalInfoForm from "./components/jobSeeker/createProfileForms/PersonalInfoForm";
 import EducationForm from "./components/jobSeeker/createProfileForms/EducationForm";
 import PreviousExperienceForm from "./components/jobSeeker/createProfileForms/PreviousExperienceForm";
@@ -83,6 +84,8 @@ class App extends Component {
             <Route exact path="/jobSeekers" component={JobSeekers} />
             {/* Render Employers Route */}
             <Route exact path="/employers" component={Employers} />
+            {/* Render Jobs Route */}
+            <Route exact path="/jobs" component={Jobs} />
             {/* Job Seeker Dashboard Route */}
             <Switch>
               <PrivateRoute

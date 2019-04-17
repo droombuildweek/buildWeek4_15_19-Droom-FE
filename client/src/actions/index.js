@@ -182,7 +182,7 @@ export const deleteSeekerProfile = id => dispatch => {
 
 // Employer --------------------------
 
-// get employer compnay profile
+// get employer company profile
 export const getEmployerProfile = id => dispatch => {
   axios
     .get(`${URL}/api/companies/${id}`)
