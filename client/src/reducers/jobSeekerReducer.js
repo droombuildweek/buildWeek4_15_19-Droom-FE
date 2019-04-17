@@ -1,7 +1,8 @@
-import { SET_SEEKER_PROFILE } from "../actions/types";
+import { SET_SEEKER_PROFILE, SET_SEEKER_PROFILES } from "../actions/types";
 
 const initialState = {
-  seekerProfile: {}
+  seekerProfile: {},
+  seekerProfiles: {}
 };
 
 export default function(state = initialState, action) {
@@ -10,6 +11,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         seekerProfile: action.payload
+      };
+    case SET_SEEKER_PROFILES:
+      return {
+        ...state,
+        seekerProfiles: action.payload
       };
     default:
       return state;

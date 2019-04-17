@@ -4,7 +4,8 @@ import jwt_decode from "jwt-decode";
 import {
   SET_CURRENT_USER,
   SET_SEEKER_PROFILE,
-  SET_EMPLOYER_PROFILE
+  SET_EMPLOYER_PROFILE,
+  SET_SEEKER_PROFILES
 } from "./types";
 
 // Auth --------------------------
@@ -74,6 +75,7 @@ export const logoutUser = () => dispatch => {
 
 // Job Seeker --------------------------
 
+// get seeker profile
 export const getSeekerProfile = () => dispatch => {
   axios
     .get("/")
@@ -86,6 +88,24 @@ export const getSeekerProfile = () => dispatch => {
     .catch(err => {
       dispatch({
         type: SET_SEEKER_PROFILE,
+        payload: {}
+      });
+    });
+};
+
+// get seeker profiles
+export const getSeekerProfiles = () => dispatch => {
+  axios
+    .get("/")
+    .then(res => {
+      dispatch({
+        type: SET_SEEKER_PROFILES,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_SEEKER_PROFILES,
         payload: {}
       });
     });
