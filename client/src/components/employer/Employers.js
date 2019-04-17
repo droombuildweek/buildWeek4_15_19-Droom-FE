@@ -5,20 +5,23 @@ import { getEmployerProfiles, getEmployerProfile } from "../../actions";
 class Employers extends Component {
   componentDidMount() {
     this.props.getEmployerProfiles();
-    console.log(this.props);
   }
 
   render() {
+    console.log(this.props);
+    if (this.props.employer.employerProfiles.length === 0) {
+      return <p>Loading</p>;
+    }
     return (
       <div>
         <h2>Employers</h2>
-        {/* {this.props.employer.employerProfiles.companies.map(company => {
+        {this.props.employer.employerProfiles.companies.map(company => {
           return (
-            <div>
-              <h3>Company</h3>
+            <div key={company.id}>
+              <h3>{company.companyName}</h3>
             </div>
           );
-        })} */}
+        })}
       </div>
     );
   }

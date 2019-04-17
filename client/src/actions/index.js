@@ -173,12 +173,7 @@ export const getEmployerProfile = id => dispatch => {
         payload: res.data
       });
     })
-    .catch(err => {
-      dispatch({
-        type: SET_EMPLOYER_PROFILE,
-        payload: {}
-      });
-    });
+    .catch(err => console.log(err));
 };
 
 // get employer company profiles
@@ -190,6 +185,7 @@ export const getEmployerProfiles = () => dispatch => {
         type: SET_EMPLOYER_PROFILES,
         payload: res.data
       });
+      console.log(res);
     })
     .catch(err => console.log(err));
 };
