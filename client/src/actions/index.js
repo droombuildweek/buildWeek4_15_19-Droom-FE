@@ -363,6 +363,14 @@ export const getEmployerMatches = id => dispatch => {
     .catch(err => console.log(err));
 };
 
+// add seeker match
+export const addSeekerPick = (userId, jobId) => dispatch => {
+  axios
+    .get(`${URL}/api/matches/seeker/${userId}/match/job/${jobId}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err.response));
+};
+
 // saves seeker picks
 export const getSeekerPicks = picks => dispatch => {
   dispatch({
