@@ -8,10 +8,9 @@ class ViewExperience extends Component {
     this.props.getSeekerSkills(this.props.auth.user.subject);
   }
 
-  deleteSkills = e => {
-    e.preventDefault();
+  deleteSkills = id => {
     alert("Are you sure you want to delete your skills?");
-    this.props.deleteSeekerSkills(this.props.auth.user.subject);
+    this.props.deleteSeekerSkills(id);
   };
 
   render() {
@@ -25,10 +24,12 @@ class ViewExperience extends Component {
           return (
             <div key={skill.id}>
               <p>{skill.seekerSkill}</p>
+              <button onClick={e => this.deleteSkills(skill.id)}>
+                Delete Skill
+              </button>
             </div>
           );
         })}
-        <button onClick={this.deleteSkills}>Delete Skills</button>
       </div>
     );
   }

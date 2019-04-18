@@ -8,10 +8,6 @@ class ViewExperience extends Component {
     this.props.getSeekerEducation(this.props.auth.user.subject);
   }
 
-  componentDidUpdate() {
-    this.props.getSeekerEducation(this.props.auth.user.subject);
-  }
-
   deleteEducation = id => {
     alert("Are you sure you want to delete your education?");
     this.props.deleteSeekerEducation(id);
