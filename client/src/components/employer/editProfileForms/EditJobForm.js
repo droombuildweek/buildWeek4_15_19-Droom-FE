@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { editJobInfo } from "../../../actions";
+import { editJobInfo, getEmployerJob, getEmployerJobs } from "../../../actions";
 
 class EditJobForm extends Component {
   constructor(props) {
@@ -13,7 +13,9 @@ class EditJobForm extends Component {
       jobExperiencePreferred: "",
       jobApplyBy: "",
       jobSkills: [],
-      jobSkill: ""
+      jobSkill: "",
+      // store id when clicked
+      jobId: ""
     };
   }
 
@@ -48,7 +50,8 @@ class EditJobForm extends Component {
       },
       jobSkills: this.state.jobSkills
     };
-    editJobInfo(jobData);
+    // FIX ID
+    editJobInfo(jobData, this.employer.employerProfiles.jobs.id);
   };
 
   render() {
@@ -128,11 +131,11 @@ class EditJobForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  seeker: state.seeker,
+  employer: state.employer,
   auth: state.auth
 });
 
 export default connect(
   mapStateToProps,
-  { editJobInfo }
+  { editJobInfo, getEmployerJob, getEmployerJobs }
 )(EditJobForm);

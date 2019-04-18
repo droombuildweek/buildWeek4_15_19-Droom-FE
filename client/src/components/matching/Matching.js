@@ -9,9 +9,17 @@ class Matching extends Component {
       arrows: true,
       speed: 500,
       slidesToShow: 1,
-      slidesToScroll: 1,
-      prevArrow: "match",
-      nextArrow: ""
+      slidesToScroll: 1
+      // prevArrow: (
+      //   <button type="button" className="slick-prev">
+      //     Match
+      //   </button>
+      // ),
+      // nextArrow: (
+      //   <button type="button" className="slick-next">
+      //     Next
+      //   </button>
+      // )
     };
     return (
       <div>

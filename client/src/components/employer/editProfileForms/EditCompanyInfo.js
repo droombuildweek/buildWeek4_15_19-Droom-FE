@@ -22,7 +22,7 @@ class EditCompanyInfo extends Component {
   }
 
   componentDidMount() {
-    this.props.getEmployerProfiles();
+    this.props.getEmployerProfile();
   }
 
   inputChange = e => {
@@ -47,7 +47,10 @@ class EditCompanyInfo extends Component {
       }
     };
     // Needs ID
-    this.props.editCompanyInfo(companyData);
+    this.props.editCompanyInfo(
+      companyData,
+      this.props.employer.getEmployerProfile.id
+    );
   };
 
   render() {
