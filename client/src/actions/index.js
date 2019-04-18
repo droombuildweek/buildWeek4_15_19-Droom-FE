@@ -370,3 +370,11 @@ export const getSeekerPicks = picks => dispatch => {
     payload: picks
   });
 };
+
+// saves employer picks
+export const getEmployerPicks = picks => dispatch => {
+  dispatch({
+    type: SET_EMPLOYER_PICKS,
+    payload: picks
+  });
+};

@@ -8,7 +8,8 @@ import {
 const initialState = {
   seekerMatches: [],
   employerMatches: [],
-  seekerPicks: []
+  seekerPicks: [],
+  employerPicks: []
 };
 
 export default function(state = initialState, action) {
@@ -28,7 +29,11 @@ export default function(state = initialState, action) {
         ...state,
         seekerPicks: action.payload
       };
-
+    case SET_EMPLOYER_PICKS:
+      return {
+        ...state,
+        employerPicks: action.payload
+      };
     default:
       return state;
   }

@@ -10,6 +10,7 @@ class MatchingForSeekers extends Component {
       matches: []
     };
   }
+
   componentDidMount() {
     this.props.getSeekerMatches(this.props.auth.user.subject);
   }
