@@ -48,7 +48,7 @@ class EditExperienceForm extends Component {
       userId: this.state.userId,
       seekerExperience: this.state.experiences
     };
-    editSeekerExperience(experienceData);
+    editSeekerExperience(experienceData, this.props.auth.user.subject);
   };
 
   render() {

@@ -10,8 +10,14 @@ class Header extends Component {
     let logout;
     let login;
     let signUp;
+    let matching;
     if (this.props.auth.isAuthenticated) {
       logout = <button onClick={this.props.logoutUser}>Logout</button>;
+      matching = (
+        <Link to="/matching" style={{ textDecoration: "none" }}>
+          <p className="link">Matching</p>
+        </Link>
+      );
     } else {
       login = (
         <Link to="/login" style={{ textDecoration: "none" }}>
@@ -30,6 +36,7 @@ class Header extends Component {
         <Link to="/dashboard" style={{ textDecoration: "none" }}>
           <p className="link">Dashboard</p>
         </Link>
+        {matching}
         <Link to="/employers" style={{ textDecoration: "none" }}>
           <p className="link">Employers</p>
         </Link>

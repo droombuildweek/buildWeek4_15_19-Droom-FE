@@ -44,7 +44,7 @@ class EditPersonalForm extends Component {
         zipcode: this.state.zipcode
       }
     };
-    editSeekerPersonal(personalData);
+    editSeekerPersonal(personalData, this.props.auth.user.subject);
   };
 
   render() {

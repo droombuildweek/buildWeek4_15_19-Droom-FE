@@ -34,7 +34,7 @@ class EditSkillsForm extends Component {
       userId: this.state.userId,
       seekerSkills: this.state.seekerSkills
     };
-    editSeekerSkills(skillsData);
+    editSeekerSkills(skillsData, this.props.auth.user.subject);
   };
 
   render() {
