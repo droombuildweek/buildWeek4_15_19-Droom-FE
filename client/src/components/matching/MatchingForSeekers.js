@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import { connect } from "react-redux";
-import { getEmployerProfile, getEmployerProfiles } from "../../actions";
+import { getSeekerMatches } from "../../actions";
 
 class MatchingForSeekers extends Component {
   componentDidMount() {
-    this.props.getEmployerProfiles();
+    this.props.getSeekerMatches(this.props.auth.user.subject);
   }
 
   addMatch = e => {};
@@ -17,18 +17,18 @@ class MatchingForSeekers extends Component {
       slidesToShow: 1,
       slidesToScroll: 1
     };
-    if (this.props.employer.employerProfiles.length === 0) {
+    if (this.props.matches.matches.length === 0) {
       return <p>Loading</p>;
     }
     return (
       <div>
         <h2>Job Seeker Matching</h2>
         <Slider {...settings}>
-          {this.props.employer.employerProfiles.companies.map(company => {
+          {this.props.matches.matches.map(match => {
             return (
-              <div key={company.id}>
-                <h3>{company.companyName}</h3>
-                <p>{company.companyDescription}</p>
+              <div key={match.id}>
+                <h3>{match.jobName}</h3>
+                <p>{match.jobDescription}</p>
                 <button onClick={this.addMatch}>Match</button>
               </div>
             );
@@ -41,11 +41,10 @@ class MatchingForSeekers extends Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  seeker: state.seeker,
-  employer: state.employer
+  matches: state.matches
 });
 
 export default connect(
   mapStateToProps,
-  { getEmployerProfile, getEmployerProfiles }
+  { getSeekerMatches }
 )(MatchingForSeekers);
