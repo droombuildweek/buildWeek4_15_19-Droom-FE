@@ -1,22 +1,19 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import { connect } from "react-redux";
-import { getEmployerMatches, getEmployerPicks } from "../../actions";
+import {
+  getEmployerMatches,
+  getEmployerPicks,
+  addEmployerPick
+} from "../../actions";
 
 class MatchingForCompanies extends Component {
-  constructor() {
-    super();
-    this.state = {
-      matches: []
-    };
-  }
-
   componentDidMount() {
     this.props.getEmployerMatches(this.props.auth.user.subject);
   }
 
-  addMatch = id => {
-    this.state.matches.push(this.props.matches.employerMatches[id]);
+  addMatch = (jobId, seekerId) => {
+    this.props.addEmployerPick(jobId, seekerId);
   };
 
   submitMatches = e => {
@@ -45,7 +42,11 @@ class MatchingForCompanies extends Component {
                 {match.skills.map(skill => {
                   return <p>{skill}</p>;
                 })}
-                <button onClick={e => this.addMatch(match.id)}>Match</button>
+                <button
+                  onClick={e => this.addMatch(match.jobId, match.seekerId)}
+                >
+                  Match
+                </button>
               </div>
             );
           })}
@@ -65,6 +66,7 @@ export default connect(
   mapStateToProps,
   {
     getEmployerMatches,
-    getEmployerPicks
+    getEmployerPicks,
+    addEmployerPick
   }
 )(MatchingForCompanies);

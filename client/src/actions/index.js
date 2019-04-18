@@ -371,6 +371,14 @@ export const addSeekerPick = (userId, jobId) => dispatch => {
     .catch(err => console.log(err.response));
 };
 
+// add employer match
+export const addEmployerPick = (jobId, seekerId) => disptach => {
+  axios
+    .get(`${URL}/api/matches/job/${jobId}/match/seeker/${seekerId}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err.response));
+};
+
 // saves seeker picks
 export const getSeekerPicks = picks => dispatch => {
   dispatch({
