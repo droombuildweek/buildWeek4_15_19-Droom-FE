@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getSeekerPersonal, deleteSeekerPersonal } from "../../../actions";
+import _ from "lodash";
 
 class ViewPersonal extends Component {
   componentDidMount() {
@@ -14,6 +15,9 @@ class ViewPersonal extends Component {
   };
 
   render() {
+    if (_.isEmpty(this.props.seeker.seekerProfile.personal)) {
+      return <p>loading</p>;
+    }
     return (
       <div>
         <h2>View Personal Info</h2>

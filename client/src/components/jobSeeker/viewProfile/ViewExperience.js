@@ -8,10 +8,9 @@ class ViewExperience extends Component {
     this.props.getSeekerExperience(this.props.auth.user.subject);
   }
 
-  deleteExperience = e => {
-    e.preventDefault();
+  deleteExperience = id => {
     alert("Are you sure you want to delete your previous experience?");
-    this.props.deleteSeekerExperience(this.props.auth.user.subject);
+    this.props.deleteSeekerExperience(id);
   };
 
   render() {
@@ -22,6 +21,7 @@ class ViewExperience extends Component {
       <div>
         <h2>View Previous Experience</h2>
         {this.props.seeker.seekerProfile.experience.map(experience => {
+          console.log(experience.seekerId);
           return (
             <div key={experience.id}>
               <p>{experience.jobTitle}</p>
@@ -29,12 +29,12 @@ class ViewExperience extends Component {
               <p>{experience.jobDescription}</p>
               <p>{experience.jobStart}</p>
               <p>{experience.jobEnd}</p>
+              <button onClick={e => this.deleteExperience(experience.id)}>
+                Delete Experience
+              </button>
             </div>
           );
         })}
-        <button onClick={this.deleteExperience}>
-          Delete Previous Experience
-        </button>
       </div>
     );
   }
