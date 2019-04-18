@@ -34,43 +34,56 @@ class Register extends Component {
   };
 
   render() {
+    if (!this.props.auth.isAuthenticated) {
+      return (
+        <div className="form-container">
+          <form>
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                name="email"
+                type="email"
+                placeholder="email"
+                value={this.state.email}
+                onChange={this.inputChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="">Password</label>
+              <input
+                name="password"
+                type="password"
+                placeholder="password"
+                value={this.state.password}
+                onChange={this.inputChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="">Confirm Password</label>
+              <input
+                name="password2"
+                type="password"
+                placeholder="confirm password"
+                value={this.state.password2}
+                onChange={this.inputChange}
+              />
+            </div>
+            <button type="submit" onClick={this.handleSubmit}>
+              Sign Up
+            </button>
+          </form>
+        </div>
+      );
+    }
     return (
-      <div className="form-container">
-        <form>
-          <div className="form-group">
-            <label>Email</label>
-            <input
-              name="email"
-              type="email"
-              placeholder="email"
-              value={this.state.email}
-              onChange={this.inputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="">Password</label>
-            <input
-              name="password"
-              type="password"
-              placeholder="password"
-              value={this.state.password}
-              onChange={this.inputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="">Confirm Password</label>
-            <input
-              name="password2"
-              type="password"
-              placeholder="confirm password"
-              value={this.state.password2}
-              onChange={this.inputChange}
-            />
-          </div>
-          <button type="submit" onClick={this.handleSubmit}>
-            Sign Up
-          </button>
-        </form>
+      <div>
+        <p>Registered and logged in!</p>
+        <a className="link" href="/dashboard">
+          Go To Dashboard
+        </a>
+        <a className="link" href="/matching">
+          Start Matching
+        </a>
       </div>
     );
   }

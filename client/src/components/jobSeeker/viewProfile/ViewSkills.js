@@ -14,9 +14,20 @@ class ViewExperience extends Component {
   };
 
   render() {
+    console.log(this.props.seeker.seekerProfile.skills);
+    if (this.props.seeker.seekerProfile.skills.length === 0) {
+      return <p>Loading</p>;
+    }
     return (
       <div>
         <h2>View Skills</h2>
+        {/* {this.props.seeker.seekerProfile.skills.map(skill => {
+          return (
+            <div key={skill.id}>
+              <p>{skill.seekerSkill}</p>
+            </div>
+          );
+        })} */}
         <button onClick={this.deleteSkills}>Delete Skills</button>
       </div>
     );
