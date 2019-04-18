@@ -2,8 +2,46 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions";
+import styled from 'styled-components';
 
-import "./Header.scss";
+// import "./Header.scss";
+
+const HeaderNav = styled.nav`
+  background: #6891F9;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`
+const Logo = styled.div`
+  color: white;
+  width: 100px;
+  text-align: center;
+`
+const HeaderLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    color: black;
+  }
+
+  a{
+    color: white;
+    
+    :hover {
+      color: #222;
+    }
+  }
+`
+const NavLinkCluster = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  align-items: center;
+  font-weight: bold;
+  
+    
+`
 
 class Header extends Component {
   render() {
@@ -12,41 +50,45 @@ class Header extends Component {
     let signUp;
     let matching;
     if (this.props.auth.isAuthenticated) {
-      logout = <button onClick={this.props.logoutUser}>Logout</button>;
+        logout = <HeaderLink to='/' onClick={this.props.logoutUser}>Logout</HeaderLink>
       matching = (
-        <Link to="/matching" style={{ textDecoration: "none" }}>
-          <p className="link">Matching</p>
-        </Link>
+        <HeaderLink to="/matching" style={{ textDecoration: "none" }}>
+          Matching
+        </HeaderLink>
       );
     } else {
       login = (
-        <Link to="/login" style={{ textDecoration: "none" }}>
-          <p className="link">Login</p>
-        </Link>
+        <HeaderLink to="/login" style={{ textDecoration: "none" }}>
+          Login
+        </HeaderLink>
       );
       signUp = (
-        <Link to="/register" style={{ textDecoration: "none" }}>
-          <p className="link">Sign Up</p>
-        </Link>
+        <HeaderLink to="/register" style={{ textDecoration: "none" }}>
+          Sign Up
+        </HeaderLink>
       );
     }
     return (
-      <div className="navbar">
-        <h1>Droom</h1>
-        <Link to="/dashboard" style={{ textDecoration: "none" }}>
-          <p className="link">Dashboard</p>
-        </Link>
-        {matching}
-        <a href="/employers" style={{ textDecoration: "none" }}>
-          <p className="link">Employers</p>
-        </a>
-        <a href="/jobs" style={{ textDecoration: "none" }}>
-          <p className="link">Jobs</p>
-        </a>
-        {logout}
-        {login}
-        {signUp}
-      </div>
+      <HeaderNav>
+          <Logo>
+            <h1>Droom</h1>
+          </Logo>
+          <NavLinkCluster>
+            <HeaderLink to="/dashboard">
+                Dashboard
+            </HeaderLink>
+              {matching}
+            <HeaderLink to="/employers">
+              Employers
+            </HeaderLink>
+            <HeaderLink to="/jobs">
+              Jobs
+            </HeaderLink>
+              {logout}
+              {login}
+              {signUp}
+          </NavLinkCluster>
+      </HeaderNav>
     );
   }
 }
