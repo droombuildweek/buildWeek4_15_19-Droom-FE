@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { editSeekerSkills, getSeekerSkills } from "../../../actions";
+import _ from "lodash";
 
 class EditSkillsForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userId: this.props.auth.user.subject,
-      seekerSkill: this.props.seeker.seekerProfile.seekerSkill,
+      seekerSkill: "",
       seekerSkills: []
     };
   }
@@ -23,44 +24,37 @@ class EditSkillsForm extends Component {
     });
   };
 
-  addToArray = e => {
-    e.preventDefault();
-    const skill = this.state.seekerSkill;
-    this.state.seekerSkills.push(skill);
-    this.setState({
-      seekerSkill: ""
-    });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    const skillsData = {
-      userId: this.state.userId,
-      seekerSkills: this.state.seekerSkills
+  handleSubmit = id => {
+    const skillData = {
+      seekerSkill: this.state.seekerSkill
     };
-    editSeekerSkills(skillsData, this.props.auth.user.subject);
+    this.props.editSeekerSkills(skillData, id);
   };
 
   render() {
+    if (_.isEmpty(this.props.seeker.seekerProfile.skills)) {
+      return <p>loading</p>;
+    }
     return (
       <div>
-        <form>
-          <h2>Edit Skills</h2>
-          <div>
-            <label>Skill</label>
-            <input
-              name="seekerSkill"
-              type="text"
-              placeholder="skill"
-              value={this.state.seekerSkill}
-              onChange={this.inputChange}
-            />
-          </div>
-          <button onClick={this.addToArray}>Add Skill</button>
-          <button type="submit" onSubmit={this.handleSubmit}>
-            Submit
-          </button>
-        </form>
+        <h2>Edit Skills</h2>
+        {this.props.seeker.seekerProfile.skills.map(skill => {
+          return (
+            <div key={skill.id}>
+              <p>{skill.seekerSkill}</p>
+              <input
+                name="seekerSkill"
+                type="text"
+                placeholder="edit skill"
+                value={this.state.seekerSkill}
+                onChange={this.inputChange}
+              />
+              <button onClick={e => this.handleSubmit(skill.id)}>
+                Submit Edit
+              </button>
+            </div>
+          );
+        })}
       </div>
     );
   }

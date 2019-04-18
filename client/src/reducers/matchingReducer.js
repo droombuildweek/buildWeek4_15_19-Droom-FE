@@ -1,8 +1,15 @@
-import { SET_SEEKER_MATCHES, SET_EMPLOYER_MATCHES } from "../actions/types";
+import {
+  SET_SEEKER_MATCHES,
+  SET_EMPLOYER_MATCHES,
+  SET_SEEKER_PICKS,
+  SET_EMPLOYER_PICKS
+} from "../actions/types";
 
 const initialState = {
   seekerMatches: [],
-  employerMatches: []
+  employerMatches: [],
+  seekerPicks: [],
+  employerPicks: []
 };
 
 export default function(state = initialState, action) {
@@ -16,6 +23,16 @@ export default function(state = initialState, action) {
       return {
         ...state,
         employerMatches: action.payload
+      };
+    case SET_SEEKER_PICKS:
+      return {
+        ...state,
+        seekerPicks: action.payload
+      };
+    case SET_EMPLOYER_PICKS:
+      return {
+        ...state,
+        employerPicks: action.payload
       };
     default:
       return state;

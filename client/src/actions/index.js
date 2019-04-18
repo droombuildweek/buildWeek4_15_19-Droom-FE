@@ -10,7 +10,9 @@ import {
   SET_SEEKER_SKILLS,
   SET_SEEKER_PERSONAL,
   SET_SEEKER_MATCHES,
-  SET_EMPLOYER_MATCHES
+  SET_EMPLOYER_MATCHES,
+  SET_SEEKER_PICKS,
+  SET_EMPLOYER_PICKS
 } from "./types";
 
 const URL = "https://droom-buildweek-4-15-19.herokuapp.com";
@@ -163,33 +165,33 @@ export const submitSeekerSkills = skillsData => dispatch => {
 // edit job seeker personal info
 export const editSeekerPersonal = (personalData, id) => dispatch => {
   axios
-    .put(`${URL}`, personalData)
+    .put(`${URL}/api/seekers/${id}`, personalData)
     .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.response));
 };
 
 // edit job seeker experience
 export const editSeekerExperience = (experienceData, id) => dispatch => {
   axios
-    .put(`${URL}`, experienceData)
+    .put(`${URL}/api/experience/${id}`, experienceData)
     .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.response));
 };
 
 // edit job seeker education
 export const editSeekerEducation = (educationData, id) => dispatch => {
   axios
-    .put(`${URL}`, educationData)
+    .put(`${URL}/api/education/${id}`, educationData)
     .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.response));
 };
 
 // edit job seeker skills
 export const editSeekerSkills = (skillsData, id) => dispatch => {
   axios
-    .put(`${URL}`, skillsData)
+    .put(`${URL}/api/skills/${id}`, skillsData)
     .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.response));
 };
 
 // delete job seeker personal info
@@ -294,6 +296,7 @@ export const submitCompanyInfo = companyData => dispatch => {
 
 // submit job info form
 export const submitJobInfo = jobData => dispatch => {
+  console.log(jobData);
   axios
     .post(`${URL}/api/jobs`, jobData)
     .then(res => console.log(res))
@@ -358,4 +361,20 @@ export const getEmployerMatches = id => dispatch => {
       });
     })
     .catch(err => console.log(err));
+};
+
+// saves seeker picks
+export const getSeekerPicks = picks => dispatch => {
+  dispatch({
+    type: SET_SEEKER_PICKS,
+    payload: picks
+  });
+};
+
+// saves employer picks
+export const getEmployerPicks = picks => dispatch => {
+  dispatch({
+    type: SET_EMPLOYER_PICKS,
+    payload: picks
+  });
 };
