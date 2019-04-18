@@ -9,7 +9,8 @@ import {
   SET_SEEKER_EDUCATION,
   SET_SEEKER_SKILLS,
   SET_SEEKER_PERSONAL,
-  SET_SEEKER_MATCHES
+  SET_SEEKER_MATCHES,
+  SET_EMPLOYER_MATCHES
 } from "./types";
 
 const URL = "https://droom-buildweek-4-15-19.herokuapp.com";
@@ -332,12 +333,27 @@ export const deleteEmployerJob = id => dispatch => {
 };
 
 // Matching
+
+// matching for seekers
 export const getSeekerMatches = id => dispatch => {
   axios
     .get(`${URL}/api/matches/seeker/${id}`)
     .then(res => {
       dispatch({
         type: SET_SEEKER_MATCHES,
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
+};
+
+// matching for employers
+export const getEmployerMatches = id => dispatch => {
+  axios
+    .get(`${URL}/api/matches/company/${id}`)
+    .then(res => {
+      dispatch({
+        type: SET_EMPLOYER_MATCHES,
         payload: res.data
       });
     })

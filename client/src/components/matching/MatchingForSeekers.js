@@ -17,14 +17,14 @@ class MatchingForSeekers extends Component {
       slidesToShow: 1,
       slidesToScroll: 1
     };
-    if (this.props.matches.matches.length === 0) {
+    if (this.props.matches.seekerMatches.length === 0) {
       return <p>Loading</p>;
     }
     return (
       <div>
         <h2>Job Seeker Matching</h2>
         <Slider {...settings}>
-          {this.props.matches.matches.map(match => {
+          {this.props.matches.seekerMatches.map(match => {
             return (
               <div key={match.id}>
                 <h3>{match.jobName}</h3>

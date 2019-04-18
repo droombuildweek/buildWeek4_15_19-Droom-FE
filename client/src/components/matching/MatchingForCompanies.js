@@ -1,19 +1,11 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import { connect } from "react-redux";
-import {
-  getSeekerPersonal,
-  getSeekerExperience,
-  getSeekerEducation,
-  getSeekerSkills
-} from "../../actions";
+import { getEmployerMatches } from "../../actions";
 
 class MatchingForCompanies extends Component {
   componentDidMount() {
-    this.props.getSeekerPersonal(this.props.auth.user.subject);
-    this.props.getSeekerExperience(this.props.auth.user.subject);
-    this.props.getSeekerEducation(this.props.auth.user.subject);
-    this.props.getSeekerSkills(this.props.auth.user.subject);
+    this.props.getEmployerMatches(this.props.auth.user.subject);
   }
 
   addMatch = e => {};
@@ -25,22 +17,20 @@ class MatchingForCompanies extends Component {
       slidesToShow: 1,
       slidesToScroll: 1
     };
-    if (this.props.seeker.seekerProfile.length === 0) {
+    if (this.props.matches.employerMatches.length === 0) {
       return <p>Loading</p>;
     }
     return (
       <div>
         <h2>Employer Matching</h2>
         <Slider {...settings}>
-          {/* {this.props.employer.seekerProfile.companies.map(company => {
+          {this.props.matches.employerMatches.map(match => {
             return (
-              <div key={company.id}>
-                <h3>{company.companyName}</h3>
-                <p>{company.companyDescription}</p>
-                <button onClick={this.addMatch}>Match</button>
+              <div key={match.seekerId}>
+                <h3>{match.profile.firstName}</h3>
               </div>
             );
-          })} */}
+          })}
         </Slider>
       </div>
     );
@@ -49,16 +39,12 @@ class MatchingForCompanies extends Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  seeker: state.seeker,
-  employer: state.employer
+  matches: state.matches
 });
 
 export default connect(
   mapStateToProps,
   {
-    getSeekerPersonal,
-    getSeekerExperience,
-    getSeekerEducation,
-    getSeekerSkills
+    getEmployerMatches
   }
 )(MatchingForCompanies);

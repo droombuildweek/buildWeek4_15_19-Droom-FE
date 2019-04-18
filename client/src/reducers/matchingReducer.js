@@ -1,7 +1,8 @@
-import { SET_SEEKER_MATCHES } from "../actions/types";
+import { SET_SEEKER_MATCHES, SET_EMPLOYER_MATCHES } from "../actions/types";
 
 const initialState = {
-  matches: []
+  seekerMatches: [],
+  employerMatches: []
 };
 
 export default function(state = initialState, action) {
@@ -9,7 +10,12 @@ export default function(state = initialState, action) {
     case SET_SEEKER_MATCHES:
       return {
         ...state,
-        matches: action.payload
+        seekerMatches: action.payload
+      };
+    case SET_EMPLOYER_MATCHES:
+      return {
+        ...state,
+        employerMatches: action.payload
       };
     default:
       return state;
