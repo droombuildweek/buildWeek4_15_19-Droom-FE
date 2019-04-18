@@ -8,10 +8,13 @@ class ViewExperience extends Component {
     this.props.getSeekerEducation(this.props.auth.user.subject);
   }
 
-  deleteEducation = e => {
-    e.preventDefault();
+  componentDidUpdate() {
+    this.props.getSeekerEducation(this.props.auth.user.subject);
+  }
+
+  deleteEducation = id => {
     alert("Are you sure you want to delete your education?");
-    this.props.deleteSeekerEducation(this.props.auth.user.subject);
+    this.props.deleteSeekerEducation(id);
   };
 
   render() {
@@ -29,10 +32,12 @@ class ViewExperience extends Component {
               <p>{education.eduDescription}</p>
               <p>{education.eduStart}</p>
               <p>{education.eduEnd}</p>
+              <button onClick={e => this.deleteEducation(education.id)}>
+                Delete Education
+              </button>
             </div>
           );
         })}
-        <button onClick={this.deleteEducation}>Delete Education</button>
       </div>
     );
   }

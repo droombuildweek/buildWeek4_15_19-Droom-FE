@@ -8,6 +8,10 @@ class ViewExperience extends Component {
     this.props.getSeekerExperience(this.props.auth.user.subject);
   }
 
+  componentDidUpdate() {
+    this.props.getSeekerExperience(this.props.auth.user.subject);
+  }
+
   deleteExperience = id => {
     alert("Are you sure you want to delete your previous experience?");
     this.props.deleteSeekerExperience(id);
