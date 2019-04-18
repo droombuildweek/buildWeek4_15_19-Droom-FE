@@ -308,7 +308,7 @@ export const editCompanyInfo = (companyData, id) => dispatch => {
   axios
     .put(`${URL}/api/companies/${id}`, companyData)
     .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.response));
 };
 
 // edit employer job info
@@ -316,7 +316,7 @@ export const editJobInfo = (jobData, id) => dispatch => {
   axios
     .put(`${URL}/api/jobs/${id}`, jobData)
     .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.response));
 };
 
 // delete employer company

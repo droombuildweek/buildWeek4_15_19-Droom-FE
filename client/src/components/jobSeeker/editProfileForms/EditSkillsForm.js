@@ -29,6 +29,7 @@ class EditSkillsForm extends Component {
       seekerSkill: this.state.seekerSkill
     };
     this.props.editSeekerSkills(skillData, id);
+    console.log(skillData);
   };
 
   render() {

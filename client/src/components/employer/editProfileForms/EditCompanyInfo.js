@@ -5,6 +5,7 @@ import {
   getEmployerProfiles,
   getEmployerProfile
 } from "../../../actions";
+import _ from "lodash";
 
 class EditCompanyInfo extends Component {
   constructor(props) {
@@ -18,11 +19,21 @@ class EditCompanyInfo extends Component {
       state: "",
       city: "",
       zipcode: ""
+      // userId: this.props.auth.user.subject,
+      // companyName: this.props.employer.employerProfile.companies.companyName,
+      // companyPicture: this.props.employer.employerProfile.companies
+      //   .companyPicture,
+      // companyDescription: this.props.employer.employerProfile.companies
+      //   .companyDescription,
+      // country: this.props.employer.employerProfile.companies.country,
+      // state: this.props.employer.employerProfile.companies.state,
+      // city: this.props.employer.employerProfile.companies.city,
+      // zipcode: this.props.employer.employerProfile.companies.zipcode
     };
   }
 
   componentDidMount() {
-    this.props.getEmployerProfile();
+    this.props.getEmployerProfile(this.props.auth.user.subject);
   }
 
   inputChange = e => {
@@ -36,34 +47,44 @@ class EditCompanyInfo extends Component {
     e.preventDefault();
     const companyData = {
       userId: this.state.userId,
-      company: {
-        companyName: this.state.companyName,
-        companyPicture: this.state.companyPicture,
-        companyDescription: this.state.companyDescription,
-        country: this.state.country,
-        state: this.state.state,
-        city: this.state.city,
-        zipcode: this.state.zipcode
-      }
+      companyName: this.state.companyName,
+      companyPicture: this.state.companyPicture,
+      companyDescription: this.state.companyDescription,
+      country: this.state.country,
+      state: this.state.state,
+      city: this.state.city,
+      zipcode: this.state.zipcode
     };
-    // Needs ID
+
     this.props.editCompanyInfo(
       companyData,
-      this.props.employer.getEmployerProfile.id
+      this.props.employer.employerProfile.companies.id
     );
   };
 
   render() {
+    if (_.isEmpty(this.props.employer.employerProfile)) {
+      return <p>loading</p>;
+    }
     return (
       <div>
         <form>
           <h2>Edit Company Info</h2>
+          <p>{this.props.employer.employerProfile.companies.companyName}</p>
+          <p>{this.props.employer.employerProfile.companies.companyPicture}</p>
+          <p>
+            {this.props.employer.employerProfile.companies.companyDescription}
+          </p>
+          <p>{this.props.employer.employerProfile.companies.country}</p>
+          <p>{this.props.employer.employerProfile.companies.state}</p>
+          <p>{this.props.employer.employerProfile.companies.city}</p>
+          <p>{this.props.employer.employerProfile.companies.zipcode}</p>
           <div>
             <label>Company Name</label>
             <input
               name="companyName"
               type="text"
-              placeholder="company name"
+              placeholder="edit company name"
               value={this.state.companyName}
               onChange={this.inputChange}
             />
@@ -73,7 +94,7 @@ class EditCompanyInfo extends Component {
             <input
               name="companyPicture"
               type="text"
-              placeholder="company picture url"
+              placeholder="edit company picture url"
               value={this.state.companyPicture}
               onChange={this.inputChange}
             />
@@ -83,7 +104,7 @@ class EditCompanyInfo extends Component {
             <input
               name="companyDescription"
               type="text"
-              placeholder="company description"
+              placeholder="edit company description"
               value={this.state.companyDescription}
               onChange={this.inputChange}
             />
@@ -93,35 +114,33 @@ class EditCompanyInfo extends Component {
             <input
               name="country"
               type="text"
-              placeholder="country"
+              placeholder="edit country"
               value={this.state.country}
               onChange={this.inputChange}
             />
             <input
               name="state"
               type="text"
-              placeholder="state"
+              placeholder="edit state"
               value={this.state.state}
               onChange={this.inputChange}
             />
             <input
               name="city"
               type="text"
-              placeholder="city"
+              placeholder="edit city"
               value={this.state.city}
               onChange={this.inputChange}
             />
             <input
               name="zipcode"
               type="text"
-              placeholder="zipcode"
+              placeholder="edit zipcode"
               value={this.state.zipcode}
               onChange={this.inputChange}
             />
           </div>
-          <button type="submit" onSubmit={this.handleSubmit}>
-            Submit
-          </button>
+          <button onClick={this.handleSubmit}>Submit Edit</button>
         </form>
       </div>
     );

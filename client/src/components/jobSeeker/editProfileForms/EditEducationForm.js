@@ -30,13 +30,14 @@ class EditEducationForm extends Component {
 
   handleSubmit = id => {
     const educationData = {
-      eduSchool: "",
-      eduCredential: "",
-      eduDescription: "",
-      eduStart: "",
-      eduEnd: ""
+      eduSchool: this.state.eduSchool,
+      eduCredential: this.state.eduCredential,
+      eduDescription: this.state.eduDescription,
+      eduStart: this.state.eduStart,
+      eduEnd: this.state.eduEnd
     };
     this.props.editSeekerEducation(educationData, id);
+    console.log(educationData);
   };
 
   render() {
@@ -105,7 +106,7 @@ class EditEducationForm extends Component {
                 />
               </div>
               <button onClick={e => this.handleSubmit(education.id)}>
-                Submit
+                Submit Edit
               </button>
             </div>
           );
