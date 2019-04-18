@@ -7,16 +7,16 @@ class EditPersonalForm extends Component {
     super(props);
     this.state = {
       userId: this.props.auth.user.subject,
-      firstName: this.props.seeker.seekerProfile.firstName,
-      lastName: this.props.seeker.seekerProfile.lastName,
-      profilePicture: this.props.seeker.seekerProfile.profilePicture,
-      month: this.props.seeker.seekerProfile.month,
-      date: this.props.seeker.seekerProfile.date,
-      year: this.props.seeker.seekerProfile.year,
-      country: this.props.seeker.seekerProfile.country,
-      state: this.props.seeker.seekerProfile.state,
-      city: this.props.seeker.seekerProfile.city,
-      zipcode: this.props.seeker.seekerProfile.zipcode
+      firstName: this.props.seeker.seekerProfile.personal.firstName,
+      lastName: this.props.seeker.seekerProfile.personal.lastName,
+      profilePicture: this.props.seeker.seekerProfile.personal.profilePicture,
+      month: this.props.seeker.seekerProfile.personal.month,
+      date: this.props.seeker.seekerProfile.personal.date,
+      year: this.props.seeker.seekerProfile.personal.year,
+      country: this.props.seeker.seekerProfile.personal.country,
+      state: this.props.seeker.seekerProfile.personal.state,
+      city: this.props.seeker.seekerProfile.personal.city,
+      zipcode: this.props.seeker.seekerProfile.personal.zipcode
     };
   }
 
@@ -141,7 +141,7 @@ class EditPersonalForm extends Component {
               onChange={this.inputChange}
             />
           </div>
-          <button type="submit" onSubmit={this.handleSubmit}>
+          <button type="submit" onClick={this.handleSubmit}>
             Submit
           </button>
         </form>

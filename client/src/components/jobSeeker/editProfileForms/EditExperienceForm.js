@@ -54,7 +54,7 @@ class EditExperienceForm extends Component {
     };
     this.props.editSeekerExperience(
       experienceData,
-      this.props.auth.user.subject
+      this.props.seeker.seekerProfile.experience.id
     );
   };
 
@@ -114,7 +114,7 @@ class EditExperienceForm extends Component {
             />
           </div>
           <button onClick={this.addToArray}>Add Experience</button>
-          <button type="submit" onSubmit={this.handleSubmit}>
+          <button type="submit" onClick={this.handleSubmit}>
             Submit
           </button>
         </form>

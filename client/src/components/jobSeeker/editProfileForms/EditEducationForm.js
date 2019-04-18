@@ -52,7 +52,10 @@ class EditEducationForm extends Component {
       userId: this.state.userId,
       seekerEducation: this.state.educations
     };
-    this.props.editSeekerEducation(educationData, this.props.auth.user.subject);
+    this.props.editSeekerEducation(
+      educationData,
+      this.props.seeker.seekerProfile.education.id
+    );
   };
 
   render() {
@@ -111,7 +114,7 @@ class EditEducationForm extends Component {
             />
           </div>
           <button onClick={this.addToArray}>Add Education</button>
-          <button type="submit" onSubmit={this.handleSubmit}>
+          <button type="submit" onClick={this.handleSubmit}>
             Submit
           </button>
         </form>

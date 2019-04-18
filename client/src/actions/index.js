@@ -163,33 +163,33 @@ export const submitSeekerSkills = skillsData => dispatch => {
 // edit job seeker personal info
 export const editSeekerPersonal = (personalData, id) => dispatch => {
   axios
-    .put(`${URL}`, personalData)
+    .put(`${URL}/api/seekers/${id}`, personalData)
     .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.response));
 };
 
 // edit job seeker experience
 export const editSeekerExperience = (experienceData, id) => dispatch => {
   axios
-    .put(`${URL}`, experienceData)
+    .put(`${URL}/api/experience/${id}`, experienceData)
     .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.response));
 };
 
 // edit job seeker education
 export const editSeekerEducation = (educationData, id) => dispatch => {
   axios
-    .put(`${URL}`, educationData)
+    .put(`${URL}/api/education/${id}`, educationData)
     .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.response));
 };
 
 // edit job seeker skills
 export const editSeekerSkills = (skillsData, id) => dispatch => {
   axios
-    .put(`${URL}`, skillsData)
+    .put(`${URL}/api/skills/${id}`, skillsData)
     .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.response));
 };
 
 // delete job seeker personal info
@@ -294,6 +294,7 @@ export const submitCompanyInfo = companyData => dispatch => {
 
 // submit job info form
 export const submitJobInfo = jobData => dispatch => {
+  console.log(jobData);
   axios
     .post(`${URL}/api/jobs`, jobData)
     .then(res => console.log(res))

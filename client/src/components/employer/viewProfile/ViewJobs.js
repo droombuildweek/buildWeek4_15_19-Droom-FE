@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { deleteEmployerJob, getEmployerJob } from "../../../actions";
+import _ from "lodash";
 
 class ViewJobs extends Component {
   componentDidMount() {
@@ -14,9 +15,23 @@ class ViewJobs extends Component {
   };
 
   render() {
+    if (_.isEmpty(this.props.employer.employerProfile)) {
+      return <p>loading</p>;
+    }
     return (
       <div>
         <h2>View Jobs</h2>
+        {/* {this.props.employer.employerProfile.jobs.map(job => {
+          return (
+            <div>
+              <p>{job.jobName}</p>
+              <p>{job.jobDescription}</p>
+              <p>{job.jobExperienceRequired}</p>
+              <p>{job.jobExperiencePreferred}</p>
+              <p>{job.jobApplyBy}</p>
+            </div>
+          );
+        })} */}
         <button onClick={this.deleteJob}>Delete Job</button>
       </div>
     );
