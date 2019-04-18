@@ -48,7 +48,7 @@ class EditEducationForm extends Component {
       userId: this.state.userId,
       seekerEducation: this.state.educations
     };
-    editSeekerEducation(educationData);
+    editSeekerEducation(educationData, this.props.auth.user.subject);
   };
 
   render() {
