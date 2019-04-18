@@ -10,7 +10,9 @@ import {
   SET_SEEKER_SKILLS,
   SET_SEEKER_PERSONAL,
   SET_SEEKER_MATCHES,
-  SET_EMPLOYER_MATCHES
+  SET_EMPLOYER_MATCHES,
+  SET_SEEKER_PICKS,
+  SET_EMPLOYER_PICKS
 } from "./types";
 
 const URL = "https://droom-buildweek-4-15-19.herokuapp.com";
@@ -359,4 +361,12 @@ export const getEmployerMatches = id => dispatch => {
       });
     })
     .catch(err => console.log(err));
+};
+
+// saves seeker picks
+export const getSeekerPicks = picks => dispatch => {
+  dispatch({
+    type: SET_SEEKER_PICKS,
+    payload: picks
+  });
 };

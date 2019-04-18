@@ -27,7 +27,11 @@ class MatchingForCompanies extends Component {
           {this.props.matches.employerMatches.map(match => {
             return (
               <div key={match.seekerId}>
-                <h3>{match.profile.firstName}</h3>
+                {/* <h3>{match.profile.firstName}</h3> */}
+                {match.skills.map(skill => {
+                  return <p>{skill}</p>;
+                })}
+                <button onClick={this.addMatch}>Match</button>
               </div>
             );
           })}

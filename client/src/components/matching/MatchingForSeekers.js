@@ -1,14 +1,27 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import { connect } from "react-redux";
-import { getSeekerMatches } from "../../actions";
+import { getSeekerMatches, getSeekerPicks } from "../../actions";
 
 class MatchingForSeekers extends Component {
+  constructor() {
+    super();
+    this.state = {
+      matches: []
+    };
+  }
   componentDidMount() {
     this.props.getSeekerMatches(this.props.auth.user.subject);
   }
 
-  addMatch = e => {};
+  addMatch = id => {
+    this.state.matches.push(this.props.matches.seekerMatches[id]);
+  };
+
+  submitMatches = e => {
+    e.preventDefault();
+    this.props.getSeekerPicks(this.state.matches);
+  };
 
   render() {
     const settings = {
@@ -29,11 +42,12 @@ class MatchingForSeekers extends Component {
               <div key={match.id}>
                 <h3>{match.jobName}</h3>
                 <p>{match.jobDescription}</p>
-                <button onClick={this.addMatch}>Match</button>
+                <button onClick={e => this.addMatch(match.id)}>Match</button>
               </div>
             );
           })}
         </Slider>
+        <button onClick={this.submitMatches}>Submit Matches</button>
       </div>
     );
   }
@@ -46,5 +60,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getSeekerMatches }
+  { getSeekerMatches, getSeekerPicks }
 )(MatchingForSeekers);
