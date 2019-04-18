@@ -37,12 +37,12 @@ class Header extends Component {
           <p className="link">Dashboard</p>
         </Link>
         {matching}
-        <Link to="/employers" style={{ textDecoration: "none" }}>
+        <a href="/employers" style={{ textDecoration: "none" }}>
           <p className="link">Employers</p>
-        </Link>
-        <Link to="/jobs" style={{ textDecoration: "none" }}>
+        </a>
+        <a href="/jobs" style={{ textDecoration: "none" }}>
           <p className="link">Jobs</p>
-        </Link>
+        </a>
         {logout}
         {login}
         {signUp}
