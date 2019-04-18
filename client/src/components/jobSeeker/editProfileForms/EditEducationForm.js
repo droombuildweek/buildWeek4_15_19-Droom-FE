@@ -1,19 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { editSeekerEducation } from "../../../actions";
+import { editSeekerEducation, getSeekerEducation } from "../../../actions";
 
 class EditEducationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userId: this.props.auth.user.subject,
-      eduSchool: "",
-      eduCredential: "",
-      eduDescription: "",
-      eduStart: "",
-      eduEnd: "",
+      eduSchool: this.props.seeker.seekerProfile.eduSchool,
+      eduCredential: this.props.seeker.seekerProfile.eduCredential,
+      eduDescription: this.props.seeker.seekerProfile.eduDescription,
+      eduStart: this.props.seeker.seekerProfile.eduStart,
+      eduEnd: this.props.seeker.seekerProfile.eduEnd,
       educations: []
     };
+  }
+
+  componentDidMount() {
+    this.props.getSeekerEducation(this.props.auth.user.subject);
   }
 
   inputChange = e => {
@@ -48,7 +52,7 @@ class EditEducationForm extends Component {
       userId: this.state.userId,
       seekerEducation: this.state.educations
     };
-    editSeekerEducation(educationData, this.props.auth.user.subject);
+    this.props.editSeekerEducation(educationData, this.props.auth.user.subject);
   };
 
   render() {
@@ -123,5 +127,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { editSeekerEducation }
+  { editSeekerEducation, getSeekerEducation }
 )(EditEducationForm);

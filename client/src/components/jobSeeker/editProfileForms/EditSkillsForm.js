@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { editSeekerSkills } from "../../../actions";
+import { editSeekerSkills, getSeekerSkills } from "../../../actions";
 
 class EditSkillsForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userId: this.props.auth.user.subject,
-      seekerSkill: "",
+      seekerSkill: this.props.seeker.seekerProfile.seekerSkill,
       seekerSkills: []
     };
+  }
+
+  componentDidMount() {
+    this.props.getSeekerSkills(this.props.auth.user.subject);
   }
 
   inputChange = e => {
@@ -41,7 +45,7 @@ class EditSkillsForm extends Component {
     return (
       <div>
         <form>
-          <h2>Skills</h2>
+          <h2>Edit Skills</h2>
           <div>
             <label>Skill</label>
             <input
@@ -69,5 +73,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { editSeekerSkills }
+  { editSeekerSkills, getSeekerSkills }
 )(EditSkillsForm);

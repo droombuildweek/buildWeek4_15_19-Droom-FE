@@ -3,9 +3,14 @@ import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import {
   SET_CURRENT_USER,
-  SET_SEEKER_PROFILE,
   SET_EMPLOYER_PROFILE,
-  SET_EMPLOYER_PROFILES
+  SET_EMPLOYER_PROFILES,
+  SET_SEEKER_EXPERIENCE,
+  SET_SEEKER_EDUCATION,
+  SET_SEEKER_SKILLS,
+  SET_SEEKER_PERSONAL,
+  SET_SEEKER_MATCHES,
+  SET_EMPLOYER_MATCHES
 } from "./types";
 
 const URL = "https://droom-buildweek-4-15-19.herokuapp.com";
@@ -31,7 +36,7 @@ export const registerUser = (userData, history) => dispatch => {
 };
 
 // login user
-export const loginUser = userData => dispatch => {
+export const loginUser = (userData, history) => dispatch => {
   console.log(userData);
   axios
     .post(`${URL}/api/auth/login`, userData)
@@ -77,7 +82,7 @@ export const getSeekerPersonal = id => dispatch => {
     .get(`${URL}/api/seekers/${id}`)
     .then(res => {
       dispatch({
-        type: SET_SEEKER_PROFILE,
+        type: SET_SEEKER_PERSONAL,
         payload: res.data
       });
     })
@@ -90,7 +95,7 @@ export const getSeekerExperience = id => dispatch => {
     .get(`${URL}/api/experience/${id}`)
     .then(res => {
       dispatch({
-        type: SET_SEEKER_PROFILE,
+        type: SET_SEEKER_EXPERIENCE,
         payload: res.data
       });
     })
@@ -103,7 +108,7 @@ export const getSeekerEducation = id => dispatch => {
     .get(`${URL}/api/education/${id}`)
     .then(res => {
       dispatch({
-        type: SET_SEEKER_PROFILE,
+        type: SET_SEEKER_EDUCATION,
         payload: res.data
       });
     })
@@ -116,7 +121,7 @@ export const getSeekerSkills = id => dispatch => {
     .get(`${URL}/api/skills/${id}`)
     .then(res => {
       dispatch({
-        type: SET_SEEKER_PROFILE,
+        type: SET_SEEKER_SKILLS,
         payload: res.data
       });
     })
@@ -324,5 +329,33 @@ export const deleteEmployerJob = id => dispatch => {
   axios
     .delete(`${URL}/api/job/${id}`)
     .then(res => console.log(res))
+    .catch(err => console.log(err));
+};
+
+// Matching
+
+// matching for seekers
+export const getSeekerMatches = id => dispatch => {
+  axios
+    .get(`${URL}/api/matches/seeker/${id}`)
+    .then(res => {
+      dispatch({
+        type: SET_SEEKER_MATCHES,
+        payload: res.data
+      });
+    })
+    .catch(err => console.log(err));
+};
+
+// matching for employers
+export const getEmployerMatches = id => dispatch => {
+  axios
+    .get(`${URL}/api/matches/company/${id}`)
+    .then(res => {
+      dispatch({
+        type: SET_EMPLOYER_MATCHES,
+        payload: res.data
+      });
+    })
     .catch(err => console.log(err));
 };

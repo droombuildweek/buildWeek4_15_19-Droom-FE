@@ -28,7 +28,9 @@ import ViewPersonal from "./components/jobSeeker/viewProfile/ViewPersonal";
 import ViewExperience from "./components/jobSeeker/viewProfile/ViewExperience";
 import ViewEducation from "./components/jobSeeker/viewProfile/ViewEducation";
 import ViewSkills from "./components/jobSeeker/viewProfile/ViewSkills";
-import Matching from "./components/matching/Matching";
+import MatchingForSeekers from "./components/matching/MatchingForSeekers";
+import MatchingForCompanies from "./components/matching/MatchingForCompanies";
+import MatchingHome from "./components/matching/MatchingHome";
 
 // Styling
 import "./App.css";
@@ -86,9 +88,25 @@ class App extends Component {
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Home} />
             </Switch>
-            {/* Matching Route */}
+            {/* Matching Home Route */}
             <Switch>
-              <PrivateRoute exact path="/matching" component={Matching} />
+              <PrivateRoute exact path="/matching" component={MatchingHome} />
+            </Switch>
+            {/* Matching for Seekers Route */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/matching/jobSeekers"
+                component={MatchingForSeekers}
+              />
+            </Switch>
+            {/* Matching for Companies Route */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/matching/employers"
+                component={MatchingForCompanies}
+              />
             </Switch>
             {/* Render Employers Route */}
             <Route exact path="/employers" component={Employers} />

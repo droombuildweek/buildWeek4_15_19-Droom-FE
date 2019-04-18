@@ -1,23 +1,27 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { editSeekerPersonal } from "../../../actions";
+import { editSeekerPersonal, getSeekerPersonal } from "../../../actions";
 
 class EditPersonalForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userId: this.props.auth.user.subject,
-      firstName: "",
-      lastName: "",
-      profilePicture: "",
-      month: "",
-      date: "",
-      year: "",
-      country: "",
-      state: "",
-      city: "",
-      zipcode: ""
+      firstName: this.props.seeker.seekerProfile.firstName,
+      lastName: this.props.seeker.seekerProfile.lastName,
+      profilePicture: this.props.seeker.seekerProfile.profilePicture,
+      month: this.props.seeker.seekerProfile.month,
+      date: this.props.seeker.seekerProfile.date,
+      year: this.props.seeker.seekerProfile.year,
+      country: this.props.seeker.seekerProfile.country,
+      state: this.props.seeker.seekerProfile.state,
+      city: this.props.seeker.seekerProfile.city,
+      zipcode: this.props.seeker.seekerProfile.zipcode
     };
+  }
+
+  componentDidMount() {
+    this.props.getSeekerPersonal(this.props.auth.user.subject);
   }
 
   inputChange = e => {
@@ -44,7 +48,7 @@ class EditPersonalForm extends Component {
         zipcode: this.state.zipcode
       }
     };
-    editSeekerPersonal(personalData, this.props.auth.user.subject);
+    this.props.editSeekerPersonal(personalData, this.props.auth.user.subject);
   };
 
   render() {
@@ -153,5 +157,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { editSeekerPersonal }
+  { editSeekerPersonal, getSeekerPersonal }
 )(EditPersonalForm);
