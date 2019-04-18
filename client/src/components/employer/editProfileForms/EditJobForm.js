@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { editJobInfo, getEmployerJob, getEmployerJobs } from "../../../actions";
+import _ from "lodash";
 
 class EditJobForm extends Component {
   constructor(props) {
@@ -12,11 +13,12 @@ class EditJobForm extends Component {
       jobExperienceRequired: "",
       jobExperiencePreferred: "",
       jobApplyBy: "",
-      jobSkills: [],
-      jobSkill: "",
-      // store id when clicked
-      jobId: ""
+      jobSkill: ""
     };
+  }
+
+  componentDidMount() {
+    this.props.getEmployerJob(this.state.userId);
   }
 
   inputChange = e => {
@@ -26,45 +28,49 @@ class EditJobForm extends Component {
     });
   };
 
-  addToArray = e => {
-    e.preventDefault();
-    const job = {
-      name: this.state.jobSkill
-    };
-    this.setState({
-      jobSkill: ""
-    });
-    this.state.jobSkills.push(job);
-  };
-
   handleSubmit = e => {
     e.preventDefault();
     const jobData = {
-      userId: this.state.userId,
-      job: {
-        jobName: this.state.jobName,
-        jobDescription: this.state.jobDescription,
-        jobExperienceRequired: this.state.jobExperienceRequired,
-        jobExperiencePreferred: this.state.jobExperiencePreferred,
-        jobApplyBy: this.state.jobApplyBy
-      },
-      jobSkills: this.state.jobSkills
+      companyId: "",
+      jobName: this.state.jobName,
+      jobDescription: this.state.jobDescription,
+      jobExperienceRequired: this.state.jobExperienceRequired,
+      jobExperiencePreferred: this.state.jobExperiencePreferred,
+      jobApplyBy: this.state.jobApplyBy
     };
-    // FIX ID
-    editJobInfo(jobData, this.employer.employerProfiles.jobs.id);
+
+    this.props.editJobInfo(
+      jobData,
+      this.props.employer.employerProfile.jobs.id
+    );
+    console.log(this.state);
+    console.log(jobData);
   };
 
   render() {
+    if (_.isEmpty(this.props.employer.employerProfile)) {
+      return <p>loading</p>;
+    }
     return (
       <div>
         <form>
           <h2>Job Info</h2>
+          {/* {this.props.employer.employerProfile.jobs/map} */}
+          <p>{this.props.employer.employerProfile.jobs.jobName}</p>
+          <p>{this.props.employer.employerProfile.jobs.jobDescription}</p>
+          <p>
+            {this.props.employer.employerProfile.jobs.jobExperienceRequired}
+          </p>
+          <p>
+            {this.props.employer.employerProfile.jobs.jobExperiencePreferred}
+          </p>
+          <p>{this.props.employer.employerProfile.jobs.jobApplyBy}</p>
           <div>
             <label>Job Name</label>
             <input
               name="jobName"
               type="text"
-              placeholder="job name"
+              placeholder="edit job name"
               value={this.state.jobName}
               onChange={this.inputChange}
             />
@@ -74,7 +80,7 @@ class EditJobForm extends Component {
             <input
               name="jobDescription"
               type="text"
-              placeholder="job description"
+              placeholder="edit job description"
               value={this.state.jobDescription}
               onChange={this.inputChange}
             />
@@ -84,7 +90,7 @@ class EditJobForm extends Component {
             <input
               name="jobExperienceRequired"
               type="text"
-              placeholder="experience required"
+              placeholder="edit experience required"
               value={this.state.jobExperienceRequired}
               onChange={this.inputChange}
             />
@@ -94,7 +100,7 @@ class EditJobForm extends Component {
             <input
               name="jobExperiencePreferred"
               type="text"
-              placeholder="experience preferred"
+              placeholder="edit experience preferred"
               value={this.state.jobExperiencePreferred}
               onChange={this.inputChange}
             />
@@ -104,7 +110,7 @@ class EditJobForm extends Component {
             <input
               name="jobApplyBy"
               type="text"
-              placeholder="apply by"
+              placeholder="edit apply by"
               value={this.state.jobApplyBy}
               onChange={this.inputChange}
             />
@@ -114,16 +120,13 @@ class EditJobForm extends Component {
             <input
               name="jobSkill"
               type="text"
-              placeholder="skills wanted"
+              placeholder="edit skills wanted"
               value={this.state.jobSkill}
               onChange={this.inputChange}
             />
           </div>
 
-          <button onClick={this.addToArray}>Add Skill</button>
-          <button type="submit" onSubmit={this.handleSubmit}>
-            Submit
-          </button>
+          <button onClick={this.handleSubmit}>Submit Edit</button>
         </form>
       </div>
     );
