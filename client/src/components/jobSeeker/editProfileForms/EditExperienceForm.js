@@ -1,19 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { editSeekerExperience } from "../../../actions";
+import { editSeekerExperience, getSeekerExperience } from "../../../actions";
 
 class EditExperienceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userId: this.props.auth.user.subject,
-      jobTitle: "",
-      jobCompany: "",
-      jobDescription: "",
-      jobStart: "",
-      jobEnd: "",
+      jobTitle: this.props.seeker.seekerProfile.jobTitle,
+      jobCompany: this.props.seeker.seekerProfile.jobCompany,
+      jobDescription: this.props.seeker.seekerProfile.jobDescription,
+      jobStart: this.props.seeker.seekerProfile.jobStart,
+      jobEnd: this.props.seeker.seekerProfile.jobEnd,
       experiences: []
     };
+  }
+
+  componentDidMount() {
+    this.props.getSeekerExperience(this.props.auth.user.subject);
   }
 
   inputChange = e => {
@@ -48,7 +52,10 @@ class EditExperienceForm extends Component {
       userId: this.state.userId,
       seekerExperience: this.state.experiences
     };
-    editSeekerExperience(experienceData, this.props.auth.user.subject);
+    this.props.editSeekerExperience(
+      experienceData,
+      this.props.auth.user.subject
+    );
   };
 
   render() {
@@ -123,5 +130,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { editSeekerExperience }
+  { editSeekerExperience, getSeekerExperience }
 )(EditExperienceForm);

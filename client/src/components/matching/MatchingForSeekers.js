@@ -6,8 +6,9 @@ import { getEmployerProfile, getEmployerProfiles } from "../../actions";
 class MatchingForSeekers extends Component {
   componentDidMount() {
     this.props.getEmployerProfiles();
-    console.log(this.props);
   }
+
+  addMatch = e => {};
 
   render() {
     const settings = {
@@ -28,6 +29,7 @@ class MatchingForSeekers extends Component {
               <div key={company.id}>
                 <h3>{company.companyName}</h3>
                 <p>{company.companyDescription}</p>
+                <button onClick={this.addMatch}>Match</button>
               </div>
             );
           })}
