@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getSeekerEducation, deleteSeekerEducation } from "../../../actions";
+import _ from "lodash";
 
 class ViewExperience extends Component {
   componentDidMount() {
@@ -14,9 +15,23 @@ class ViewExperience extends Component {
   };
 
   render() {
+    if (_.isEmpty(this.props.seeker.seekerProfile.education)) {
+      return <p>Loading</p>;
+    }
     return (
       <div>
         <h2>View Education</h2>
+        {this.props.seeker.seekerProfile.education.map(education => {
+          return (
+            <div key={education.id}>
+              <p>{education.eduSchool}</p>
+              <p>{education.eduCredential}</p>
+              <p>{education.eduDescription}</p>
+              <p>{education.eduStart}</p>
+              <p>{education.eduEnd}</p>
+            </div>
+          );
+        })}
         <button onClick={this.deleteEducation}>Delete Education</button>
       </div>
     );
