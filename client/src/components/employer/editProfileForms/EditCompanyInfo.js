@@ -5,6 +5,7 @@ import {
   getEmployerProfiles,
   getEmployerProfile
 } from "../../../actions";
+import _ from "lodash";
 
 class EditCompanyInfo extends Component {
   constructor(props) {
@@ -62,10 +63,22 @@ class EditCompanyInfo extends Component {
   };
 
   render() {
+    if (_.isEmpty(this.props.employer.employerProfile)) {
+      return <p>loading</p>;
+    }
     return (
       <div>
         <form>
           <h2>Edit Company Info</h2>
+          <p>{this.props.employer.employerProfile.companies.companyName}</p>
+          <p>{this.props.employer.employerProfile.companies.companyPicture}</p>
+          <p>
+            {this.props.employer.employerProfile.companies.companyDescription}
+          </p>
+          <p>{this.props.employer.employerProfile.companies.country}</p>
+          <p>{this.props.employer.employerProfile.companies.state}</p>
+          <p>{this.props.employer.employerProfile.companies.city}</p>
+          <p>{this.props.employer.employerProfile.companies.zipcode}</p>
           <div>
             <label>Company Name</label>
             <input
