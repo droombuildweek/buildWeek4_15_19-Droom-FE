@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { editSeekerPersonal, getSeekerPersonal } from "../../../actions";
+import _ from "lodash";
 
 class EditPersonalForm extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class EditPersonalForm extends Component {
       lastName: this.props.seeker.seekerProfile.personal.lastName,
       profilePicture: this.props.seeker.seekerProfile.personal.profilePicture,
       month: this.props.seeker.seekerProfile.personal.month,
-      date: this.props.seeker.seekerProfile.personal.date,
+      day: this.props.seeker.seekerProfile.personal.day,
       year: this.props.seeker.seekerProfile.personal.year,
       country: this.props.seeker.seekerProfile.personal.country,
       state: this.props.seeker.seekerProfile.personal.state,
@@ -34,24 +35,24 @@ class EditPersonalForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const personalData = {
-      userId: this.state.userId,
-      seeker: {
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        profilePicture: this.state.profilePicture,
-        month: this.state.month,
-        date: this.state.date,
-        year: this.state.year,
-        country: this.state.country,
-        state: this.state.state,
-        city: this.state.city,
-        zipcode: this.state.zipcode
-      }
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      profilePicture: this.state.profilePicture,
+      month: this.state.month,
+      day: this.state.day,
+      year: this.state.year,
+      country: this.state.country,
+      state: this.state.state,
+      city: this.state.city,
+      zipcode: this.state.zipcode
     };
     this.props.editSeekerPersonal(personalData, this.props.auth.user.subject);
   };
 
   render() {
+    if (_.isEmpty(this.props.seeker.seekerProfile.personal)) {
+      return <p>loading</p>;
+    }
     return (
       <div>
         <form>
@@ -96,10 +97,10 @@ class EditPersonalForm extends Component {
               onChange={this.inputChange}
             />
             <input
-              name="date"
+              name="day"
               type="text"
-              placeholder="date"
-              value={this.state.date}
+              placeholder="day"
+              value={this.state.day}
               onChange={this.inputChange}
             />
             <input
