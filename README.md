@@ -1,12 +1,10 @@
-# Droom
-
-## Front-End
+# Droom | Front-End
 
 Link to app: https://droomlambda.netlify.com/
 
 ### What is Droom?
 
-Droom allows job seeker and employers to match with each other in order to provide a seamless hiring process. Think Tinder + LinkedIn.
+Droom allows job seekers and employers to match with each other in order to provide a seamless hiring process. Think Tinder + LinkedIn.
 
 ### What does Droom do?
 
