@@ -7,31 +7,47 @@ import styled from 'styled-components';
 // import "./Register.scss";
 
 const LoginForm = styled.form`
-  position: relative;
-  top: 10vh;
+  /* position: relative; */
+  /* top: 10vh; */
   /* background-color: lightgray; */
   /* border: 1px solid red; */
+  margin-top: 80px;
   width: 50vw;
   min-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* border: 1px solid green; */
 `
 const LoginPageContainer = styled.div`
   display: flex;
   justify-content:space-between;
+  /* border: 1px solid red; */
+  height: 100vh;
+`
+const LogingImageBG = styled.div`
+  background-image: url("https://res.cloudinary.com/dmdvv8dzx/image/upload/v1555644420/BackgroundVector_register_bqkhhp.png");
+  position: relative;
+  height: 100px;
+  width: 100px;
+  /* left: -100px; */
+  /* background-color: #e8ecfb; */
 `
 const LoginImage = styled.img`
   position: relative;
-  top: 20vh;
-  left: 20vw;
+  /* top: 32.5vh;
+  left: 15vw; */
+  margin-left: 150px;
+  margin-top: 100px;
+  width: 800px;
+  height: 400px;
+  z-index: -10;
+  /* border: 1px solid blue; */
 `
-const LogingImageBG = styled.div`
-  background-image: url("client\src\components\auth\images\BackgroundVectorSignup.png");
-`
+
 const LoginInput = styled.input`
   height: 40px;
-  width: 450px;
+  width: 350px;
   padding: 0 10px;
   margin: 15px 0;
   background-color: #eceff6;
@@ -94,9 +110,9 @@ class Register extends Component {
     if (!this.props.auth.isAuthenticated) {
       return (
         <LoginPageContainer>
-          <LogingImageBG>
-            <LoginImage src="client\src\components\auth\images\Illustration.png" alt='signup background' />
-          </LogingImageBG>
+          {/* <LogingImageBG> */}
+            <LoginImage src="https://res.cloudinary.com/dmdvv8dzx/image/upload/v1555644420/Illustration_register_cergkm.png" alt='signup background' />
+          {/* </LogingImageBG> */}
           <LoginForm>
             <LoginTitle>Create a New Account</LoginTitle>
             <div className="form-group">
@@ -137,14 +153,17 @@ class Register extends Component {
       );
     }
     return (
+      // <div>
+      //   <p>Registered and logged in!</p>
+      //   <a className="link" href="/dashboard">
+      //     Go To Dashboard
+      //   </a>
+      //   <a className="link" href="/matching">
+      //     Start Matching
+      //   </a>
+      // </div>
       <div>
-        <p>Registered and logged in!</p>
-        <a className="link" href="/dashboard">
-          Go To Dashboard
-        </a>
-        <a className="link" href="/matching">
-          Start Matching
-        </a>
+        {window.location.href = '/jobSeeker/createProfile/personalInfo'}
       </div>
     );
   }

@@ -54,7 +54,7 @@ class Header extends Component {
         </HeaderLink>
       );
       matching = (
-        <HeaderLink to="/matching" style={{ textDecoration: "none" }}>
+        <HeaderLink to="/matching/jobSeekers" style={{ textDecoration: "none" }}>
           Matching
         </HeaderLink>
       );
@@ -72,13 +72,15 @@ class Header extends Component {
     }
     return (
       <HeaderNav>
-        <Logo>
-          <h1>Droom</h1>
-        </Logo>
-        <NavLinkCluster>
-          <HeaderLink to="/dashboard">Dashboard</HeaderLink>
-          {matching}
-          {/* <HeaderLink to="/employers">
+          <Logo>
+            <h1>Droom</h1>
+          </Logo>
+          <NavLinkCluster>
+            <HeaderLink to="/jobSeeker/personalInfo">
+                Dashboard
+            </HeaderLink>
+              {matching}
+            <HeaderLink to="/employers">
               Employers
             </HeaderLink>
             <HeaderLink to="/jobs">

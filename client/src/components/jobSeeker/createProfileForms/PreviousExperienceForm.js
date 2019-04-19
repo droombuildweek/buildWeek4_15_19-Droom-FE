@@ -1,6 +1,167 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { submitSeekerExperience } from "../../../actions";
+import { Link } from "react-router-dom";
+import styled from 'styled-components';
+
+const DashboardSetupContainer = styled.div`
+  background-color: #6891F9;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+`
+const DashboardTitleContainer = styled.div`
+  width: 70vw;
+  min-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+`
+const TitleText = styled.text`
+  color: white;
+  font-size: 34px;
+  margin-bottom: 5px;
+  font-weight: 200;
+`
+// const SubTitleText = styled.text`
+//   color: lightgrey;
+//   letter-spacing: 1.5px;
+//   font-size: 16px;
+// `
+const DashboardBG = styled.div`
+  background-color: #6891F9;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 30px;
+`
+const DashboardFormContainer = styled.div`
+  background-color: rgba(252, 252, 254, 0.54);
+  width: 70vw;
+  min-width: 800px;
+  height: 530px;
+`
+const DashboardCenterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+`
+const InfoLinkContainer = styled.div`
+  width: 50vw;
+  min-width: 500px;
+  max-width: 800px;
+  margin: 35px auto;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+`
+const InfoLink = styled(Link)`
+  color: #222;
+  text-decoration: none;
+
+  :hover {
+    color: black;
+    text-decoration: underline;
+  }
+`
+const InfoLinkUser = styled(Link)`
+  color: #e5c01b;
+  text-decoration: none;
+  margin-left: 30px;
+  font-weight: bold;
+  font-size: 22px;
+
+  :hover {
+    color: black;
+    text-decoration: underline;
+  }
+`
+const DashboardSubTitle = styled.div`
+  width: 600px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: flex-start;
+`
+const DashboardInputJob = styled.input`
+  height: 40px;
+  width: 600px;
+  margin: 10px 10px;
+  padding: 0 10px;
+  background-color: #eceff6;
+`
+const DashboardInputCompany = styled.input`
+  height: 40px;
+  width: 600px;
+  margin: 10px 10px;
+  padding: 0 10px;
+  background-color: #eceff6;
+`
+const DashboardInputDescription = styled.input`
+  height: 40px;
+  width: 600px;
+  margin: 10px 10px;
+  padding: 0 10px;
+  background-color: #eceff6;
+`
+const DashboardInputStart = styled.input`
+  height: 40px;
+  width: 250px;
+  margin: 10px 10px;
+  padding: 0 10px;
+  background-color: #eceff6;
+`
+const DashboardInputEnd = styled.input`
+  height: 40px;
+  width: 250px;
+  margin: 10px 10px;
+  padding: 0 10px;
+  background-color: #eceff6;
+`
+const DashboardButtonNext = styled.button`
+  width: 120px;
+  height: 40px;
+  background-color: #e5c01b;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+
+  :hover{
+    background-color: #ecd362;
+  }
+`
+const DashboardButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+`
+
+// const DashboardInputContainer = styled.div`
+//   display: flex;
+//   flex-direction: row;
+// `
+const DashboardActionContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+`
+const DACBG = styled.div`
+  background-color: #4c6ab6;
+  width: 100vw;
+  margin-bottom: 20px;
+`
+
+
 class PreviousExperienceForm extends Component {
   constructor(props) {
     super(props);
@@ -52,65 +213,82 @@ class PreviousExperienceForm extends Component {
 
   render() {
     return (
-      <div>
-        <form>
-          <h2>Previous Experience</h2>
+      <DashboardSetupContainer>
+        <DACBG>
+        <DashboardActionContainer>
           <div>
-            <label>Job Title</label>
-            <input
-              name="jobTitle"
-              type="text"
-              placeholder="job title"
-              value={this.state.jobTitle}
-              onChange={this.inputChange}
-            />
+          <InfoLinkUser to='/jobSeeker/createProfile/personalInfo' >Job Seaker</InfoLinkUser>
+          <InfoLinkUser to='/employer/createProfile/companyInfo' >Employer</InfoLinkUser>
           </div>
           <div>
-            <label>Company</label>
-            <input
+          <InfoLinkUser to='/jobSeeker/personalInfo' >View</InfoLinkUser>
+          <InfoLinkUser to='/jobSeeker/editProfile/editPersonal' >Edit</InfoLinkUser>
+          <InfoLinkUser to='/jobSeeker/createProfile/personalInfo' >Create</InfoLinkUser>
+          </div>
+        </DashboardActionContainer>
+        </DACBG>
+        <DashboardTitleContainer>
+        <TitleText>Create User Profile</TitleText>
+          {/* <TitleText>Almost done!</TitleText>
+          <SubTitleText>We just need some additional information to set up your profile.</SubTitleText> */}
+        </DashboardTitleContainer>
+        <DashboardBG>
+        <DashboardFormContainer>
+        <InfoLinkContainer>
+              <InfoLink to='/jobSeeker/createProfile/personalInfo'>Personal Information</InfoLink>
+              <InfoLink to='/jobSeeker/createProfile/experience'>Experience</InfoLink>
+              <InfoLink to='/jobSeeker/createProfile/education'>Education</InfoLink>
+              <InfoLink to='/jobSeeker/createProfile/skills'>Skills</InfoLink>
+            </InfoLinkContainer>
+            <DashboardSubTitle>
+              Previous Experience
+              </DashboardSubTitle>
+            <DashboardCenterContainer>
+            <DashboardInputCompany
               name="jobCompany"
               type="text"
-              placeholder="company"
+              placeholder="Company"
               value={this.state.jobCompany}
               onChange={this.inputChange}
             />
-          </div>
-          <div>
-            <label>Description</label>
-            <input
+            <DashboardInputJob
+              name="jobTitle"
+              type="text"
+              placeholder="Job Title"
+              value={this.state.jobTitle}
+              onChange={this.inputChange}
+            />
+            <DashboardInputDescription
               name="jobDescription"
               type="text"
-              placeholder="job description"
+              placeholder="Job Description"
               value={this.state.jobDescription}
               onChange={this.inputChange}
             />
-          </div>
-          <div>
-            <label>Job Start</label>
-            <input
+            <DashboardInputStart
               name="jobStart"
               type="text"
-              placeholder="job start"
+              placeholder="Job Start"
               value={this.state.jobStart}
               onChange={this.inputChange}
             />
-          </div>
-          <div>
-            <label>Job End</label>
-            <input
+            <DashboardInputEnd
               name="jobEnd"
               type="text"
-              placeholder="job end"
+              placeholder="Job End"
               value={this.state.jobEnd}
               onChange={this.inputChange}
             />
-          </div>
-          <button onClick={this.addToArray}>Add Experience</button>
-          <button type="submit" onClick={this.handleSubmit}>
+            </DashboardCenterContainer>
+            <DashboardButtonContainer>
+          <DashboardButtonNext onClick={this.addToArray}>Add Experience</DashboardButtonNext>
+          <DashboardButtonNext type="submit" onClick={this.handleSubmit}>
             Submit
-          </button>
-        </form>
-      </div>
+          </DashboardButtonNext>
+          </DashboardButtonContainer>
+        </DashboardFormContainer>
+        </DashboardBG>
+      </DashboardSetupContainer>
     );
   }
 }
