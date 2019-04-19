@@ -51,8 +51,8 @@ const DashboardCenterContainer = styled.div`
   align-items: center;
 `
 const InfoLinkContainer = styled.div`
-  width: 30vw;
-  min-width: 400px;
+  width: 50vw;
+  min-width: 500px;
   max-width: 800px;
   margin: 35px auto;
   display: flex;
@@ -67,6 +67,15 @@ const InfoLink = styled(Link)`
     color: black;
     text-decoration: underline;
   }
+`
+const DashboardSubTitle = styled.div`
+  width: 600px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: flex-start;
 `
 const DashboardInputName = styled.input`
   height: 40px;
@@ -198,7 +207,7 @@ class PersonalInfoForm extends Component {
         zipcode: parseInt(this.state.zipcode, 10)
       }
     };
-    this.props.submitSeekerPersonal(personalData);
+    this.props.submitSeekerPersonal(personalData)
   };
 
   render() {
@@ -214,7 +223,11 @@ class PersonalInfoForm extends Component {
               <InfoLink to='/jobSeeker/createProfile/personalInfo'>Personal Information</InfoLink>
               <InfoLink to='/jobSeeker/createProfile/experience'>Experience</InfoLink>
               <InfoLink to='/jobSeeker/createProfile/education'>Education</InfoLink>
+              <InfoLink to='/jobSeeker/createProfile/skills'>Skills</InfoLink>
             </InfoLinkContainer>
+            <DashboardSubTitle>
+              Personal Information
+              </DashboardSubTitle>
               <DashboardCenterContainer>
                 <DashboardInputContainer>
                   <DashboardInputPicture

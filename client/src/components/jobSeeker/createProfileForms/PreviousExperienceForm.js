@@ -51,8 +51,8 @@ const DashboardCenterContainer = styled.div`
   align-items: center;
 `
 const InfoLinkContainer = styled.div`
-  width: 30vw;
-  min-width: 400px;
+  width: 50vw;
+  min-width: 500px;
   max-width: 800px;
   margin: 35px auto;
   display: flex;
@@ -200,6 +200,7 @@ class PreviousExperienceForm extends Component {
               <InfoLink to='/jobSeeker/createProfile/personalInfo'>Personal Information</InfoLink>
               <InfoLink to='/jobSeeker/createProfile/experience'>Experience</InfoLink>
               <InfoLink to='/jobSeeker/createProfile/education'>Education</InfoLink>
+              <InfoLink to='/jobSeeker/createProfile/skills'>Skills</InfoLink>
             </InfoLinkContainer>
             <DashboardSubTitle>
               Previous Experience
@@ -208,35 +209,35 @@ class PreviousExperienceForm extends Component {
             <DashboardInputCompany
               name="jobCompany"
               type="text"
-              placeholder="company"
+              placeholder="Company"
               value={this.state.jobCompany}
               onChange={this.inputChange}
             />
             <DashboardInputJob
               name="jobTitle"
               type="text"
-              placeholder="job title"
+              placeholder="Job Title"
               value={this.state.jobTitle}
               onChange={this.inputChange}
             />
             <DashboardInputDescription
               name="jobDescription"
               type="text"
-              placeholder="job description"
+              placeholder="Job Description"
               value={this.state.jobDescription}
               onChange={this.inputChange}
             />
             <DashboardInputStart
               name="jobStart"
               type="text"
-              placeholder="job start"
+              placeholder="Job Start"
               value={this.state.jobStart}
               onChange={this.inputChange}
             />
             <DashboardInputEnd
               name="jobEnd"
               type="text"
-              placeholder="job end"
+              placeholder="Job End"
               value={this.state.jobEnd}
               onChange={this.inputChange}
             />

@@ -1,6 +1,142 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { submitSeekerSkills } from "../../../actions";
+import { Link } from "react-router-dom";
+import styled from 'styled-components';
+
+const DashboardSetupContainer = styled.div`
+  background-color: #6891F9;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+`
+const DashboardTitleContainer = styled.div`
+  width: 70vw;
+  min-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+`
+const TitleText = styled.text`
+  color: white;
+  font-size: 34px;
+  margin-bottom: 5px;
+  font-weight: 200;
+`
+const SubTitleText = styled.text`
+  color: lightgrey;
+  letter-spacing: 1.5px;
+  font-size: 16px;
+`
+const DashboardBG = styled.div`
+  background-color: #6891F9;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 30px;
+`
+const DashboardFormContainer = styled.div`
+  background-color: rgba(252, 252, 254, 0.54);
+  width: 70vw;
+  min-width: 800px;
+  height: 530px;
+`
+const DashboardCenterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+`
+const InfoLinkContainer = styled.div`
+  width: 50vw;
+  min-width: 500px;
+  max-width: 800px;
+  margin: 35px auto;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+`
+const InfoLink = styled(Link)`
+  color: #222;
+  text-decoration: none;
+
+  :hover {
+    color: black;
+    text-decoration: underline;
+  }
+`
+const DashboardSubTitle = styled.div`
+  width: 600px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: flex-start;
+`
+const DashboardInputSkill = styled.input`
+  height: 40px;
+  width: 600px;
+  margin: 10px 10px;
+  padding: 0 10px;
+  background-color: #eceff6;
+`
+const DashboardInputCompany = styled.input`
+  height: 40px;
+  width: 600px;
+  margin: 10px 10px;
+  padding: 0 10px;
+  background-color: #eceff6;
+`
+const DashboardInputDescription = styled.input`
+  height: 40px;
+  width: 600px;
+  margin: 10px 10px;
+  padding: 0 10px;
+  background-color: #eceff6;
+`
+const DashboardInputStart = styled.input`
+  height: 40px;
+  width: 250px;
+  margin: 10px 10px;
+  padding: 0 10px;
+  background-color: #eceff6;
+`
+const DashboardInputEnd = styled.input`
+  height: 40px;
+  width: 250px;
+  margin: 10px 10px;
+  padding: 0 10px;
+  background-color: #eceff6;
+`
+const DashboardButtonNext = styled.button`
+  width: 120px;
+  height: 40px;
+  background-color: #e5c01b;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+
+  :hover{
+    background-color: #ecd362;
+  }
+`
+const DashboardButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+`
+
+const DashboardInputContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+
+
 class EducationForm extends Component {
   constructor(props) {
     super(props);
@@ -40,25 +176,40 @@ class EducationForm extends Component {
 
   render() {
     return (
-      <div>
-        <form>
-          <h2>Skills</h2>
-          <div>
-            <label>Skill</label>
-            <input
+      <DashboardSetupContainer>
+        <DashboardTitleContainer>
+          <TitleText>Almost done!</TitleText>
+          <SubTitleText>We just need some additional information to set up your profile.</SubTitleText>
+        </DashboardTitleContainer>
+        <DashboardBG>
+        <DashboardFormContainer>
+        <InfoLinkContainer>
+              <InfoLink to='/jobSeeker/createProfile/personalInfo'>Personal Information</InfoLink>
+              <InfoLink to='/jobSeeker/createProfile/experience'>Experience</InfoLink>
+              <InfoLink to='/jobSeeker/createProfile/education'>Education</InfoLink>
+              <InfoLink to='/jobSeeker/createProfile/skills'>Skills</InfoLink>
+            </InfoLinkContainer>
+            <DashboardSubTitle>
+              Skills and Interests
+              </DashboardSubTitle>
+            <DashboardCenterContainer>
+            <DashboardInputSkill
               name="seekerSkill"
               type="text"
-              placeholder="skill"
+              placeholder="Skill"
               value={this.state.seekerSkill}
               onChange={this.inputChange}
             />
-          </div>
-          <button onClick={this.addToArray}>Add Skill</button>
-          <button type="submit" onClick={this.handleSubmit}>
+            </DashboardCenterContainer>
+            <DashboardButtonContainer>
+          <DashboardButtonNext onClick={this.addToArray}>Add Skill</DashboardButtonNext>
+          <DashboardButtonNext type="submit" onClick={this.handleSubmit}>
             Submit
-          </button>
-        </form>
-      </div>
+          </DashboardButtonNext>
+          </DashboardButtonContainer>
+        </DashboardFormContainer>
+        </DashboardBG>
+      </DashboardSetupContainer>
     );
   }
 }
