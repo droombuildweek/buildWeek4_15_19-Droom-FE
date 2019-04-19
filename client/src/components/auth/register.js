@@ -85,7 +85,7 @@ class Register extends Component {
       return (
         <LoginPageContainer>
           <LogingImageBG>
-            <LoginImage src="client\src\components\auth\images\undraw_authentication_fsn5.png" alt='login background' />
+            <LoginImage src="client\src\components\auth\images\Illustration.png" alt='signup background' />
           </LogingImageBG>
           <LoginForm>
             <div className="form-group">
