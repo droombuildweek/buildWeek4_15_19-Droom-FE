@@ -241,9 +241,9 @@ class CompanyInfoForm extends Component {
           <InfoLinkUser to='/employer/createProfile/companyInfo' >Employer</InfoLinkUser>
           </div>
           <div>
-          <InfoLinkUser to='/jobSeeker/personalInfo' >View</InfoLinkUser>
-          <InfoLinkUser to='/jobSeeker/editProfile/editPersonal' >Edit</InfoLinkUser>
-          <InfoLinkUser to='/jobSeeker/createProfile/personalInfo' >Create</InfoLinkUser>
+          <InfoLinkUser to='/employer/company' >View</InfoLinkUser>
+          <InfoLinkUser to='/employer/editProfile/companyInfo' >Edit</InfoLinkUser>
+          <InfoLinkUser to='/employer/createProfile/companyInfo' >Create</InfoLinkUser>
           </div>
         </DashboardActionContainer>
         </DACBG>
