@@ -167,6 +167,11 @@ const AvailableInfoEdits = styled.div`
   margin-bottom:15px;
   /* border: 1px solid red; */
 `
+const loadingBlue = styled.div`
+  background-color:  #6891F9;
+  width: 100vw;
+  height: 100vh;
+`
 
 
 class EditEducationForm extends Component {
@@ -208,7 +213,7 @@ class EditEducationForm extends Component {
 
   render() {
     if (_.isEmpty(this.props.seeker.seekerProfile.education)) {
-      return <p>loading</p>;
+      return <loadingBlue>loading</loadingBlue>;
     }
     return (
       <DashboardSetupContainer>
