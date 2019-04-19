@@ -11,8 +11,8 @@ import {
   SET_SEEKER_PERSONAL,
   SET_SEEKER_MATCHES,
   SET_EMPLOYER_MATCHES,
-  SET_SEEKER_PICKS,
-  SET_EMPLOYER_PICKS
+  SET_SEEKER_MATCHED,
+  SET_EMPLOYER_MATCHED
 } from "./types";
 
 const URL = "https://droom-buildweek-4-15-19.herokuapp.com";
@@ -351,9 +351,9 @@ export const getSeekerMatches = id => dispatch => {
 };
 
 // matching for employers
-export const getEmployerMatches = id => dispatch => {
+export const getEmployerMatches = companyId => dispatch => {
   axios
-    .get(`${URL}/api/matches/company/${id}`)
+    .get(`${URL}/api/matches/company/${companyId}`)
     .then(res => {
       dispatch({
         type: SET_EMPLOYER_MATCHES,
@@ -363,18 +363,46 @@ export const getEmployerMatches = id => dispatch => {
     .catch(err => console.log(err));
 };
 
-// saves seeker picks
-export const getSeekerPicks = picks => dispatch => {
-  dispatch({
-    type: SET_SEEKER_PICKS,
-    payload: picks
-  });
+// get seeker matched
+export const getSeekerMatched = userId => dispatch => {
+  axios
+    .get(`${URL}/api/matched/seeker/${userId}`)
+    .then(res => {
+      dispatch({
+        type: SET_SEEKER_MATCHED,
+        payload: res.data
+      });
+      console.log(res.data);
+    })
+    .catch(err => console.log(err.response));
 };
 
-// saves employer picks
-export const getEmployerPicks = picks => dispatch => {
-  dispatch({
-    type: SET_EMPLOYER_PICKS,
-    payload: picks
-  });
+// get employer matched
+export const getEmployerMatched = jobId => dispatch => {
+  axios
+    .get(`${URL}/api/matched/company/${jobId}`)
+    .then(res => {
+      dispatch({
+        type: SET_EMPLOYER_MATCHED,
+        payload: res.data
+      });
+      console.log(res.data);
+    })
+    .catch(err => console.log(err.response));
+};
+
+// add seeker match
+export const addSeekerPick = (userId, jobId) => dispatch => {
+  axios
+    .get(`${URL}/api/matches/seeker/${userId}/match/job/${jobId}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err.response));
+};
+
+// add employer match
+export const addEmployerPick = (jobId, seekerId) => disptach => {
+  axios
+    .get(`${URL}/api/matches/job/${jobId}/match/seeker/${seekerId}`)
+    .then(res => console.log(res))
+    .catch(err => console.log(err.response));
 };

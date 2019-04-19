@@ -10,6 +10,10 @@ class EmployerDashboard extends Component {
     return (
       <div>
         <h2>Employer Dashboard</h2>
+        <h3>Matches</h3>
+        <Link to="/matches/employers" style={{ textDecoration: "none" }}>
+          <p className="dashboard-link">View Matches</p>
+        </Link>
         <h3>View Profile</h3>
         <Link to="/employer/company" style={{ textDecoration: "none" }}>
           <p className="dashboard-link">View Company</p>

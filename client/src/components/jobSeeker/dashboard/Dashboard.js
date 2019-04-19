@@ -9,6 +9,10 @@ class SeekerDashboard extends Component {
     return (
       <div>
         <h2>Job Seeker Dashboard</h2>
+        <h3>Matches</h3>
+        <Link to="/matches/seekers" style={{ textDecoration: "none" }}>
+          <p className="dashboard-link">View Matches</p>
+        </Link>
         <h3>View Profile</h3>
         <Link to="/jobSeeker/personalInfo" style={{ textDecoration: "none" }}>
           <p className="dashboard-link">View Personal Info</p>
