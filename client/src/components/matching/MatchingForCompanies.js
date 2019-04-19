@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import { connect } from "react-redux";
-import {
-  getEmployerMatches,
-  getEmployerPicks,
-  addEmployerPick
-} from "../../actions";
+import { getEmployerMatches, addEmployerPick } from "../../actions";
 
 class MatchingForCompanies extends Component {
   componentDidMount() {
@@ -66,7 +62,6 @@ export default connect(
   mapStateToProps,
   {
     getEmployerMatches,
-    getEmployerPicks,
     addEmployerPick
   }
 )(MatchingForCompanies);

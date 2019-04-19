@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import { connect } from "react-redux";
-import { getSeekerMatches, getSeekerPicks, addSeekerPick } from "../../actions";
+import { getSeekerMatches, addSeekerPick } from "../../actions";
 
 class MatchingForSeekers extends Component {
   componentDidMount() {
@@ -51,5 +51,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getSeekerMatches, getSeekerPicks, addSeekerPick }
+  { getSeekerMatches, addSeekerPick }
 )(MatchingForSeekers);
