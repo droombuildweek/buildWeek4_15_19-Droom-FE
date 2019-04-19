@@ -25,11 +25,11 @@ const TitleText = styled.text`
   margin-bottom: 5px;
   font-weight: 200;
 `
-const SubTitleText = styled.text`
-  color: lightgrey;
-  letter-spacing: 1.5px;
-  font-size: 16px;
-`
+// const SubTitleText = styled.text`
+//   color: lightgrey;
+//   letter-spacing: 1.5px;
+//   font-size: 16px;
+// `
 const DashboardBG = styled.div`
   background-color: #6891F9;
   width: 100vw;
@@ -98,34 +98,34 @@ const DashboardInputSkill = styled.input`
   padding: 0 10px;
   background-color: #eceff6;
 `
-const DashboardInputCompany = styled.input`
-  height: 40px;
-  width: 600px;
-  margin: 10px 10px;
-  padding: 0 10px;
-  background-color: #eceff6;
-`
-const DashboardInputDescription = styled.input`
-  height: 40px;
-  width: 600px;
-  margin: 10px 10px;
-  padding: 0 10px;
-  background-color: #eceff6;
-`
-const DashboardInputStart = styled.input`
-  height: 40px;
-  width: 250px;
-  margin: 10px 10px;
-  padding: 0 10px;
-  background-color: #eceff6;
-`
-const DashboardInputEnd = styled.input`
-  height: 40px;
-  width: 250px;
-  margin: 10px 10px;
-  padding: 0 10px;
-  background-color: #eceff6;
-`
+// const DashboardInputCompany = styled.input`
+//   height: 40px;
+//   width: 600px;
+//   margin: 10px 10px;
+//   padding: 0 10px;
+//   background-color: #eceff6;
+// `
+// const DashboardInputDescription = styled.input`
+//   height: 40px;
+//   width: 600px;
+//   margin: 10px 10px;
+//   padding: 0 10px;
+//   background-color: #eceff6;
+// `
+// const DashboardInputStart = styled.input`
+//   height: 40px;
+//   width: 250px;
+//   margin: 10px 10px;
+//   padding: 0 10px;
+//   background-color: #eceff6;
+// `
+// const DashboardInputEnd = styled.input`
+//   height: 40px;
+//   width: 250px;
+//   margin: 10px 10px;
+//   padding: 0 10px;
+//   background-color: #eceff6;
+// `
 const DashboardButtonNext = styled.button`
   width: 120px;
   height: 40px;
@@ -144,10 +144,10 @@ const DashboardButtonContainer = styled.div`
   margin-top: 30px;
 `
 
-const DashboardInputContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`
+// const DashboardInputContainer = styled.div`
+//   display: flex;
+//   flex-direction: row;
+// `
 const DashboardActionContainer = styled.div`
   display: flex;
   justify-content: space-between;

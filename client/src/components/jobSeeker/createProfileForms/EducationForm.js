@@ -24,11 +24,11 @@ const TitleText = styled.text`
   margin-bottom: 5px;
   font-weight: 200;
 `
-const SubTitleText = styled.text`
-  color: lightgrey;
-  letter-spacing: 1.5px;
-  font-size: 16px;
-`
+// const SubTitleText = styled.div`
+//   color: lightgrey;
+//   letter-spacing: 1.5px;
+//   font-size: 16px;
+// `
 const DashboardBG = styled.div`
   background-color: #6891F9;
   width: 100vw;
@@ -142,10 +142,10 @@ const DashboardButtonContainer = styled.div`
   margin-top: 30px;
 `
 
-const DashboardInputContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`
+// const DashboardInputContainer = styled.div`
+//   display: flex;
+//   flex-direction: row;
+// `
 const DashboardActionContainer = styled.div`
   display: flex;
   justify-content: space-between;
