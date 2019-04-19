@@ -25,14 +25,14 @@ const LoginPageContainer = styled.div`
   /* border: 1px solid red; */
   height: 100vh;
 `
-const LogingImageBG = styled.div`
-  background-image: url("https://res.cloudinary.com/dmdvv8dzx/image/upload/v1555644420/BackgroundVector_register_bqkhhp.png");
-  position: relative;
-  height: 100px;
-  width: 100px;
-  /* left: -100px; */
-  /* background-color: #e8ecfb; */
-`
+// const LogingImageBG = styled.div`
+//   background-image: url("https://res.cloudinary.com/dmdvv8dzx/image/upload/v1555644420/BackgroundVector_register_bqkhhp.png");
+//   position: relative;
+//   height: 100px;
+//   width: 100px;
+//   /* left: -100px; */
+//   /* background-color: #e8ecfb; */
+// `
 const LoginImage = styled.img`
   position: relative;
   /* top: 32.5vh;
