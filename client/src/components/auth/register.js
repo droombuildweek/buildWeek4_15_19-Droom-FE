@@ -153,14 +153,17 @@ class Register extends Component {
       );
     }
     return (
+      // <div>
+      //   <p>Registered and logged in!</p>
+      //   <a className="link" href="/dashboard">
+      //     Go To Dashboard
+      //   </a>
+      //   <a className="link" href="/matching">
+      //     Start Matching
+      //   </a>
+      // </div>
       <div>
-        <p>Registered and logged in!</p>
-        <a className="link" href="/dashboard">
-          Go To Dashboard
-        </a>
-        <a className="link" href="/matching">
-          Start Matching
-        </a>
+        {window.location.href = '/jobSeeker/createProfile/personalInfo'}
       </div>
     );
   }
