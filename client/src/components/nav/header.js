@@ -52,7 +52,7 @@ class Header extends Component {
     if (this.props.auth.isAuthenticated) {
         logout = <HeaderLink to='/login' onClick={this.props.logoutUser}>Logout</HeaderLink>
       matching = (
-        <HeaderLink to="/matching" style={{ textDecoration: "none" }}>
+        <HeaderLink to="/matching/jobSeekers" style={{ textDecoration: "none" }}>
           Matching
         </HeaderLink>
       );
@@ -74,7 +74,7 @@ class Header extends Component {
             <h1>Droom</h1>
           </Logo>
           <NavLinkCluster>
-            <HeaderLink to="/dashboard">
+            <HeaderLink to="/jobSeeker/personalInfo">
                 Dashboard
             </HeaderLink>
               {matching}
