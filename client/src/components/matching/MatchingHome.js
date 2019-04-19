@@ -19,7 +19,7 @@ const LinkComponent = styled(Link)`
   }
 `;
 
-const Container = styled.nav`
+const Container = styled.div`
   color: #6891f9;
   background: white;
   text-align: center;
