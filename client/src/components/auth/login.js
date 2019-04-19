@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const LoginForm = styled.form`
   position: relative;
-  top: 20vh;
+  top: 10vh;
   /* background-color: lightgray; */
   /* border: 1px solid red; */
   width: 50vw;
@@ -25,11 +25,11 @@ const LoginImage = styled.img`
   left: 20vw;
 `
 const LogingImageBG = styled.div`
-  background-image: url("client\src\components\auth\images\BackgroundVector.png");
+  background-image: url("client\src\components\auth\images\BackgroundVectorSignup.png");
 `
 const LoginInput = styled.input`
   height: 40px;
-  width: 250px;
+  width: 450px;
   padding: 0 10px;
   margin: 15px 0;
   background-color: #eceff6;
@@ -46,6 +46,16 @@ const LoginButton = styled.button`
   :hover{
     background-color: #3a6ff8; 
   }
+`
+const LoginTitle = styled.text`
+  font-style: normal;
+  font-weight: 300;
+  font-size: 50px;
+  line-height: normal;
+  letter-spacing: -0.5px;
+  margin-bottom: 50px;
+
+  color: rgba(19, 20, 24, 0.87);
 `
 
 class Login extends Component {
@@ -84,6 +94,7 @@ class Login extends Component {
             <LoginImage src="client\src\components\auth\images\undraw_authentication_fsn5.png" alt='login background' />
           </LogingImageBG>
           <LoginForm>
+            <LoginTitle>Welcome back!</LoginTitle>
               <div className="form-group">
                 {/* <label htmlFor="">Email</label> */}
                 <LoginInput

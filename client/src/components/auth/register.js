@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 const LoginForm = styled.form`
   position: relative;
-  top: 20vh;
+  top: 10vh;
   /* background-color: lightgray; */
   /* border: 1px solid red; */
   width: 50vw;
@@ -31,7 +31,7 @@ const LogingImageBG = styled.div`
 `
 const LoginInput = styled.input`
   height: 40px;
-  width: 250px;
+  width: 450px;
   padding: 0 10px;
   margin: 15px 0;
   background-color: #eceff6;
@@ -48,6 +48,16 @@ const LoginButton = styled.button`
   :hover{
     background-color: #3a6ff8; 
   }
+`
+const LoginTitle = styled.text`
+  font-style: normal;
+  font-weight: 300;
+  font-size: 50px;
+  line-height: normal;
+  letter-spacing: -0.5px;
+  margin-bottom: 50px;
+
+  color: rgba(19, 20, 24, 0.87);
 `
 
 
@@ -88,6 +98,7 @@ class Register extends Component {
             <LoginImage src="client\src\components\auth\images\Illustration.png" alt='signup background' />
           </LogingImageBG>
           <LoginForm>
+            <LoginTitle>Create a New Account</LoginTitle>
             <div className="form-group">
               {/* <label>Email</label> */}
               <LoginInput
