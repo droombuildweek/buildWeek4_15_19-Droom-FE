@@ -149,7 +149,7 @@ class Login extends Component {
       //   </a>
       // </div>
       <div>
-        {window.location.href = '/matching/jobSeekers'}
+        {window.location.href = '/jobSeeker/createProfile/personalInfo'}
       </div>
     );
   }
