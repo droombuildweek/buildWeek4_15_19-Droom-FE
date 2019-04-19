@@ -4,6 +4,31 @@ import { submitSeekerPersonal } from "../../../actions";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
+const DashboardSetupContainer = styled.div`
+  background-color: #6891F9;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+`
+const DashboardTitleContainer = styled.div`
+  width: 70vw;
+  min-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+`
+const TitleText = styled.text`
+  color: white;
+  font-size: 34px;
+  margin-bottom: 5px;
+  font-weight: 200;
+`
+const SubTitleText = styled.text`
+  color: lightgrey;
+  letter-spacing: 1.5px;
+  font-size: 16px;
+`
 const DashboardBG = styled.div`
   background-color: #6891F9;
   width: 100vw;
@@ -11,7 +36,7 @@ const DashboardBG = styled.div`
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  padding-top: 50px;
+  padding-top: 30px;
 `
 const DashboardFormContainer = styled.div`
   background-color: rgba(252, 252, 254, 0.54);
@@ -178,6 +203,11 @@ class PersonalInfoForm extends Component {
 
   render() {
     return (
+      <DashboardSetupContainer>
+        <DashboardTitleContainer>
+          <TitleText>Almost done!</TitleText>
+          <SubTitleText>We just need some additional information to set up your profile.</SubTitleText>
+        </DashboardTitleContainer>
       <DashboardBG>
         <DashboardFormContainer>
           <InfoLinkContainer>
@@ -272,6 +302,7 @@ class PersonalInfoForm extends Component {
             </DashboardButtonContainer>
         </DashboardFormContainer>
       </DashboardBG>
+      </DashboardSetupContainer>
     );
   }
 }
