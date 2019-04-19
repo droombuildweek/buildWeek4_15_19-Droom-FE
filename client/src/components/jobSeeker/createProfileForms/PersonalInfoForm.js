@@ -208,100 +208,100 @@ class PersonalInfoForm extends Component {
           <TitleText>Almost done!</TitleText>
           <SubTitleText>We just need some additional information to set up your profile.</SubTitleText>
         </DashboardTitleContainer>
-      <DashboardBG>
-        <DashboardFormContainer>
-          <InfoLinkContainer>
-            <InfoLink to='/jobSeeker/createProfile/personalInfo'>Personal Information</InfoLink>
-            <InfoLink to='/jobSeeker/createProfile/experience'>Experience</InfoLink>
-            <InfoLink to='/jobSeeker/createProfile/education'>Education</InfoLink>
-          </InfoLinkContainer>
-            <DashboardCenterContainer>
+        <DashboardBG>
+          <DashboardFormContainer>
+            <InfoLinkContainer>
+              <InfoLink to='/jobSeeker/createProfile/personalInfo'>Personal Information</InfoLink>
+              <InfoLink to='/jobSeeker/createProfile/experience'>Experience</InfoLink>
+              <InfoLink to='/jobSeeker/createProfile/education'>Education</InfoLink>
+            </InfoLinkContainer>
+              <DashboardCenterContainer>
+                <DashboardInputContainer>
+                  <DashboardInputPicture
+                    name="profilePicture"
+                    type="text"
+                    placeholder="Profile Picture url"
+                    value={this.state.profilePicture}
+                    onChange={this.inputChange}
+                  />
+                </DashboardInputContainer>
+                <DashboardInputContainer>
+                  <DashboardInputName
+                    name="firstName"
+                    type="text"
+                    placeholder="First Name"
+                    value={this.state.firstName}
+                    onChange={this.inputChange}
+                  />
+                  <DashboardInputName
+                    name="lastName"
+                    type="text"
+                    placeholder="Last Name"
+                    value={this.state.lastName}
+                    onChange={this.inputChange}
+                  />
+                </DashboardInputContainer>
               <DashboardInputContainer>
-                <DashboardInputPicture
-                  name="profilePicture"
-                  type="text"
-                  placeholder="Profile Picture url"
-                  value={this.state.profilePicture}
+                <DashboardInputMonth
+                  name="month"
+                  type="number"
+                  placeholder="Month"
+                  value={this.state.month}
+                  onChange={this.inputChange}
+                />
+                <DashboardInputDay
+                  name="day"
+                  type="number"
+                  placeholder="Day"
+                  value={this.state.day}
+                  onChange={this.inputChange}
+                />
+                <DashboardInputYear
+                  name="year"
+                  type="number"
+                  placeholder="Year"
+                  value={this.state.year}
                   onChange={this.inputChange}
                 />
               </DashboardInputContainer>
               <DashboardInputContainer>
-                <DashboardInputName
-                  name="firstName"
+                <DashboardInputCountry
+                  name="country"
                   type="text"
-                  placeholder="First Name"
-                  value={this.state.firstName}
+                  placeholder="Country"
+                  value={this.state.country}
                   onChange={this.inputChange}
                 />
-                <DashboardInputName
-                  name="lastName"
+                <DashboardInputState
+                  name="state"
                   type="text"
-                  placeholder="Last Name"
-                  value={this.state.lastName}
+                  placeholder="State"
+                  value={this.state.state}
                   onChange={this.inputChange}
                 />
-              </DashboardInputContainer>
-            <DashboardInputContainer>
-              <DashboardInputMonth
-                name="month"
-                type="number"
-                placeholder="Month"
-                value={this.state.month}
-                onChange={this.inputChange}
-              />
-              <DashboardInputDay
-                name="day"
-                type="number"
-                placeholder="Day"
-                value={this.state.day}
-                onChange={this.inputChange}
-              />
-              <DashboardInputYear
-                name="year"
-                type="number"
-                placeholder="Year"
-                value={this.state.year}
-                onChange={this.inputChange}
-              />
-            </DashboardInputContainer>
-            <DashboardInputContainer>
-              <DashboardInputCountry
-                name="country"
-                type="text"
-                placeholder="Country"
-                value={this.state.country}
-                onChange={this.inputChange}
-              />
-              <DashboardInputState
-                name="state"
-                type="text"
-                placeholder="State"
-                value={this.state.state}
-                onChange={this.inputChange}
-              />
-              <DashboardInputCity
-                name="city"
-                type="text"
-                placeholder="City"
-                value={this.state.city}
-                onChange={this.inputChange}
-              />
-              </DashboardInputContainer>
-              <DashboardInputZip
-                name="zipcode"
-                type="number"
-                placeholder="Zipcode"
-                value={this.state.zipcode}
-                onChange={this.inputChange}
-              />
-            </DashboardCenterContainer>
-            <DashboardButtonContainer>
-              <DashboardButtonNext type="submit" onClick={this.handleSubmit}>
-                Submit
-              </DashboardButtonNext>
-            </DashboardButtonContainer>
-        </DashboardFormContainer>
-      </DashboardBG>
+                <DashboardInputCity
+                  name="city"
+                  type="text"
+                  placeholder="City"
+                  value={this.state.city}
+                  onChange={this.inputChange}
+                />
+                </DashboardInputContainer>
+                <DashboardInputZip
+                  name="zipcode"
+                  type="number"
+                  placeholder="Zipcode"
+                  value={this.state.zipcode}
+                  onChange={this.inputChange}
+                />
+              </DashboardCenterContainer>
+              <DashboardButtonContainer>
+                <DashboardButtonNext type="submit" onClick={this.handleSubmit}>
+                  Submit
+                </DashboardButtonNext>
+              </DashboardButtonContainer>
+          </DashboardFormContainer>
+        </DashboardBG>
       </DashboardSetupContainer>
     );
   }
