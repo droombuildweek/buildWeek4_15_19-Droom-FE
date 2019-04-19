@@ -68,6 +68,18 @@ const InfoLink = styled(Link)`
     text-decoration: underline;
   }
 `
+const InfoLinkUser = styled(Link)`
+  color: #e5c01b;
+  text-decoration: none;
+  margin-left: 30px;
+  font-weight: bold;
+  font-size: 22px;
+
+  :hover {
+    color: black;
+    text-decoration: underline;
+  }
+`
 const DashboardSubTitle = styled.div`
   width: 600px;
   font-weight: bold;
@@ -161,6 +173,19 @@ const DashboardInputContainer = styled.div`
   display: flex;
   flex-direction: row;
 `
+const DashboardActionContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  margin: 0 auto;
+  background-color: #4c6ab6;
+  /* border: 1px solid red; */
+`
+const DACBG = styled.div`
+  background-color: #4c6ab6;
+  width: 100vw;
+  margin-bottom: 20px;
+`
 
 
 
@@ -213,9 +238,23 @@ class PersonalInfoForm extends Component {
   render() {
     return (
       <DashboardSetupContainer>
+        <DACBG>
+        <DashboardActionContainer>
+          <div>
+          <InfoLinkUser to='/jobSeeker/createProfile/personalInfo' >Job Seaker</InfoLinkUser>
+          <InfoLinkUser to='/employer/createProfile/companyInfo' >Employer</InfoLinkUser>
+          </div>
+          <div>
+          <InfoLinkUser to='/jobSeeker/personalInfo' >View</InfoLinkUser>
+          <InfoLinkUser to='/jobSeeker/editProfile/editPersonal' >Edit</InfoLinkUser>
+          <InfoLinkUser to='/jobSeeker/createProfile/personalInfo' >Create</InfoLinkUser>
+          </div>
+        </DashboardActionContainer>
+        </DACBG>
         <DashboardTitleContainer>
-          <TitleText>Almost done!</TitleText>
-          <SubTitleText>We just need some additional information to set up your profile.</SubTitleText>
+        <TitleText>Create User Profile</TitleText>
+          {/* <TitleText>Almost done!</TitleText>
+          <SubTitleText>We just need some additional information to set up your profile.</SubTitleText> */}
         </DashboardTitleContainer>
         <DashboardBG>
           <DashboardFormContainer>
