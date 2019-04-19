@@ -80,10 +80,10 @@ class Header extends Component {
                 Dashboard
             </HeaderLink>
               {matching}
-            <HeaderLink to="/employers">
+            {/* <HeaderLink to="/employers">
               Employers
-            </HeaderLink>
-            <HeaderLink to="/jobs">
+            </HeaderLink> */}
+            {/* <HeaderLink to="/jobs">
               Jobs
             </HeaderLink> */}
           {logout}
