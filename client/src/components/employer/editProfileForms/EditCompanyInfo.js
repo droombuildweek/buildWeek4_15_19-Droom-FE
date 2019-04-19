@@ -300,8 +300,8 @@ class EditCompanyInfo extends Component {
         <DashboardBG>
         <DashboardFormContainer>
         <InfoLinkContainer>
-              <InfoLink to='/employer/createProfile/companyInfo'>Company Information</InfoLink>
-              <InfoLink to='/employer/createProfile/jobInfo'>Job Information</InfoLink>
+              <InfoLink to='/employer/editProfile/companyInfo'>Company Information</InfoLink>
+              <InfoLink to='/employer/editProfile/jobInfo'>Job Information</InfoLink>
             </InfoLinkContainer>
             <DashboardSubTitle>
               Company Information
