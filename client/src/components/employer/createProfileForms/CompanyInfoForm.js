@@ -259,7 +259,7 @@ class CompanyInfoForm extends Component {
               <InfoLink to='/employer/createProfile/jobInfo'>Job Information</InfoLink>
             </InfoLinkContainer>
             <DashboardSubTitle>
-              Copmany Information
+              Company Information
               </DashboardSubTitle>
               <DashboardCenterContainer>
             <DashboardInputSchool
