@@ -234,10 +234,10 @@ class ViewPersonal extends Component {
         <DashboardBG>
         <DashboardFormContainer>
         <InfoLinkContainer>
-            <InfoLink to='/jobSeeker/editProfile/editPersonal'>Personal Information</InfoLink>
-              <InfoLink to='/jobSeeker/editProfile/editExperience'>Experience</InfoLink>
-              <InfoLink to='/jobSeeker/editProfile/editEducation'>Education</InfoLink>
-              <InfoLink to='/jobSeeker/editProfile/editSkills'>Skills</InfoLink>
+            <InfoLink to='/jobSeeker/personalInfo'>Personal Information</InfoLink>
+              <InfoLink to='/jobSeeker/experience'>Experience</InfoLink>
+              <InfoLink to='/jobSeeker/education'>Education</InfoLink>
+              <InfoLink to='/jobSeeker/skills'>Skills</InfoLink>
             </InfoLinkContainer>
           <AvailableInfoEdits>
         <p>{this.props.seeker.seekerProfile.personal.firstName}</p>
