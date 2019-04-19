@@ -31,6 +31,7 @@ const LoginInput = styled.input`
   height: 40px;
   width: 250px;
   padding: 0 10px;
+  margin: 15px 0;
   background-color: #eceff6;
 `
 const LoginButton = styled.button`
@@ -40,6 +41,7 @@ const LoginButton = styled.button`
   border-radius: 20px;
   color: white;
   font-weight: bold;
+  margin-top: 10px;
 
   :hover{
     background-color: #3a6ff8; 
