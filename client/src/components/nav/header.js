@@ -74,7 +74,7 @@ class Header extends Component {
             <h1>Droom</h1>
           </Logo>
           <NavLinkCluster>
-            <HeaderLink to="/jobSeeker/personalInfo">
+            <HeaderLink to="/dashboard">
                 Dashboard
             </HeaderLink>
               {matching}
