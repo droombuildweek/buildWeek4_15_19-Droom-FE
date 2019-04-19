@@ -217,7 +217,7 @@ class PreviousExperienceForm extends Component {
         <DACBG>
         <DashboardActionContainer>
           <div>
-          <InfoLinkUser to='/jobSeeker/createProfile/personalInfo' >Job Seaker</InfoLinkUser>
+          <InfoLinkUser to='/jobSeeker/createProfile/personalInfo' >Job seeker</InfoLinkUser>
           <InfoLinkUser to='/employer/createProfile/companyInfo' >Employer</InfoLinkUser>
           </div>
           <div>
