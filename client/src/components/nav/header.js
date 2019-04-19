@@ -2,21 +2,21 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 // import "./Header.scss";
 
 const HeaderNav = styled.nav`
-  background: #6891F9;
+  background: #6891f9;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-`
+`;
 const Logo = styled.div`
   color: white;
   width: 100px;
   text-align: center;
-`
+`;
 const HeaderLink = styled(Link)`
   color: white;
   text-decoration: none;
@@ -25,23 +25,21 @@ const HeaderLink = styled(Link)`
     color: black;
   }
 
-  a{
+  a {
     color: white;
 
     :hover {
       color: #222;
     }
   }
-`
+`;
 const NavLinkCluster = styled.div`
   display: flex;
   justify-content: space-between;
   width: 400px;
   align-items: center;
   font-weight: bold;
-  
-    
-`
+`;
 
 class Header extends Component {
   render() {
@@ -50,7 +48,11 @@ class Header extends Component {
     let signUp;
     let matching;
     if (this.props.auth.isAuthenticated) {
-        logout = <HeaderLink to='/login' onClick={this.props.logoutUser}>Logout</HeaderLink>
+      logout = (
+        <HeaderLink to="/login" onClick={this.props.logoutUser}>
+          Logout
+        </HeaderLink>
+      );
       matching = (
         <HeaderLink to="/matching/jobSeekers" style={{ textDecoration: "none" }}>
           Matching
@@ -83,11 +85,11 @@ class Header extends Component {
             </HeaderLink>
             <HeaderLink to="/jobs">
               Jobs
-            </HeaderLink>
-              {logout}
-              {login}
-              {signUp}
-          </NavLinkCluster>
+            </HeaderLink> */}
+          {logout}
+          {login}
+          {signUp}
+        </NavLinkCluster>
       </HeaderNav>
     );
   }

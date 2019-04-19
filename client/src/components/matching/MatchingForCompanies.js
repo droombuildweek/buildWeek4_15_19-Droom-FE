@@ -2,6 +2,44 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import { connect } from "react-redux";
 import { getEmployerMatches, addEmployerPick } from "../../actions";
+import styled from "styled-components";
+
+const Container = styled.div`
+  color: #6891f9;
+  background: white;
+  margin: 0 auto;
+  text-align: center;
+  width: 600px;
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  button {
+    color: white;
+    background-color: #6891f9;
+    padding: 10px 20px;
+    border-radius: 20px;
+
+    &:hover {
+      color: black;
+    }
+  }
+`;
+
+const Name = styled.div`
+  text-align: center;
+`;
+
+const Job = styled.div`
+  border: 1px solid #6891f9;
+  padding: 20px;
+  border-radius: 20px;
+`;
 
 class MatchingForCompanies extends Component {
   componentDidMount() {
@@ -19,7 +57,7 @@ class MatchingForCompanies extends Component {
 
   render() {
     const settings = {
-      arrows: true,
+      arrows: false,
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1
@@ -28,27 +66,30 @@ class MatchingForCompanies extends Component {
       return <p>Loading</p>;
     }
     return (
-      <div>
+      <Container>
         <h2>Employer Matching</h2>
         <Slider {...settings}>
           {this.props.matches.employerMatches.map(match => {
             return (
               <div key={match.seekerId}>
-                {/* <h3>{match.profile.firstName}</h3> */}
-                {match.skills.map(skill => {
-                  return <p>{skill}</p>;
-                })}
-                <button
-                  onClick={e => this.addMatch(match.jobId, match.seekerId)}
-                >
-                  Match
-                </button>
+                <Job>
+                  <Name>
+                    <button
+                      onClick={e => this.addMatch(match.jobId, match.seekerId)}
+                    >
+                      Match
+                    </button>
+                    <h3>Skills</h3>
+                  </Name>
+                  {match.skills.map(skill => {
+                    return <p>{skill}</p>;
+                  })}
+                </Job>
               </div>
             );
           })}
         </Slider>
-        <button onClick={this.submitMatches}>Submit Matches</button>
-      </div>
+      </Container>
     );
   }
 }

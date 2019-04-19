@@ -380,7 +380,7 @@ export const getSeekerMatched = userId => dispatch => {
 // get employer matched
 export const getEmployerMatched = jobId => dispatch => {
   axios
-    .get(`${URL}/api/matched/company/${jobId}`)
+    .get(`${URL}/api/matched/job/${jobId}`)
     .then(res => {
       dispatch({
         type: SET_EMPLOYER_MATCHED,
