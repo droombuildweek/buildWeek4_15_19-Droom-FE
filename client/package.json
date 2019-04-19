@@ -19,6 +19,7 @@
     "redux-form": "^8.2.0",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
+    "styled-components": "^4.2.0",
     "typescript": "^3.4.3"
   },
   "scripts": {

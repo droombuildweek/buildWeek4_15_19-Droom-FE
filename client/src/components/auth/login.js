@@ -2,6 +2,61 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions";
 import { withRouter } from "react-router-dom";
+import styled from 'styled-components';
+
+const LoginForm = styled.form`
+  position: relative;
+  top: 10vh;
+  /* background-color: lightgray; */
+  /* border: 1px solid red; */
+  width: 50vw;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const LoginPageContainer = styled.div`
+  display: flex;
+  justify-content:space-between;
+`
+const LoginImage = styled.img`
+  position: relative;
+  top: 20vh;
+  left: 20vw;
+`
+const LogingImageBG = styled.div`
+  background-image: url("client\src\components\auth\images\BackgroundVectorSignup.png");
+`
+const LoginInput = styled.input`
+  height: 40px;
+  width: 450px;
+  padding: 0 10px;
+  margin: 15px 0;
+  background-color: #eceff6;
+`
+const LoginButton = styled.button`
+  background-color: #6891f9;
+  width: 120px;
+  height: 40px;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+
+  :hover{
+    background-color: #3a6ff8; 
+  }
+`
+const LoginTitle = styled.text`
+  font-style: normal;
+  font-weight: 300;
+  font-size: 50px;
+  line-height: normal;
+  letter-spacing: -0.5px;
+  margin-bottom: 50px;
+
+  color: rgba(19, 20, 24, 0.87);
+`
 
 class Login extends Component {
   constructor(props) {
@@ -34,33 +89,37 @@ class Login extends Component {
   render() {
     if (!this.props.auth.isAuthenticated) {
       return (
-        <div className="form-container">
-          <form>
-            <div className="form-group">
-              <label htmlFor="">Email</label>
-              <input
-                name="email"
-                type="email"
-                placeholder="email"
-                value={this.state.email}
-                onChange={this.inputChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="">Password</label>
-              <input
-                name="password"
-                type="password"
-                placeholder="password"
-                value={this.state.password}
-                onChange={this.inputChange}
-              />
-            </div>
-            <button type="submit" onClick={this.handleSubmit}>
-              Login
-            </button>
-          </form>
-        </div>
+        <LoginPageContainer>
+          <LogingImageBG>
+            <LoginImage src="client\src\components\auth\images\undraw_authentication_fsn5.png" alt='login background' />
+          </LogingImageBG>
+          <LoginForm>
+            <LoginTitle>Welcome back!</LoginTitle>
+              <div className="form-group">
+                {/* <label htmlFor="">Email</label> */}
+                <LoginInput
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  value={this.state.email}
+                  onChange={this.inputChange}
+                />
+              </div>
+              <div className="form-group">
+                {/* <label htmlFor="">Password</label> */}
+                <LoginInput
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onChange={this.inputChange}
+                />
+              </div>
+              <LoginButton type="submit" onClick={this.handleSubmit}>
+                Login
+              </LoginButton>
+            </LoginForm>
+        </LoginPageContainer>
       );
     }
     return (
