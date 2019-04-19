@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getEmployerMatched } from "../../../actions";
+import { getEmployerMatched, getEmployerJob } from "../../../actions";
 import _ from "lodash";
 
 class EmployerMatches extends Component {
+  componentDidMount() {
+    this.props.getEmployerJob(this.props.auth.user.subject);
+  }
+
   viewMatches = id => {
-    this.props.getEmployerMatched();
+    this.props.getEmployerMatched(this.props.employer.employerProfile.jobs.id);
   };
 
   render() {
-    if (_.isEmpty(this.props.matches.employerMatches)) {
+    if (_.isEmpty(this.props.matches.employerMatched)) {
       return (
         <div>
           <p>Please hit button.</p>
@@ -24,7 +28,9 @@ class EmployerMatches extends Component {
         {this.props.matches.employerMatched.map(match => {
           return (
             <div key={match.seekerId}>
-              <p>{match.seekerId}</p>
+              <p>
+                {match.firstName} {match.lastName}
+              </p>
             </div>
           );
         })}
@@ -35,10 +41,11 @@ class EmployerMatches extends Component {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  matches: state.matches
+  matches: state.matches,
+  employer: state.employer
 });
 
 export default connect(
   mapStateToProps,
-  { getEmployerMatched }
+  { getEmployerMatched, getEmployerJob }
 )(EmployerMatches);
