@@ -27,7 +27,7 @@ const HeaderLink = styled(Link)`
 
   a{
     color: white;
-    
+
     :hover {
       color: #222;
     }
@@ -50,7 +50,7 @@ class Header extends Component {
     let signUp;
     let matching;
     if (this.props.auth.isAuthenticated) {
-        logout = <HeaderLink to='/' onClick={this.props.logoutUser}>Logout</HeaderLink>
+        logout = <HeaderLink to='/login' onClick={this.props.logoutUser}>Logout</HeaderLink>
       matching = (
         <HeaderLink to="/matching" style={{ textDecoration: "none" }}>
           Matching
