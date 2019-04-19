@@ -68,23 +68,32 @@ const InfoLink = styled(Link)`
     text-decoration: underline;
   }
 `
+const DashboardSubTitle = styled.div`
+  width: 600px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: flex-start;
+`
 const DashboardInputJob = styled.input`
   height: 40px;
-  width: 330px;
+  width: 600px;
   margin: 10px 10px;
   padding: 0 10px;
   background-color: #eceff6;
 `
 const DashboardInputCompany = styled.input`
   height: 40px;
-  width: 180px;
+  width: 600px;
   margin: 10px 10px;
   padding: 0 10px;
   background-color: #eceff6;
 `
 const DashboardInputDescription = styled.input`
   height: 40px;
-  width: 190px;
+  width: 600px;
   margin: 10px 10px;
   padding: 0 10px;
   background-color: #eceff6;
@@ -109,6 +118,7 @@ const DashboardButtonNext = styled.button`
   background-color: #e5c01b;
   border-radius: 20px;
   font-weight: bold;
+  margin-right: 10px;
 
   :hover{
     background-color: #ecd362;
@@ -191,18 +201,22 @@ class PreviousExperienceForm extends Component {
               <InfoLink to='/jobSeeker/createProfile/experience'>Experience</InfoLink>
               <InfoLink to='/jobSeeker/createProfile/education'>Education</InfoLink>
             </InfoLinkContainer>
-            <DashboardInputJob
-              name="jobTitle"
-              type="text"
-              placeholder="job title"
-              value={this.state.jobTitle}
-              onChange={this.inputChange}
-            />
+            <DashboardSubTitle>
+              Previous Experience
+              </DashboardSubTitle>
+            <DashboardCenterContainer>
             <DashboardInputCompany
               name="jobCompany"
               type="text"
               placeholder="company"
               value={this.state.jobCompany}
+              onChange={this.inputChange}
+            />
+            <DashboardInputJob
+              name="jobTitle"
+              type="text"
+              placeholder="job title"
+              value={this.state.jobTitle}
               onChange={this.inputChange}
             />
             <DashboardInputDescription
@@ -226,10 +240,13 @@ class PreviousExperienceForm extends Component {
               value={this.state.jobEnd}
               onChange={this.inputChange}
             />
-          <button onClick={this.addToArray}>Add Experience</button>
-          <button type="submit" onClick={this.handleSubmit}>
+            </DashboardCenterContainer>
+            <DashboardButtonContainer>
+          <DashboardButtonNext onClick={this.addToArray}>Add Experience</DashboardButtonNext>
+          <DashboardButtonNext type="submit" onClick={this.handleSubmit}>
             Submit
-          </button>
+          </DashboardButtonNext>
+          </DashboardButtonContainer>
         </DashboardFormContainer>
         </DashboardBG>
       </DashboardSetupContainer>
