@@ -49,6 +49,8 @@ const DashboardCenterContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
 `
 const InfoLinkContainer = styled.div`
   width: 50vw;

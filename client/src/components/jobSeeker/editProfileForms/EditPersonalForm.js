@@ -264,9 +264,9 @@ class EditPersonalForm extends Component {
         <DashboardFormContainer>
         <InfoLinkContainer>
               <InfoLink to='/jobSeeker/editProfile/editPersonal'>Personal Information</InfoLink>
-              <InfoLink to='/jobSeeker/createProfile/experience'>Experience</InfoLink>
-              <InfoLink to='/jobSeeker/createProfile/education'>Education</InfoLink>
-              <InfoLink to='/jobSeeker/createProfile/skills'>Skills</InfoLink>
+              <InfoLink to='/jobSeeker/editProfile/editExperience'>Experience</InfoLink>
+              <InfoLink to='/jobSeeker/editProfile/editEducation'>Education</InfoLink>
+              <InfoLink to='/jobSeeker/editProfile/editSkills'>Skills</InfoLink>
             </InfoLinkContainer>
             <DashboardSubTitle>
               Personal Information
